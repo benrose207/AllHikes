@@ -1,0 +1,55 @@
+.homepage {
+    text-align: center;
+    font-family: $titleFont;
+}
+
+// https://unsplash.com/photos/7RgMKvO1N8A
+.homepage-hero {
+    font-size: 70px;
+    background-image: url("phil-b-7RgMKvO1N8A-unsplash.jpg");
+    background-size: cover;
+    height: 550px;
+    color: white;
+    position: relative;
+}
+
+.homepage h1 {
+    position: absolute;
+    width: 70%;
+    top: 30%;
+    left: 50%;
+    margin-left: -35%;
+}
+
+.homepage-subcontent {
+    width: 80%;
+    margin: auto;
+}
+
+.homepage-subcontent h2 {
+    font-size: 50px;
+    color: $darkGrey;
+}
+
+.homepage-subcontent p {
+    width: 60%;
+    margin: 0 auto;
+    font-size: 18px;
+    color: $grey;
+}
+
+.homepage section {
+    height: 550px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.homepage p {
+    line-height: 2;
+}
+
+.homepage h2 {
+    line-height: 1.25;
+    margin-bottom: 25px;
+}

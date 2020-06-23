@@ -50,7 +50,7 @@ class SessionForm extends React.Component {
         ) : "" )
 
         return (
-            <div>
+            <div className="session-form">
                 <h1>{formTitle}</h1>
                 <form onSubmit={this.handleSubmit}>
                     {additionalFields}

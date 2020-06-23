@@ -9,15 +9,18 @@ const MainNav = ({ currentUser, logout }) => {
         </>
     ) : (
         <>
-            <Link to="/signup" >Sign Up</Link>
-            <Link to="login" >Log In</Link>
+            <Link to="/signup" className="signup">Sign Up</Link>
+            <Link to="login" className="login">Log In</Link>
         </>
     ))
 
     return (
-        <nav>
-            <h2>AllHikes</h2>
-            {userNav}
+        <nav className="main-nav">
+            <div className="nav-site-links"></div>
+            <Link to="/"><h2>AllHikes</h2></Link>
+            <div className="nav-user-links">
+                {userNav}
+            </div>
         </nav>
     );
 }

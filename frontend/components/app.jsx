@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { AuthRoute } from "../util/route_util";
+import HomePage from "./homepage";
 import MainNavContainer from "./nav/main_nav_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
@@ -12,6 +13,7 @@ const App = () => {
                 <MainNavContainer />
             </header>
 
+            <Route exact path="/" component={HomePage}/>
             <AuthRoute path="/login" component={LoginFormContainer}/>
             <AuthRoute path="/signup" component={SignupFormContainer}/>
         </>
