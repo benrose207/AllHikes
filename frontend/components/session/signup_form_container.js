@@ -10,8 +10,8 @@ const mapStateToProps = ({ errors }) => {
         submitText: "Sign up",
         errors: errors.session,
         initialState: {
-            firstName: "",
-            lastName: "",
+            first_name: "",
+            last_name: "",
             email: "",
             password: ""
         }, 
@@ -22,7 +22,7 @@ const mapStateToProps = ({ errors }) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        processForm: user => dispatch(signup)
+        processForm: user => dispatch(signup(user))
     }
 }
 

@@ -15,7 +15,7 @@ class Api::SessionsController < ApplicationController
     end
 
     def destroy
-        @user = User.find_by(id: params[:userId])
+        @user = current_user
         if @user 
             logout!
             render "/api/users/basic"

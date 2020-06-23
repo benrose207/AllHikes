@@ -35,7 +35,7 @@ class SessionForm extends React.Component {
                         type="text"
                         placeholder="First name"
                         value={this.state.firstName}
-                        onChange={this.handleInput("firstName")}
+                        onChange={this.handleInput("first_name")}
                     />
                 </label>
                 <label>
@@ -43,7 +43,7 @@ class SessionForm extends React.Component {
                         type="text"
                         placeholder="Last name"
                         value={this.state.lastName}
-                        onChange={this.handleInput("lastName")}
+                        onChange={this.handleInput("last_name")}
                     />
                 </label>
             </>
