@@ -4,11 +4,31 @@ header {
 
 .main-nav {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     height: 60px;
     margin: 0px 8px;
 }
+
+.nav-site-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.nav-logo-title {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav-user-links {
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
 
 .main-nav h2 {
     color: $grey;
@@ -22,4 +42,8 @@ header {
     padding: 10px 15px;
     border-radius: 8px;
     margin-left: 8px;
+}
+
+.logo-icon {
+    font-size: 22px;
 }

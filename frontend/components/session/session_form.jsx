@@ -64,31 +64,33 @@ class SessionForm extends React.Component {
         ) : "" )
 
         return (
-            <div className="session-form">
-                <h1>{formTitle}</h1>
-                <form onSubmit={this.handleSubmit}>
-                    {additionalFields}
-                    <label>
-                        <input 
-                            type="text"
-                            placeholder="Email"
-                            value={this.state.email}
-                            onChange={this.handleInput("email")}
-                        />
-                    </label>
-                    <label>
-                        <input 
-                            type="password"
-                            placeholder="Password"
-                            value={this.state.password}
-                            onChange={this.handleInput("password")}
-                        />
-                    </label>
-                    <button className="primary-cta">{submitText}</button>
-                </form>
-                <p>{secondaryActionText} {secondaryActionLink}</p>
-                <p>Just exploring? Hit the trail as a <button className="inline-link" onClick={this.loginDemo}>demo user</button></p>
-            </div>
+            <section className="image-block">
+                <div className="session-form">
+                    <h1>{formTitle}</h1>
+                    <form onSubmit={this.handleSubmit}>
+                        {additionalFields}
+                        <label>
+                            <input 
+                                type="text"
+                                placeholder="Email"
+                                value={this.state.email}
+                                onChange={this.handleInput("email")}
+                            />
+                        </label>
+                        <label>
+                            <input 
+                                type="password"
+                                placeholder="Password"
+                                value={this.state.password}
+                                onChange={this.handleInput("password")}
+                            />
+                        </label>
+                        <button className="primary-cta">{submitText}</button>
+                    </form>
+                    <p>{secondaryActionText} {secondaryActionLink}</p>
+                    <p>Just exploring? Hit the trail as a <button className="inline-link" onClick={this.loginDemo}>demo user</button></p>
+                </div>
+            </section>
         )
     }
 }

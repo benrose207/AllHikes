@@ -41,3 +41,15 @@
     border: 2px solid $ctaBlueHover;
     color: $ctaBlueHover;
 }
+
+// icon styling
+
+.logo-icon {
+    color: $logoGreen;
+    margin: 8px;
+}
+
+.logo-title {
+    display: flex;
+    align-items: center;
+}

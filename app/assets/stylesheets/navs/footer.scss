@@ -18,3 +18,13 @@ footer h3 {
     font-family: $headerFont;
     color: $grey;
 }
+
+.flex-footer .logo-icon {
+    font-size: 30px;
+}
+
+.footer-links a {
+    margin: 12px;
+    font-size: 36px;
+    color: $darkGrey;
+}
