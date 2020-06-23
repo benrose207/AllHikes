@@ -10,6 +10,8 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  about_me        :text
+#  privacy         :boolean          default(FALSE), not null
 #
 
 # This model initially had no columns defined. If you add columns to the

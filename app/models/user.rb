@@ -10,12 +10,15 @@
 #  session_token   :string           not null
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
+#  about_me        :text
+#  privacy         :boolean          default(FALSE), not null
 #
 class User < ApplicationRecord
     attr_reader :password
 
     validates :first_name, :last_name, :email, :password_digest, :session_token, presence: true
     validates :email, :session_token, uniqueness: true
+    validates :privacy, inclusion: { in: [true, false] }
     validates :password, length: { minimum: 6, allow_nil: true }
 
     after_initialize :ensure_session_token

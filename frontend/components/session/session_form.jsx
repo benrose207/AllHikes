@@ -48,6 +48,7 @@ class SessionForm extends React.Component {
                     <input 
                         type="text"
                         placeholder="First name"
+                        required
                         value={this.state.firstName}
                         onChange={this.handleInput("first_name")}
                     />
@@ -56,6 +57,7 @@ class SessionForm extends React.Component {
                     <input 
                         type="text"
                         placeholder="Last name"
+                        required
                         value={this.state.lastName}
                         onChange={this.handleInput("last_name")}
                     />
@@ -73,6 +75,7 @@ class SessionForm extends React.Component {
                             <input 
                                 type="text"
                                 placeholder="Email"
+                                required
                                 value={this.state.email}
                                 onChange={this.handleInput("email")}
                             />
@@ -81,6 +84,7 @@ class SessionForm extends React.Component {
                             <input 
                                 type="password"
                                 placeholder="Password"
+                                required
                                 value={this.state.password}
                                 onChange={this.handleInput("password")}
                             />
