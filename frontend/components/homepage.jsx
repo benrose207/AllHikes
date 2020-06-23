@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomePage = (props) => {
     return (
@@ -9,7 +10,7 @@ const HomePage = (props) => {
             <section className="homepage-subcontent">
                 <h2>100,000+ trails. 20 million explorers. Endless memories.</h2>
                 <p>The beauty of nature doesn’t need to be hard to find. Our goal is simple - build the largest collection of hand-curated trail guides, so you can explore the outdoors with confidence. Anytime. Anywhere.</p>
-                <button>Sign up for free</button>
+                <Link to="/signup">Sign up for free</Link>
             </section>
         </main>
     )

@@ -38,6 +38,19 @@
     color: $grey;
 }
 
+.homepage-subcontent a {
+    background-color: $ctaBlue;
+    color: white;
+    width: 150px;
+    margin: 25px auto;
+    padding: 15px 15px;
+    border-radius: 8px;
+}
+
+.homepage-subcontent a:hover {
+    background-color: $ctaBlueHover;
+}
+
 .homepage section {
     height: 550px;
     display: flex;

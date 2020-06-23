@@ -14,7 +14,7 @@ const mapStateToProps = ({ errors }) => {
             password: ""
         },
         secondaryActionText: "Don't have an account?",
-        secondaryActionLink: <Link to="/signup" >Sign up for free</Link>
+        secondaryActionLink: <Link to="/signup" className="inline-link">Sign up for free</Link>
     };
 };
 

@@ -7,6 +7,7 @@ class SessionForm extends React.Component {
 
         this.state = this.props.initialState;
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.loginDemo = this.loginDemo.bind(this);
     }
 
     handleInput(field) {
@@ -18,6 +19,19 @@ class SessionForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         this.props.processForm(this.state);
+    }
+
+    loginDemo(e) {
+        e.preventDefault();
+
+        const demoUser = { email: "demo@allhikes.com", password: "123qwe"};
+
+        debugger
+        if (this.props.submitText === "Sign up") {
+            this.props.login(demoUser);
+        } else {
+            this.props.processForm(demoUser);
+        }
     }
 
     render () {
@@ -70,9 +84,10 @@ class SessionForm extends React.Component {
                             onChange={this.handleInput("password")}
                         />
                     </label>
-                    <button>{submitText}</button>
+                    <button className="primary-cta">{submitText}</button>
                 </form>
                 <p>{secondaryActionText} {secondaryActionLink}</p>
+                <p>Just exploring? Hit the trail as a <button className="inline-link" onClick={this.loginDemo}>demo user</button></p>
             </div>
         )
     }

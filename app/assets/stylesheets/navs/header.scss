@@ -25,11 +25,23 @@ header {
     border: 2px solid $ctaBlue;
 }
 
+.nav-user-links a:hover {
+    border: 2px solid $ctaBlueHover;
+}
+
 .signup {
     color: white;
     background-color: $ctaBlue;
 }
 
+.signup:hover {
+    background-color: $ctaBlueHover;
+}
+
 .login {
     color: $ctaBlue;
+}
+
+.login:hover {
+    color: $ctaBlueHover;
 }
