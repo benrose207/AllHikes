@@ -26,7 +26,6 @@ class SessionForm extends React.Component {
 
         const demoUser = { email: "demo@allhikes.com", password: "123qwe"};
 
-        debugger
         if (this.props.submitText === "Sign up") {
             this.props.login(demoUser);
         } else {

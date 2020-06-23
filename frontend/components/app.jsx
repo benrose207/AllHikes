@@ -1,11 +1,12 @@
 import React from "react";
 import { Route } from "react-router-dom";
-import { AuthRoute } from "../util/route_util";
+import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import HomePage from "./homepage";
 import Footer from "./nav/footer"
 import MainNavContainer from "./nav/main_nav_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
+import UserContainer from "./users/user_container";
 
 
 const App = () => {
@@ -15,9 +16,10 @@ const App = () => {
                 <MainNavContainer />
             </header>
 
-            <Route exact path="/" component={HomePage}/>
-            <AuthRoute path="/login" component={LoginFormContainer}/>
-            <AuthRoute path="/signup" component={SignupFormContainer}/>
+            <Route exact path="/" component={HomePage} />
+            <AuthRoute path="/login" component={LoginFormContainer} />
+            <AuthRoute path="/signup" component={SignupFormContainer} />
+            <ProtectedRoute path="/members/:userId" component={UserContainer} />
 
             <Footer />
         </>
