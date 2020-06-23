@@ -9,8 +9,8 @@ const MainNav = ({ currentUser, logout }) => {
         </>
     ) : (
         <>
-            <Link to="/signup" className="signup">Sign Up</Link>
-            <Link to="login" className="login">Log In</Link>
+            <Link to="/signup" className="secondary-cta">Sign Up</Link>
+            <Link to="login" className="tertiary-cta">Log In</Link>
         </>
     ))
 

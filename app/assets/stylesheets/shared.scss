@@ -1,0 +1,43 @@
+// button styling
+
+.primary-cta {
+    background-color: $ctaGreen;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.primary-cta:hover {
+    background-color: $buttonHoverGreen;
+}
+
+.inline-link {
+    color: $ctaGreen;
+    font-weight: 600;
+}
+
+.inline-link:hover {
+    color: $buttonHoverGreen;
+}
+
+.secondary-cta {
+    background-color: $ctaBlue;
+    border: 2px solid $ctaBlue;
+    color: white;
+}
+
+.secondary-cta:hover {
+    background-color: $ctaBlueHover;
+    border: 2px solid $ctaBlueHover;
+}
+
+.tertiary-cta {
+    border: 2px solid $ctaBlue;
+    color: $ctaBlue;
+}
+
+.tertiary-cta:hover {
+    border: 2px solid $ctaBlueHover;
+    color: $ctaBlueHover;
+}

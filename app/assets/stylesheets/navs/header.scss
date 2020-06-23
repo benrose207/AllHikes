@@ -22,26 +22,4 @@ header {
     padding: 10px 15px;
     border-radius: 8px;
     margin-left: 8px;
-    border: 2px solid $ctaBlue;
-}
-
-.nav-user-links a:hover {
-    border: 2px solid $ctaBlueHover;
-}
-
-.signup {
-    color: white;
-    background-color: $ctaBlue;
-}
-
-.signup:hover {
-    background-color: $ctaBlueHover;
-}
-
-.login {
-    color: $ctaBlue;
-}
-
-.login:hover {
-    color: $ctaBlueHover;
 }
