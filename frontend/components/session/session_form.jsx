@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ScrollToTopOnMount } from "../../util/route_util";
 
 class SessionForm extends React.Component {
     constructor(props) {
@@ -74,6 +75,7 @@ class SessionForm extends React.Component {
 
         return (
             <section className="image-block">
+                <ScrollToTopOnMount />
                 <div className="session-form">
                     <h1>{formTitle}</h1>
                     <form onSubmit={this.handleSubmit}>

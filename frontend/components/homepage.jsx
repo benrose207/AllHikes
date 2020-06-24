@@ -1,9 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ScrollToTopOnMount } from "../util/route_util";
 
 const HomePage = (props) => {
     return (
         <main className="homepage">
+            <ScrollToTopOnMount />
             <div className="homepage-hero">
                 <h1>Find your next favorite hike</h1>
             </div>

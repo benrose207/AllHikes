@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
+import { userEffect } from "react";
 
 const mapStateToProps = state => {
     return {
@@ -35,3 +36,11 @@ export const ProtectedRoute = withRouter(connect(
     mapStateToProps,
     null
 )(Protected));
+
+export const ScrollToTopOnMount = () => {
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
+
+    return null;
+}
