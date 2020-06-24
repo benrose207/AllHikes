@@ -1,0 +1,1 @@
+json.extract! @hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage

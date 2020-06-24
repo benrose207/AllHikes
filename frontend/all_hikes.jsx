@@ -4,7 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 //testing imports
-import { fetchUser, updateUser } from "./util/user_api_util";
+import { fetchHike } from "./actions/hike_actions"
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -24,10 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     //testing start
     window.getState = store.getState;
-    window.dispatch - store.dispatch;
-    window.fetchUser = fetchUser;
-    window.updateUser = updateUser;
-
+    window.dispatch = store.dispatch;
+    window.fetchHike = fetchHike;
     //testing end
 
     ReactDOM.render(<Root store={store} />, root);
