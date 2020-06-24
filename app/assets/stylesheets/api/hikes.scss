@@ -12,4 +12,41 @@
 .hike-hero {
     font-family: $headerFont;
     color: white;
+    height: 325px;
+    position: relative;
+
+    // Make this dynamic later on depending on the hike -- will need to pull from field/AWS
+    background-image: url("cristina-anne-costello-70ngqW6E0oY-unsplash.jpg");
+    background-size: cover;
+    background-position: center;
+}
+
+.hike-hero-content {
+    margin: 0 20px;
+    position: absolute;
+    bottom: 15%;
+}
+
+.hike-hero h1 {
+    font-size: 24px;
+    font-weight: 600;
+    margin: 10px 0;
+}
+
+.hike-difficulty {
+    font-size: 12px;
+    padding: 4px 12px;
+}
+
+.moderate {
+    background-color: $ctaBlue;
+}
+
+.easy {
+    background-color: $backgroundGreen;
+}
+
+.hike-actions {
+    background-color: $backgroundGreen;
+    height: 55px;
 }

@@ -10,10 +10,16 @@ class HikeShow extends React.Component {
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;
+
+        const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
+
         return (
             <main className="hike-container">
                 <div className="hike-hero">
-                    <h1>{hike.name}</h1>
+                    <div className="hike-hero-content">
+                        <h1>{hike.name}</h1>
+                        <span className={hikeDifficulty}>{hike.difficulty}</span>
+                    </div>
                 </div>
                 <div className="hike-actions">
 
