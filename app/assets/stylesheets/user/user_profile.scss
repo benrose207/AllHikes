@@ -1,0 +1,63 @@
+.user-tabs {
+    display: flex;
+    justify-content: flex-start;
+    border-top: 1px solid $lightGrey;
+    font-family: $headerFont;
+    font-weight: 600;
+    font-size: 18px;
+    color: $darkGrey;
+}
+
+.user-tabs > li {
+    padding: 15px;
+}
+
+.primary-content {
+    width: 80%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+}
+
+.user-profile {
+    border: 1px solid $lightGrey;
+    font-family: $headerFont;
+    height: 800px;
+}
+
+.content-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 50px;
+    background-color: $backgroundGrey;
+    border-bottom: 1px solid $lightGrey;
+}
+
+.content-header > h3 {
+    margin: 10px 20px;
+    font-weight: 500;
+    font-size: 20px;
+    color: $darkGrey;
+}
+
+.content-header > button {
+    padding: 8px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    margin: 10px;
+}
+
+.user-details {
+    margin: 40px;
+    color: $mediumGrey;
+}
+
+.user-details h2 {
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.user-details > p {
+    font-size: 12px;
+}

@@ -7,13 +7,22 @@ import { faMountain } from "@fortawesome/free-solid-svg-icons";
 const MainNav = ({ currentUser, logout }) => {
     const userNav = ( currentUser ? (
         <>
-            <p>{currentUser.firstName}</p>
-            <button onClick={logout} >Logout</button>
+            <div className="dropdown-selector">
+                <p>{currentUser.firstName}</p>
+                <ul className="user-dropdown">
+                    <li>
+                        <Link to={`/members/${currentUser.id}`}>Profile</Link>
+                    </li>
+                    <li>
+                        <button onClick={logout} >Logout</button>
+                    </li>
+                </ul>
+            </div>
         </>
     ) : (
         <>
             <Link to="/signup" className="secondary-cta">Sign Up</Link>
-            <Link to="login" className="tertiary-cta">Log In</Link>
+            <Link to="/login" className="tertiary-cta">Log In</Link>
         </>
     ))
 

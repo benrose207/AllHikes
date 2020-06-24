@@ -63,6 +63,14 @@ class SessionForm extends React.Component {
                 </label>
             </>
         ) : "" )
+        
+        const errors = (this.props.errors ? (
+            <ul className="form-errors">
+                {this.props.errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
+        ) : "" )
 
         return (
             <section className="image-block">
@@ -84,10 +92,12 @@ class SessionForm extends React.Component {
                                 type="password"
                                 placeholder="Password"
                                 required
+                                minLength="6"
                                 value={this.state.password}
                                 onChange={this.handleInput("password")}
                             />
                         </label>
+                        {errors}
                         <button className="primary-cta">{submitText}</button>
                     </form>
                     <p>{secondaryActionText} {secondaryActionLink}</p>
