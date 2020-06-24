@@ -41,6 +41,7 @@
 }
 
 .content-header > button {
+    display: none; // Hidden until I built out the edit user form functionality
     padding: 8px 10px;
     font-size: 14px;
     font-weight: 500;

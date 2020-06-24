@@ -6,11 +6,11 @@
 }
 
 .session-form {
-    width: 480px;
+    width: 340px;
     position: absolute;
     top: 10%;
     left: 50%;
-    margin-left: -240px;
+    margin-left: -170px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -18,6 +18,13 @@
     font-family: $headerFont;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
     background-color: white;
+}
+
+@media only screen and (min-device-width: 500px) {
+    .session-form {
+        width: 480px;
+        margin-left: -240px;
+    }
 }
 
 .session-form h1 {

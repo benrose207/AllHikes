@@ -5,7 +5,7 @@
 
 // https://unsplash.com/photos/7RgMKvO1N8A
 .homepage-hero {
-    font-size: 70px;
+    font-size: 50px;
     background-image: url("phil-b-7RgMKvO1N8A-unsplash.jpg");
     background-size: cover;
     height: 550px;
@@ -27,14 +27,14 @@
 }
 
 .homepage-subcontent h2 {
-    font-size: 50px;
+    font-size: 30px;
     color: $darkGrey;
 }
 
 .homepage-subcontent p {
     width: 60%;
     margin: 0 auto;
-    font-size: 18px;
+    font-size: 14px;
     color: $grey;
 }
 
@@ -59,4 +59,18 @@
 .homepage h2 {
     line-height: 1.25;
     margin-bottom: 25px;
+}
+
+@media only screen and (min-device-width: 860px) {
+    .homepage-hero {
+        font-size: 70px;
+    }
+
+    .homepage-subcontent h2 {
+        font-size: 50px;
+    }
+
+    .homepage-subcontent p {
+        font-size: 18px;
+    }
 }
