@@ -16,7 +16,7 @@
 class Hike < ApplicationRecord
 
     validates :name, :lng, :lat, :difficulty, presence: true
-    valides :difficulty, inclusion: { in: ["easy", "moderate", "difficult", "strenuous"] }
-    valides :usage, inclusion: { in: ["light", "moderate", "heavy", "extra heavy"] }
+    validates :difficulty, inclusion: { in: ["easy", "moderate", "difficult", "strenuous"] }
+    validates :usage, inclusion: { in: ["light", "moderate", "heavy", "extra heavy"] }
 
 end
