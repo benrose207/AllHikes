@@ -12,4 +12,8 @@ class Tag < ApplicationRecord
 
     validates :tag_type, inclusion: { in: ["obstacle", "activity", "feature"] }
 
+    has_many :taggables,
+        foreign_key: :tag_id,
+        class_name: :Taggable
+
 end

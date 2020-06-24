@@ -19,4 +19,10 @@ class Hike < ApplicationRecord
     validates :difficulty, inclusion: { in: ["easy", "moderate", "difficult", "strenuous"] }
     validates :usage, inclusion: { in: ["light", "moderate", "heavy", "extra heavy"] }
 
+    has_many :taggables, :as => :taggable
+
+    has_many :tags,
+        through: :taggables,
+        source: :tag
+
 end
