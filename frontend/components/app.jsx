@@ -7,6 +7,7 @@ import MainNavContainer from "./nav/main_nav_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import UserContainer from "./users/user_container";
+import HikeShowContainer from "./hikes/hike_show_container";
 
 
 const App = () => {
@@ -17,6 +18,7 @@ const App = () => {
             </header>
 
             <Route exact path="/" component={HomePage} />
+            <Route path="/hikes/:hikeId" component={HikeShowContainer} />
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/members/:userId" component={UserContainer} />

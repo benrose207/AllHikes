@@ -12,10 +12,10 @@ const Footer = (props) => {
                     <h3>AllHikes</h3>
                 </div>
                 <div className="footer-links">
-                    <a href="https://www.linkedin.com/in/ben-rose-483549124/">
+                    <a href="https://www.linkedin.com/in/ben-rose-483549124/" target="_blank">
                         <FontAwesomeIcon icon={faLinkedin} />
                     </a>
-                    <a href="https://github.com/benrose207">
+                    <a href="https://github.com/benrose207" target="_blank">
                         <FontAwesomeIcon icon={faGithub} />
                     </a>
                 </div>

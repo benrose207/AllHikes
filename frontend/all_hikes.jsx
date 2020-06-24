@@ -4,7 +4,8 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 //testing imports
-import { fetchHike } from "./actions/hike_actions"
+import { fetchHike } from "./actions/hike_actions";
+import { hikeTags } from "./reducers/selectors";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -26,6 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.getState = store.getState;
     window.dispatch = store.dispatch;
     window.fetchHike = fetchHike;
+    window.hikeTags = hikeTags;
     //testing end
 
     ReactDOM.render(<Root store={store} />, root);
