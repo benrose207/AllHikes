@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .hike-container {
-    width: 950px;
+    width: 100%;
     margin: 20px auto;
     border: $contentBorder;
     background-color: $lightGrey;
@@ -70,11 +70,6 @@
     border-bottom: $contentBorder;
 }
 
-.hike-sidebar {
-    width: 325px;
-    border-left: $contentBorder;
-}
-
 .hike-stats {
     height: 50px;
     display: flex;
@@ -138,4 +133,20 @@
 
 .hike-content p {
     padding: 10px;
+}
+
+.hike-sidebar {
+    width: 325px;
+    border-left: $contentBorder;
+    display: none;
+}
+
+@media only screen and (min-device-width: 800px) {
+    .hike-sidebar {
+        display: block;
+    }
+
+    .hike-container {
+        width: 950px;
+    }
 }

@@ -66,7 +66,7 @@ class HikeShow extends React.Component {
                 <div className="hike-main">
                     <article className="hike-main-content">
                         <p className="hike-summary">
-                            {hike.name} is a 4.3 mile heavily trafficked loop trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
+                            {hike.name} is a {hike.distance} mile heavily trafficked {hike.routeType.toLowerCase()} trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
                         </p>
                         <section className="hike-stats">
                             <div className="stat">
