@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoute, faExchangeAlt, faRetweet, faMountain } from "@fortawesome/free-solid-svg-icons"
 
@@ -52,8 +53,17 @@ class HikeShow extends React.Component {
             faExchangeAlt : faRetweet
         );
 
+        let hikeShowClasses, hikeAsideClasses;
+        if (this.props.location.pathname.includes("map")) {
+            hikeShowClasses = "hike-container hike-map-view";
+            hikeAsideClasses = "hike-sidebar hike-map-view";
+        } else {
+            hikeShowClasses = "hike-container";
+            hikeAsideClasses = "hike-sidebar";
+        }
+
         return (
-            <main className="hike-container">
+            <main className={hikeShowClasses}>
                 <div className="hike-hero">
                     <div className="hike-hero-content">
                         <h1>{hike.name}</h1>
@@ -100,8 +110,8 @@ class HikeShow extends React.Component {
                             {contentTabs}
                         </section>
                     </article>
-                    <aside className="hike-sidebar">
-
+                    <aside className={hikeAsideClasses}>
+                        <Link to={`/hikes/${hike.id}/map`}>View Map</Link>
                     </aside>
                 </div>
             </main>

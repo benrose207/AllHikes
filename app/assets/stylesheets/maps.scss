@@ -1,7 +1,25 @@
-.map-container {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-    bottom: 0;
+.hike-with-map {
+    display: flex;
 }
+
+.map-container {
+    height: calc(100vh - 60px);
+    flex: 1;
+}
+
+// .mapboxgl-ctrl-group {
+//     background-color: transparent;
+// }
+
+// .mapboxgl-ctrl-group:not(:empty) {
+//     box-shadow: none;
+// }
+
+// .mapboxgl-ctrl-group > button {
+//     background-color: white;
+//     margin: 8px;
+//     border-radius: 15px;
+//     padding: 20px;
+//     font-size: 24px;
+//     color: $backgroundGreen;
+// }

@@ -8,6 +8,7 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import UserContainer from "./users/user_container";
 import HikeShowContainer from "./hikes/hike_show_container";
+import HikeMap from "./maps/hike_map";
 
 
 const App = () => {
@@ -18,7 +19,10 @@ const App = () => {
             </header>
 
             <Route exact path="/" component={HomePage} />
-            <Route path="/hikes/:hikeId" component={HikeShowContainer} />
+            <div className="hike-with-map">
+                <Route path="/hikes/:hikeId" component={HikeShowContainer} />
+                <Route path="/hikes/:hikeId/map" component={HikeMap} />
+            </div>
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/members/:userId" component={UserContainer} />
