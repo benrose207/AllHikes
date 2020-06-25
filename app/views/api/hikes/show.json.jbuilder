@@ -1,5 +1,5 @@
 json.hike do 
-    json.extract! @hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage
+    json.extract! @hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage, :distance, :elevation_gain, :route_type
 end
 
 json.taggable do

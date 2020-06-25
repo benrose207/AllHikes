@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faRoute, faExchangeAlt, faRetweet, faMountain } from "@fortawesome/free-solid-svg-icons"
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -46,6 +48,10 @@ class HikeShow extends React.Component {
             </>
         );
 
+        const routeIcon = ( hike.routeType === "Loop" ? 
+            faExchangeAlt : faRetweet
+        );
+
         return (
             <main className="hike-container">
                 <div className="hike-hero">
@@ -62,6 +68,31 @@ class HikeShow extends React.Component {
                         <p className="hike-summary">
                             {hike.name} is a 4.3 mile heavily trafficked loop trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
                         </p>
+                        <section className="hike-stats">
+                            <div className="stat">
+                                <FontAwesomeIcon icon={faRoute} />
+                                <div>
+                                    <span>Distance:</span>
+                                    <span>{hike.distance} miles</span>
+                                </div>
+                            </div>
+                            {hike.elevationGain ? 
+                                <div className="stat">
+                                    <FontAwesomeIcon icon={faMountain} />
+                                    <div>
+                                        <span>Elevation Gain:</span>
+                                        <span>{hike.elevationGain} feet</span>
+                                    </div>
+                                </div> : null
+                            }
+                            <div className="stat">
+                                <FontAwesomeIcon icon={routeIcon} />
+                                <div>
+                                    <span>Route Type:</span>
+                                    <span>{hike.routeType}</span>
+                                </div>
+                            </div>
+                        </section>
                         <section className="tag-cloud">
                             {tagCloud}
                         </section>

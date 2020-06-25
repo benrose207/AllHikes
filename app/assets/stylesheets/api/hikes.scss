@@ -75,6 +75,32 @@
     border-left: $contentBorder;
 }
 
+.hike-stats {
+    height: 50px;
+    display: flex;
+}
+
+.hike-stats span {
+    font-size: 13px;
+    display: block;
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    padding: 10px;
+    // padding: 10px 40px 10px 10px;
+}
+
+.stat > div {
+    padding-left: 8px;
+}
+
+.stat > div > span:first-child {
+    font-weight: 500;
+}
+
 .tag-cloud {
     display: flex;
     flex-wrap: wrap;
