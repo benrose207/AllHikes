@@ -1,9 +1,22 @@
 import React from "react";
 
 class HikeShow extends React.Component {
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            selectedContent: "description"
+        };
+
+        this.handleContentTabs = this.handleContentTabs.bind(this);
+    }
 
     componentDidMount() {
         this.props.fetchHike(this.props.match.params.hikeId);
+    }
+
+    handleContentTabs(e) {
+        this.setState({ selectedContent: e.target.dataset.fieldName })
     }
 
     render () {
@@ -16,6 +29,22 @@ class HikeShow extends React.Component {
         const tagCloud = tags.map(tag => (
             <h4 key={tag.id} className="tag">{tag.name}</h4>
         ));
+
+        const contentTabs = (
+            <>
+                <nav onClick={this.handleContentTabs} className="hike-tabs">
+                    <span 
+                        data-field-name="description" 
+                        className={ this.state.selectedContent === "description" ? "active-tab" : null}
+                    >Description</span>
+                    <span 
+                        data-field-name="contact"
+                        className={this.state.selectedContent === "contact" ? "active-tab" : null}
+                    >Contact</span>
+                </nav>
+                <p>{hike[this.state.selectedContent]}</p>
+            </>
+        );
 
         return (
             <main className="hike-container">
@@ -35,6 +64,9 @@ class HikeShow extends React.Component {
                         </p>
                         <section className="tag-cloud">
                             {tagCloud}
+                        </section>
+                        <section className="hike-content">
+                            {contentTabs}
                         </section>
                     </article>
                     <aside className="hike-sidebar">

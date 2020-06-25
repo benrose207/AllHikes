@@ -5,7 +5,7 @@
 .hike-container {
     width: 950px;
     margin: 20px auto;
-    border: 1px solid $lighterGrey;
+    border: $contentBorder;
     background-color: $lightGrey;
 }
 
@@ -67,12 +67,12 @@
 
 .hike-summary {
     padding: 10px;
-    border-bottom: 1px solid $lighterGrey;
+    border-bottom: $contentBorder;
 }
 
 .hike-sidebar {
     width: 325px;
-    border-left: 1px solid $lighterGrey;
+    border-left: $contentBorder;
 }
 
 .tag-cloud {
@@ -87,4 +87,29 @@
     background-color: $grey;
     font-size: 16px;
     font-weight: 500;
+}
+
+.hike-tabs {
+    display: flex;
+    background-color: $lightGrey;
+    border-top: $contentBorder;
+    border-bottom: $contentBorder;
+    padding: 10px;
+    color: $ctaBlue;
+    font-weight: 500;
+    font-size: 18px;
+}
+
+.hike-tabs span {
+    padding-right: 10px;
+    cursor: pointer;
+}
+
+.hike-tabs .active-tab {
+    color: $darkGrey;
+    cursor: default;
+}
+
+.hike-content p {
+    padding: 10px;
 }
