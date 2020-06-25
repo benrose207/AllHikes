@@ -2,7 +2,7 @@ import React from "react";
 import { Route } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
 import HomePage from "./homepage";
-import Footer from "./nav/footer"
+import Footer from "./nav/footer";
 import MainNavContainer from "./nav/main_nav_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
