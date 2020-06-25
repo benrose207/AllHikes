@@ -16,7 +16,7 @@
     position: relative;
 
     // Make this dynamic later on depending on the hike -- will need to pull from field/AWS
-    background-image: url("cristina-anne-costello-70ngqW6E0oY-unsplash.jpg");
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3)), image-url("cristina-anne-costello-70ngqW6E0oY-unsplash.jpg");
     background-size: cover;
     background-position: center;
 }
@@ -49,4 +49,42 @@
 .hike-actions {
     background-color: $backgroundGreen;
     height: 55px;
+}
+
+.hike-main {
+    display: flex;
+}
+
+.hike-main-content {
+    flex: 1;
+    background-color: white;
+    font-family: $bodyFont;
+    color: $darkGrey;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.5;
+}
+
+.hike-summary {
+    padding: 10px;
+    border-bottom: 1px solid $lighterGrey;
+}
+
+.hike-sidebar {
+    width: 325px;
+    border-left: 1px solid $lighterGrey;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+
+.tag-cloud > .tag {
+    padding: 4px 12px;
+    margin: 5px 10px 5px 0;
+    background-color: $grey;
+    font-size: 16px;
+    font-weight: 500;
 }

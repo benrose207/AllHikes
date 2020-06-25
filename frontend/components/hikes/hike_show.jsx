@@ -10,8 +10,12 @@ class HikeShow extends React.Component {
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;
-
+        
         const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
+
+        const tagCloud = tags.map(tag => (
+            <h4 key={tag.id} className="tag">{tag.name}</h4>
+        ));
 
         return (
             <main className="hike-container">
@@ -24,12 +28,19 @@ class HikeShow extends React.Component {
                 <div className="hike-actions">
 
                 </div>
-                <article>
+                <div className="hike-main">
+                    <article className="hike-main-content">
+                        <p className="hike-summary">
+                            {hike.name} is a 4.3 mile heavily trafficked loop trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
+                        </p>
+                        <section className="tag-cloud">
+                            {tagCloud}
+                        </section>
+                    </article>
+                    <aside className="hike-sidebar">
 
-                </article>
-                <aside>
-
-                </aside>
+                    </aside>
+                </div>
             </main>
         )
     }
