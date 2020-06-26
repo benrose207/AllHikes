@@ -13,7 +13,7 @@
 }
 
 .map-container {
-    height: calc(100vh - 60px);
+    height: 100%;
 }
 
 .hike-detail-toggle {
@@ -33,21 +33,12 @@
     cursor: pointer;
 }
 
-// trying to re-style the map zoom features
-
-// .mapboxgl-ctrl-group {
-//     background-color: transparent;
-// }
-
-// .mapboxgl-ctrl-group:not(:empty) {
-//     box-shadow: none;
-// }
-
-// .mapboxgl-ctrl-group > button {
-//     background-color: white;
-//     margin: 8px;
-//     border-radius: 15px;
-//     padding: 20px;
-//     font-size: 24px;
-//     color: $backgroundGreen;
-// }
+.marker {
+    background-image: image-url("GreyandGreenwithWhite.png");
+    background-size: cover;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.1), 0 0 8px 0 rgba(0,0,0,.08);
+}

@@ -18,7 +18,8 @@ const App = () => {
             </header>
 
             <Route exact path="/" component={HomePage} />            
-            <Route path="/hikes/:hikeId" component={HikeShowContainer} />
+            <Route path="/hikes/:hikeId" render={(props) => (
+                <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/members/:userId" component={UserContainer} />

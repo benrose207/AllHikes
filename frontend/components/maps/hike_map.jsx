@@ -12,13 +12,14 @@ class HikeMap extends React.Component {
         this.state = {
             lng: props.hike.lng,
             lat: props.hike.lat,
-            zoom: 12.5
+            zoom: 12.2
         }
 
+        this.toggleHikeDetail = this.toggleHikeDetail.bind(this);
     }
 
     componentDidMount() {
-        const map = new mapboxgl.Map({
+        this.map = new mapboxgl.Map({
             container: this.mapContainer,
             style: 'mapbox://styles/benrose207/ckbo9pfqi1ohd1ipek256m4cn',
             center: [this.state.lng, this.state.lat],
@@ -26,21 +27,23 @@ class HikeMap extends React.Component {
         });
 
         const nav = new mapboxgl.NavigationControl();
-        map.addControl(nav, 'bottom-left');
+        this.map.addControl(nav, 'bottom-left');
 
-        const marker = new mapboxgl.Marker()
+        const markerEl = document.createElement('div');
+        markerEl.className = 'marker';
+        new mapboxgl.Marker(markerEl)
             .setLngLat([this.state.lng, this.state.lat])
-            .addTo(map)
+            .addTo(this.map)
 
-        map.on('move', () => {
+        this.map.on('move', () => {
             this.setState({
-                lng: map.getCenter().lng.toFixed(5),
-                lat: map.getCenter().lat.toFixed(5),
-                zoom: map.getZoom().toFixed(2)
+                lng: this.map.getCenter().lng.toFixed(5),
+                lat: this.map.getCenter().lat.toFixed(5),
+                zoom: this.map.getZoom().toFixed(2)
             });
         });
 
-        //format waypoints so that it can be interpolated into ajax url request
+        //format waypoints so that they can be interpolated into ajax url request
         const waypoints = JSON.parse(this.props.hike.waypoints);
         const endPoint = waypoints[waypoints.length - 1];
         let waypointsStr = ""
@@ -52,6 +55,7 @@ class HikeMap extends React.Component {
         const getRoute = () => {
             const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${waypointsStr}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
 
+            // Callback definition to run once ajax call returns data
             const drawRoute = (response) => {
                 const data = response.routes[0];
                 const route = data.geometry.coordinates;
@@ -64,10 +68,20 @@ class HikeMap extends React.Component {
                     }
                 };
 
-                if (map.getSource('route')) {
-                    map.getSource('route').setData(geojson);
+                //Re-frame map to fit the route returned from API call
+                let bounds = route.reduce(function (bounds, coord) {
+                    return bounds.extend(coord);
+                }, new mapboxgl.LngLatBounds(route[0], route[0]));
+
+                this.map.fitBounds(bounds, {
+                    padding: 100
+                });
+
+                // Draw route on map
+                if (this.map.getSource('route')) {
+                    this.map.getSource('route').setData(geojson);
                 } else {
-                    map.addLayer({
+                    this.map.addLayer({
                         id: 'route',
                         type: 'line',
                         source: {
@@ -87,6 +101,7 @@ class HikeMap extends React.Component {
                 }
             }
 
+            // Make ajax call for route data from MapBox
             $.ajax({
                 url: url,
                 method: "GET",
@@ -94,51 +109,27 @@ class HikeMap extends React.Component {
             })
         }
 
-        map.on('load', () => {
+        this.map.on('load', () => {
+            this.map.resize();
             getRoute(endPoint);
-
-            map.addLayer({
-                id: 'point',
-                type: 'circle',
-                source: {
-                    type: 'geojson',
-                    data: {
-                        type: "FeatureCollection",
-                        features: [{
-                            type: 'Feature',
-                            properties: {},
-                            geometry: {
-                                type: 'Point',
-                                coordinates: endPoint
-                            }
-                        }]
-                    }
-                },
-                paint: {
-                    'circle-radius': 10,
-                    'circle-color': '#4D9709'
-                }
-            })
         });
     }
 
     toggleHikeDetail() {
         const hikeDetail = document.querySelector('.hike-container');
-        const toggle = document.querySelector(".hike-detail-toggle");
-        // hikeDetail.classList.toggle("hidden");
-
-        if (hikeDetail.classList.contains("hidden")) {
-            hikeDetail.classList.remove("hidden")
-        } else {
-            hikeDetail.classList.add("hidden")
-        }
+        const toggles = document.querySelectorAll(".hike-detail-toggle-icon");
+        hikeDetail.classList.toggle("hidden");
+        toggles.forEach(toggle => toggle.classList.toggle("hidden"));
+        
+        this.map.resize();
     }
 
     render () {
         return (
             <div ref={el => this.mapContainer = el} className="map-container">
                 <div className="hike-detail-toggle" onClick={this.toggleHikeDetail}>
-                    <FontAwesomeIcon icon={faChevronRight} />
+                    <FontAwesomeIcon icon={faChevronRight} className="hike-detail-toggle-icon hidden"/>
+                    <FontAwesomeIcon icon={faChevronLeft} className="hike-detail-toggle-icon"/>
                 </div>
             </div>
         )

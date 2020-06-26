@@ -9,10 +9,12 @@ class HikeShow extends React.Component {
         super(props);
 
         this.state = {
-            selectedContent: "description"
+            selectedContent: "description",
+            mapView: false
         };
 
         this.handleContentTabs = this.handleContentTabs.bind(this);
+        this.mapToggle = this.mapToggle.bind(this);
     }
 
     componentDidMount() {
@@ -21,6 +23,10 @@ class HikeShow extends React.Component {
 
     handleContentTabs(e) {
         this.setState({ selectedContent: e.target.dataset.fieldName })
+    }
+
+    mapToggle() {
+        this.setState({mapView: !this.state.mapView})
     }
 
     render () {
@@ -53,17 +59,15 @@ class HikeShow extends React.Component {
         const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
 
         let hikeMapClass = "";
-        if (this.props.location.search.includes("mapView=true")) {
-            hikeMapClass = " hike-map-view"
-        }
+        if (this.state.mapView) hikeMapClass = " hike-map-view";
 
         return (
             <div className="hike-with-map">
                 <main className={`hike-container${hikeMapClass}`}>
                     <div className={`hike-detail-nav${hikeMapClass}`}>
-                        <Link to={`/hikes/${hike.id}`}>View Hike Details
+                        <div onClick={this.mapToggle}>View Hike Details
                             <FontAwesomeIcon icon={faExpandArrowsAlt} />
-                        </Link>
+                        </div>
                     </div>
                     <div className="hike-hero">
                         <div className="hike-hero-content">
@@ -113,12 +117,12 @@ class HikeShow extends React.Component {
                             </section>
                         </article>
                         <aside className={`hike-sidebar${hikeMapClass}`}>
-                            <Link to={`/hikes/${hike.id}?mapView=true`}>View Map</Link>
+                            <div onClick={this.mapToggle}>View Map</div>
                         </aside>
                     </div>
                 </main>
                 <section className={`hike-map${hikeMapClass}`}>
-                    <HikeMap hike={hike}/>
+                    {this.state.mapView ? <HikeMap hike={hike} /> : null}
                 </section>
             </div>
         )
