@@ -15,11 +15,16 @@ u4 = User.create(first_name: "Rachel", last_name: "Carson", email: "rachel@carso
 
 
 Hike.destroy_all
-h1 = Hike.create(name: "Mount Hoffman Trail", description: "Centrally located at an elevation of 10,850' Yosemite's Mount Hoffman provides one of the best overall views of the park. The short hiking distance make this a popular hike. The trail to May Lake is a short and pleasant climb. From May Lake the official trail disappears and becomes somewhat steeper and there are several use trails to the summit.", contact: "Yosemite Wilderness Center (209) 372-0740", lng: -119.49091, lat: 37.83276, difficulty: "difficult", usage: "heavy", distance: 5.6, elevation_gain: 1912, route_type: "Out & Back", waypoints: "[[-119.49091, 37.83276], [-119.48955, 37.84052], [-119.50296, 37.84291], [-119.49847, 37.84208], [-119.49091, 37.83276]]")
-h2 = Hike.create(name: "Porcupine Creek Trail to Indian Ridge Natural Arch to North Dome", description: "Trail starts downhill from the Porcupine Creek Trailhead for the first 1.5 miles then forks to the left and climbs Indian Ridge.  At the top of the ridge is the 0.3 mile side trail to Indian Rock.  After the Indian Rock junction the trail follows Indian Ridge down to the summit of North Dome.", contact: "California Travel and Tourism Commision, P.O. Box 1499 , Sacramento, CA, 95812-1499, Phone: 800-862-2543", lng: -119.54523, lat: 37.80649, difficulty: "moderate", usage: "heavy", distance: 10.4, elevation_gain: 2089, route_type: "Out & Back")
-h3 = Hike.create(name: "Gaylor Lakes Trail", description: "Gaylor Lakes hike offers some of the most spectacular high-country views off of Tioga Road. Climb steadily to a ridge with views of the high Sierra including Mt. Dana and Dana Meadows with its scattered ponds. At the ridge crest, the trail drops 200 feet to Middle Gaylor Lake.", contact: "California Travel and Tourism Commision, P.O. Box 1499 , Sacramento, CA, 95812-1499, Phone: 800-862-2543", lng: -119.25818, lat: 37.91008, difficulty: "difficult", usage: "moderate", distance: 3.5, elevation_gain: 1210, route_type: "Out & Back")
-h4 = Hike.create(name: "Seaview and Big Springs Trails Loop", lng: -122.24968, lat: 37.9006, difficulty: "moderate", usage: "heavy", distance: 4.3, elevation_gain: 984, route_type: "Loop")
-h5 = Hike.create(name: "Meadows Canyon, Wildcat Gorge and Curran Trail Loop", description: "Please note that the parking lot for this trail is closed due to COVID 19.", lng: -122.2445, lat: 37.90515, difficulty: "moderate", usage: "heavy", distance: 3.4, elevation_gain: 518, route_type: "Loop")
+h1 = Hike.create(name: "Mount Hoffman Trail", description: "Centrally located at an elevation of 10,850' Yosemite's Mount Hoffman provides one of the best overall views of the park. The short hiking distance make this a popular hike. The trail to May Lake is a short and pleasant climb. From May Lake the official trail disappears and becomes somewhat steeper and there are several use trails to the summit.", contact: "Yosemite Wilderness Center (209) 372-0740", lng: -119.49091, lat: 37.83276, difficulty: "difficult", usage: "heavy", distance: 5.6, elevation_gain: 1912, route_type: "Out & Back", waypoints: "[[-119.49091, 37.83276], [-119.51010, 37.84692], [-119.49091, 37.83276]]")
+
+h2 = Hike.create(name: "Porcupine Creek Trail to Indian Ridge Natural Arch to North Dome", description: "Trail starts downhill from the Porcupine Creek Trailhead for the first 1.5 miles then forks to the left and climbs Indian Ridge.  At the top of the ridge is the 0.3 mile side trail to Indian Rock.  After the Indian Rock junction the trail follows Indian Ridge down to the summit of North Dome.", contact: "California Travel and Tourism Commision, P.O. Box 1499 , Sacramento, CA, 95812-1499, Phone: 800-862-2543", lng: -119.54612, lat: 37.80669, difficulty: "moderate", usage: "heavy", distance: 10.4, elevation_gain: 2089, route_type: "Out & Back", waypoints: "[[-119.54612, 37.80669], [-119.548856, 37.7999381], [-119.5503044, 37.7945928], [-119.5604753, 37.7823156], [-119.5575142, 37.7626066], [-119.5577288, 37.7559567], [-119.54612, 37.80669]]")
+
+h3 = Hike.create(name: "Gaylor Lakes Trail", description: "Gaylor Lakes hike offers some of the most spectacular high-country views off of Tioga Road. Climb steadily to a ridge with views of the high Sierra including Mt. Dana and Dana Meadows with its scattered ponds. At the ridge crest, the trail drops 200 feet to Middle Gaylor Lake.", contact: "California Travel and Tourism Commision, P.O. Box 1499 , Sacramento, CA, 95812-1499, Phone: 800-862-2543", lng: -119.25818, lat: 37.91008, difficulty: "difficult", usage: "moderate", distance: 3.5, elevation_gain: 1210, route_type: "Out & Back", waypoints: "[[-119.25827, 37.9102], [-119.2647511, 37.911836], [-119.26929, 37.91532], [-119.26764, 37.92387], [-119.26846, 37.92812], [-119.25827, 37.9102]]")
+
+h4 = Hike.create(name: "Sentinel Dome and Taft Point", description: "Yosemite National Park is open to those with reservations begining on Thursday, June 11. See the park website for more info: https://www.nps.gov/yose/planyourvisit/covid19.htm Please note, there are temporary road closures in this area over winter time. Please consult the park's website before visiting.", lng: -119.58638, lat: 37.71247, difficulty: "moderate", usage: "heavy", distance: 5.1, elevation_gain: 1122, route_type: "Loop", waypoints: "[[-119.58632, 37.71241], [-119.58336, 37.72036], [-119.58429, 37.72315], [-119.58890, 37.72364], [-119.60455, 37.71306], [-119.58632, 37.71241]]")
+
+h5 = Hike.create(name: "Mono Pass Trail", description: "This is an amazing intermediate trek to Mono pass. Upper Sardine Lake is a pleasant camping spot. Very beautiful views of Mono lake and a wonderful sunrise.", lng: -119.26236, lat: 37.89061, difficulty: "moderate", usage: "moderate", distance: 10.8, elevation_gain: 1653, route_type: "Out & Back", waypoints: "[[-119.26236, 37.89061], [-119.24449, 37.87746], [-119.22923, 37.86122], [-119.21520, 37.85580], [-119.20683, 37.85920], [-119.26236, 37.89061]]")
+
 
 
 Tag.destroy_all
@@ -88,12 +93,45 @@ Taggable.create(tag_id: f4.id, taggable_id: h1.id, taggable_type: "Hike")
 Taggable.create(tag_id: f7.id, taggable_id: h1.id, taggable_type: "Hike")
 Taggable.create(tag_id: f9.id, taggable_id: h1.id, taggable_type: "Hike")
 
-Taggable.create(tag_id: f3.id, taggable_id: h4.id, taggable_type: "Hike")
-Taggable.create(tag_id: f7.id, taggable_id: h4.id, taggable_type: "Hike")
-Taggable.create(tag_id: f9.id, taggable_id: h4.id, taggable_type: "Hike")
+Taggable.create(tag_id: a1.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: a4.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: a7.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: a15.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: f3.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: f7.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: f9.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: f10.id, taggable_id: h2.id, taggable_type: "Hike")
+Taggable.create(tag_id: o6.id, taggable_id: h2.id, taggable_type: "Hike")
+
+Taggable.create(tag_id: a7.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: a10.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: a3.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: a15.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f3.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f4.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f7.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f9.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f10.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: o8.id, taggable_id: h3.id, taggable_type: "Hike")
+Taggable.create(tag_id: f13.id, taggable_id: h3.id, taggable_type: "Hike")
+
 Taggable.create(tag_id: a3.id, taggable_id: h4.id, taggable_type: "Hike")
 Taggable.create(tag_id: a7.id, taggable_id: h4.id, taggable_type: "Hike")
-Taggable.create(tag_id: a8.id, taggable_id: h4.id, taggable_type: "Hike")
-Taggable.create(tag_id: a9.id, taggable_id: h4.id, taggable_type: "Hike")
-Taggable.create(tag_id: a15.id, taggable_id: h4.id, taggable_type: "Hike")
+Taggable.create(tag_id: a10.id, taggable_id: h4.id, taggable_type: "Hike")
 Taggable.create(tag_id: a20.id, taggable_id: h4.id, taggable_type: "Hike")
+Taggable.create(tag_id: f3.id, taggable_id: h4.id, taggable_type: "Hike")
+Taggable.create(tag_id: f7.id, taggable_id: h4.id, taggable_type: "Hike")
+Taggable.create(tag_id: f10.id, taggable_id: h4.id, taggable_type: "Hike")
+
+Taggable.create(tag_id: a1.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: a7.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: a10.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: a20.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: a3.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f3.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f4.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f6.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f7.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f9.id, taggable_id: h5.id, taggable_type: "Hike")
+Taggable.create(tag_id: f10.id, taggable_id: h5.id, taggable_type: "Hike")
+

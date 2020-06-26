@@ -2,10 +2,38 @@
     display: flex;
 }
 
-.map-container {
+.hike-map {
+    display: none;
     height: calc(100vh - 60px);
     flex: 1;
 }
+
+.hike-map.hike-map-view {
+    display: block;
+}
+
+.map-container {
+    height: calc(100vh - 60px);
+}
+
+.hike-detail-toggle {
+    position: absolute;
+    top: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $backgroundGrey;
+    color: $grey;
+    height: 30px;
+    width: 23px;
+    z-index: 1;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.1), 0 0 8px 0 rgba(0,0,0,.08);
+    cursor: pointer;
+}
+
+// trying to re-style the map zoom features
 
 // .mapboxgl-ctrl-group {
 //     background-color: transparent;

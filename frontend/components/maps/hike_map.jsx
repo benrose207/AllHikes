@@ -1,5 +1,7 @@
 import React from "react";
 import mapboxgl from 'mapbox-gl';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
 
 mapboxgl.accessToken = window.mapboxAPIKey;
 
@@ -38,9 +40,7 @@ class HikeMap extends React.Component {
             });
         });
 
-        const canvas = map.getCanvasContainer();
-        const start = [this.state.lng, this.state.lat];
-
+        //format waypoints so that it can be interpolated into ajax url request
         const waypoints = JSON.parse(this.props.hike.waypoints);
         const endPoint = waypoints[waypoints.length - 1];
         let waypointsStr = ""
@@ -49,14 +49,11 @@ class HikeMap extends React.Component {
             idx < waypoints.length - 1 ? waypointsStr += ";" : "";
         });
 
-        const getRoute = (end) => {
+        const getRoute = () => {
             const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${waypointsStr}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
 
-            const req = new XMLHttpRequest();
-            req.open('GET', url, true);
-            req.onload = function () {
-                const json = JSON.parse(req.response);
-                const data = json.routes[0];
+            const drawRoute = (response) => {
+                const data = response.routes[0];
                 const route = data.geometry.coordinates;
                 const geojson = {
                     type: 'Feature',
@@ -82,14 +79,19 @@ class HikeMap extends React.Component {
                             'line-cap': 'round'
                         },
                         paint: {
-                            'line-color': '#3887be',
+                            'line-color': '#FF0000',
                             'line-width': 5,
-                            'line-opacity': 0.75
+                            'line-opacity': 0.90
                         }
                     });
                 }
-            };
-            req.send();
+            }
+
+            $.ajax({
+                url: url,
+                method: "GET",
+                success: (response) => drawRoute(response)
+            })
         }
 
         map.on('load', () => {
@@ -114,15 +116,31 @@ class HikeMap extends React.Component {
                 },
                 paint: {
                     'circle-radius': 10,
-                    'circle-color': '#3887be'
+                    'circle-color': '#4D9709'
                 }
             })
         });
     }
 
+    toggleHikeDetail() {
+        const hikeDetail = document.querySelector('.hike-container');
+        const toggle = document.querySelector(".hike-detail-toggle");
+        // hikeDetail.classList.toggle("hidden");
+
+        if (hikeDetail.classList.contains("hidden")) {
+            hikeDetail.classList.remove("hidden")
+        } else {
+            hikeDetail.classList.add("hidden")
+        }
+    }
+
     render () {
         return (
-            <div ref={el => this.mapContainer = el} className="map-container"></div>
+            <div ref={el => this.mapContainer = el} className="map-container">
+                <div className="hike-detail-toggle" onClick={this.toggleHikeDetail}>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                </div>
+            </div>
         )
     }
 }

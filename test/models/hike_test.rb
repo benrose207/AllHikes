@@ -15,7 +15,7 @@
 #  distance       :float            not null
 #  elevation_gain :integer
 #  route_type     :string           not null
-#  waypoints      :text
+#  waypoints      :text             not null
 #
 require 'test_helper'
 

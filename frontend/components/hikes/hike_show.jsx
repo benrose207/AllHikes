@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons"
+import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
+import HikeMap from "../maps/hike_map";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -26,9 +27,8 @@ class HikeShow extends React.Component {
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;
-        
-        const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
 
+        // Creating various html blocks
         const tagCloud = tags.map(tag => (
             <h4 key={tag.id} className="tag">{tag.name}</h4>
         ));
@@ -49,79 +49,78 @@ class HikeShow extends React.Component {
             </>
         );
 
-        const routeIcon = ( hike.routeType === "Loop" ? 
-            faExchangeAlt : faRetweet
-        );
+        // Setting dynamic classes for html elements
+        const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
 
-        let hikeShowClasses, hikeAsideClasses, hikeDetailNavClasses;
-        if (this.props.location.pathname.includes("map")) {
-            hikeShowClasses = "hike-container hike-map-view";
-            hikeAsideClasses = "hike-sidebar hike-map-view";
-            hikeDetailNavClasses = "hike-detail-nav hike-map-view";
-        } else {
-            hikeShowClasses = "hike-container";
-            hikeAsideClasses = "hike-sidebar";
-            hikeDetailNavClasses = "hike-detail-nav";
+        let hikeMapClass = "";
+        if (this.props.location.search.includes("mapView=true")) {
+            hikeMapClass = " hike-map-view"
         }
 
         return (
-            <main className={hikeShowClasses}>
-                <div className={hikeDetailNavClasses}>
-                    <Link to={`/hikes/${hike.id}`}>View Hike Details
-                        <FontAwesomeIcon icon={faExpandArrowsAlt} />
-                    </Link>
-                </div>
-                <div className="hike-hero">
-                    <div className="hike-hero-content">
-                        <h1>{hike.name}</h1>
-                        <span className={hikeDifficulty}>{hike.difficulty}</span>
+            <div className="hike-with-map">
+                <main className={`hike-container${hikeMapClass}`}>
+                    <div className={`hike-detail-nav${hikeMapClass}`}>
+                        <Link to={`/hikes/${hike.id}`}>View Hike Details
+                            <FontAwesomeIcon icon={faExpandArrowsAlt} />
+                        </Link>
                     </div>
-                </div>
-                <div className="hike-actions">
+                    <div className="hike-hero">
+                        <div className="hike-hero-content">
+                            <h1>{hike.name}</h1>
+                            <span className={hikeDifficulty}>{hike.difficulty}</span>
+                        </div>
+                    </div>
+                    <div className="hike-actions">
 
-                </div>
-                <div className="hike-main">
-                    <article className="hike-main-content">
-                        <p className="hike-summary">
-                            {hike.name} is a {hike.distance} mile heavily trafficked {hike.routeType.toLowerCase()} trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
-                        </p>
-                        <section className="hike-stats">
-                            <div className="stat">
-                                <FontAwesomeIcon icon={faRoute} />
-                                <div>
-                                    <span>Distance:</span>
-                                    <span>{hike.distance} miles</span>
-                                </div>
-                            </div>
-                            {hike.elevationGain ? 
+                    </div>
+                    <div className="hike-main">
+                        <article className="hike-main-content">
+                            <p className="hike-summary">
+                                {hike.name} is a {hike.distance} mile heavily trafficked {hike.routeType.toLowerCase()} trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
+                            </p>
+                            <section className="hike-stats">
                                 <div className="stat">
-                                    <FontAwesomeIcon icon={faMountain} />
+                                    <FontAwesomeIcon icon={faRoute} />
                                     <div>
-                                        <span>Elevation Gain:</span>
-                                        <span>{hike.elevationGain} feet</span>
+                                        <span>Distance:</span>
+                                        <span>{hike.distance} miles</span>
                                     </div>
-                                </div> : null
-                            }
-                            <div className="stat">
-                                <FontAwesomeIcon icon={routeIcon} />
-                                <div>
-                                    <span>Route Type:</span>
-                                    <span>{hike.routeType}</span>
                                 </div>
-                            </div>
-                        </section>
-                        <section className="tag-cloud">
-                            {tagCloud}
-                        </section>
-                        <section className="hike-content">
-                            {contentTabs}
-                        </section>
-                    </article>
-                    <aside className={hikeAsideClasses}>
-                        <Link to={`/hikes/${hike.id}/map`}>View Map</Link>
-                    </aside>
-                </div>
-            </main>
+                                {hike.elevationGain ? 
+                                    <div className="stat">
+                                        <FontAwesomeIcon icon={faMountain} />
+                                        <div>
+                                            <span>Elevation Gain:</span>
+                                            <span>{hike.elevationGain} feet</span>
+                                        </div>
+                                    </div> : null
+                                }
+                                <div className="stat">
+                                    <FontAwesomeIcon icon={hike.routeType === "Loop" ?
+                                        faExchangeAlt : faRetweet} />
+                                    <div>
+                                        <span>Route Type:</span>
+                                        <span>{hike.routeType}</span>
+                                    </div>
+                                </div>
+                            </section>
+                            <section className="tag-cloud">
+                                {tagCloud}
+                            </section>
+                            <section className="hike-content">
+                                {contentTabs}
+                            </section>
+                        </article>
+                        <aside className={`hike-sidebar${hikeMapClass}`}>
+                            <Link to={`/hikes/${hike.id}?mapView=true`}>View Map</Link>
+                        </aside>
+                    </div>
+                </main>
+                <section className={`hike-map${hikeMapClass}`}>
+                    <HikeMap hike={hike}/>
+                </section>
+            </div>
         )
     }
 }
