@@ -1,5 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
 import HikeMap from "../maps/hike_map";
@@ -19,6 +18,15 @@ class HikeShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchHike(this.props.match.params.hikeId);
+
+        const fetchPreview = (lng, lat) => {
+            return $.ajax({
+                method: "GET",
+                url: `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${lng},${lat})/${lng},${lat},11,0/200x200@2x?access_token=${window.mapboxAPIKey}`
+            })
+        };
+
+        // this.hikePreview = fetchPreview(this.props.hike.lng, this.props.hike.lat);
     }
 
     handleContentTabs(e) {
@@ -117,7 +125,11 @@ class HikeShow extends React.Component {
                             </section>
                         </article>
                         <aside className={`hike-sidebar${hikeMapClass}`}>
-                            <div onClick={this.mapToggle}>View Map</div>
+                            <div onClick={this.mapToggle} className="map-preview">
+                                <FontAwesomeIcon icon={faExpandArrowsAlt}/>
+                                <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${hike.lng},${hike.lat})/${hike.lng},${hike.lat},13,0/400x400@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview"/>
+                                <span>View Full Map</span>
+                            </div>
                         </aside>
                     </div>
                 </main>
