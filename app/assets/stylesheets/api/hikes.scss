@@ -85,7 +85,6 @@
     align-items: center;
     flex: 1;
     padding: 10px;
-    // padding: 10px 40px 10px 10px;
 }
 
 .stat > div {
@@ -139,6 +138,27 @@
     width: 325px;
     border-left: $contentBorder;
     display: none;
+}
+
+.hike-detail-nav {
+    display: none;
+}
+
+.hike-detail-nav.hike-map-view {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+    color: $grey;
+    font-family: $headerFont;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.hike-detail-nav svg {
+    margin-left: 8px;
 }
 
 main.hike-map-view {

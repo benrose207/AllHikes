@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRoute, faExchangeAlt, faRetweet, faMountain } from "@fortawesome/free-solid-svg-icons"
+import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons"
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -53,17 +53,24 @@ class HikeShow extends React.Component {
             faExchangeAlt : faRetweet
         );
 
-        let hikeShowClasses, hikeAsideClasses;
+        let hikeShowClasses, hikeAsideClasses, hikeDetailNavClasses;
         if (this.props.location.pathname.includes("map")) {
             hikeShowClasses = "hike-container hike-map-view";
             hikeAsideClasses = "hike-sidebar hike-map-view";
+            hikeDetailNavClasses = "hike-detail-nav hike-map-view";
         } else {
             hikeShowClasses = "hike-container";
             hikeAsideClasses = "hike-sidebar";
+            hikeDetailNavClasses = "hike-detail-nav";
         }
 
         return (
             <main className={hikeShowClasses}>
+                <div className={hikeDetailNavClasses}>
+                    <Link to={`/hikes/${hike.id}`}>View Hike Details
+                        <FontAwesomeIcon icon={faExpandArrowsAlt} />
+                    </Link>
+                </div>
                 <div className="hike-hero">
                     <div className="hike-hero-content">
                         <h1>{hike.name}</h1>

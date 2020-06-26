@@ -8,10 +8,11 @@ class HikeMap extends React.Component {
         super(props);
 
         this.state = {
-            lng: -119.49091,
-            lat: 37.83276,
+            lng: props.hike.lng,
+            lat: props.hike.lat,
             zoom: 12.5
         }
+
     }
 
     componentDidMount() {
@@ -40,8 +41,16 @@ class HikeMap extends React.Component {
         const canvas = map.getCanvasContainer();
         const start = [this.state.lng, this.state.lat];
 
+        const waypoints = JSON.parse(this.props.hike.waypoints);
+        const endPoint = waypoints[waypoints.length - 1];
+        let waypointsStr = ""
+        waypoints.forEach((waypoint, idx) => {
+            waypointsStr += waypoint.join(",");
+            idx < waypoints.length - 1 ? waypointsStr += ";" : "";
+        });
+
         const getRoute = (end) => {
-            const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${start[0]},${start[1]};${end[0]},${end[1]}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
+            const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${waypointsStr}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
 
             const req = new XMLHttpRequest();
             req.open('GET', url, true);
@@ -84,7 +93,6 @@ class HikeMap extends React.Component {
         }
 
         map.on('load', () => {
-            const endPoint = [-119.509513, 37.846954]
             getRoute(endPoint);
 
             map.addLayer({
