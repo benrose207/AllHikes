@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt } from "@fortawesome/free-solid-svg-icons";
+import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt, faMapSigns } from "@fortawesome/free-solid-svg-icons";
 import HikeMap from "../maps/hike_map";
 
 class HikeShow extends React.Component {
@@ -84,7 +84,14 @@ class HikeShow extends React.Component {
                         </div>
                     </div>
                     <div className="hike-actions">
-
+                        <ul>
+                            <li>
+                                <a href={`https://www.google.com/maps/dir/Current+Location/${hike.lat},${hike.lng}`} target="_blank" className="hike-action-link">
+                                    <FontAwesomeIcon icon={faMapSigns} />
+                                    <p>Directions</p>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
                     <div className="hike-main">
                         <article className="hike-main-content">

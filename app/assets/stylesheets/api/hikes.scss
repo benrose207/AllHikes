@@ -9,6 +9,8 @@
     background-color: $lightGrey;
 }
 
+// Hike hero section
+
 .hike-hero {
     font-family: $headerFont;
     color: white;
@@ -24,7 +26,7 @@
 .hike-hero-content {
     margin: 0 20px;
     position: absolute;
-    bottom: 15%;
+    bottom: 18%;
 }
 
 .hike-hero h1 {
@@ -46,10 +48,58 @@
     background-color: $backgroundGreen;
 }
 
+// hike action bar
+
 .hike-actions {
     background-color: $backgroundGreen;
+    font-family: $bodyFont;
+    color: white;
     height: 55px;
 }
+
+.hike-actions > ul {
+    height: 100%;
+    text-align: center;
+}
+
+.hike-actions li {
+    height: 100%;
+    width: 175px;
+    position: relative;
+}
+
+.hike-actions li:hover {
+    background-color: $buttonHoverGreen;
+}
+
+.hike-action-link {
+    display: block;
+    height: 100%;
+}
+
+.hike-action-link > * {
+    position: absolute;
+    left: 50%;
+}
+
+.hike-action-link > svg {
+    background-color: white;
+    color: $backgroundGreen;
+    font-size: 28px;
+    padding: 14px;
+    border-radius: 50%;
+    width: 60px;
+    top: -30px;
+    margin-left: -30px;
+}
+
+.hike-action-link > p {
+    width: 100px;
+    bottom: 8px;
+    margin-left: -50px;
+}
+
+//Main hike content
 
 .hike-main {
     display: flex;
@@ -134,6 +184,8 @@
     padding: 10px;
 }
 
+//Hike sidebar/map view styling
+
 .hike-sidebar {
     width: 325px;
     border-left: $contentBorder;
@@ -145,7 +197,7 @@
 }
 
 .hike-detail-nav.hike-map-view {
-    display: flex;
+    display: none;
     align-items: center;
     justify-content: flex-end;
     height: 40px;
@@ -224,5 +276,9 @@ aside.hike-map-view {
 
     .hike-container {
         width: 950px;
+    }
+
+    .hike-detail-nav.hike-map-view {
+        display: flex;
     }
 }

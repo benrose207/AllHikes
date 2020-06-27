@@ -2,6 +2,7 @@ import React from "react";
 import mapboxgl from 'mapbox-gl';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight, faChevronLeft } from "@fortawesome/free-solid-svg-icons";
+import { ScrollToTopOnMount } from "../../util/route_util";
 
 mapboxgl.accessToken = window.mapboxAPIKey;
 
@@ -126,12 +127,15 @@ class HikeMap extends React.Component {
 
     render () {
         return (
-            <div ref={el => this.mapContainer = el} className="map-container">
-                <div className="hike-detail-toggle" onClick={this.toggleHikeDetail}>
-                    <FontAwesomeIcon icon={faChevronRight} className="hike-detail-toggle-icon hidden"/>
-                    <FontAwesomeIcon icon={faChevronLeft} className="hike-detail-toggle-icon"/>
+            <>
+                <ScrollToTopOnMount />
+                <div ref={el => this.mapContainer = el} className="map-container">
+                    <div className="hike-detail-toggle" onClick={this.toggleHikeDetail}>
+                        <FontAwesomeIcon icon={faChevronRight} className="hike-detail-toggle-icon hidden"/>
+                        <FontAwesomeIcon icon={faChevronLeft} className="hike-detail-toggle-icon"/>
+                    </div>
                 </div>
-            </div>
+            </>
         )
     }
 }
