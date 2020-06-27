@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_26_040709) do
+ActiveRecord::Schema.define(version: 2020_06_27_222907) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,19 @@ ActiveRecord::Schema.define(version: 2020_06_26_040709) do
     t.string "route_type", null: false
     t.text "waypoints", null: false
     t.index ["name"], name: "index_hikes_on_name", unique: true
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating", null: false
+    t.text "review_text", null: false
+    t.date "activity_date", null: false
+    t.integer "user_id", null: false
+    t.integer "hike_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["hike_id"], name: "index_reviews_on_hike_id"
+    t.index ["user_id", "hike_id", "activity_date"], name: "index_reviews_on_user_id_and_hike_id_and_activity_date", unique: true
+    t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
   create_table "taggables", force: :cascade do |t|

@@ -30,4 +30,8 @@ class Hike < ApplicationRecord
         through: :taggables,
         source: :tag
 
+    has_many :reviews,
+        foreign_key: :hike_id,
+        class_name: :Review
+
 end
