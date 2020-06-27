@@ -1,6 +1,3 @@
-// Place all the styles related to the api/Hikes controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 
 .hike-container {
     width: 100%;
@@ -223,6 +220,7 @@ main.hike-map-view {
     overflow-y: auto;
     width: 450px;
     margin: 0;
+    border-radius: 0;
 }
 
 aside.hike-map-view {
@@ -276,6 +274,8 @@ aside.hike-map-view {
 
     .hike-container {
         width: 950px;
+        border-radius: 8px;
+        overflow:hidden
     }
 
     .hike-detail-nav.hike-map-view {

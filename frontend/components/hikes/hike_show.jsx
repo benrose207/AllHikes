@@ -18,19 +18,12 @@ class HikeShow extends React.Component {
 
     componentDidMount() {
         this.props.fetchHike(this.props.match.params.hikeId);
-
-        const fetchPreview = (lng, lat) => {
-            return $.ajax({
-                method: "GET",
-                url: `https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${lng},${lat})/${lng},${lat},11,0/200x200@2x?access_token=${window.mapboxAPIKey}`
-            })
-        };
-
-        // this.hikePreview = fetchPreview(this.props.hike.lng, this.props.hike.lat);
     }
 
     handleContentTabs(e) {
-        this.setState({ selectedContent: e.target.dataset.fieldName })
+        if (e.target.tagName.toLowerCase() === "span") {
+            this.setState({ selectedContent: e.target.dataset.fieldName })
+        }
     }
 
     mapToggle() {
@@ -47,6 +40,12 @@ class HikeShow extends React.Component {
             <h4 key={tag.id} className="tag">{tag.name}</h4>
         ));
 
+        
+        const features = tags.filter(tag => tag.tagType === "feature");
+        const feature = features[Math.floor(Math.random() * features.length)].name;
+        const featureDescription = (feature[feature.length - 1] === "s" || feature === "wildlife" ? 
+            feature : `a ${feature}`);
+
         const contentTabs = (
             <>
                 <nav onClick={this.handleContentTabs} className="hike-tabs">
@@ -54,10 +53,12 @@ class HikeShow extends React.Component {
                         data-field-name="description" 
                         className={ this.state.selectedContent === "description" ? "active-tab" : null}
                     >Description</span>
-                    <span 
-                        data-field-name="contact"
-                        className={this.state.selectedContent === "contact" ? "active-tab" : null}
-                    >Contact</span>
+                    {hike.contact ? ( // only display tab if content exists
+                        <span 
+                            data-field-name="contact"
+                            className={this.state.selectedContent === "contact" ? "active-tab" : null}
+                        >Contact</span>
+                    ) : null }
                 </nav>
                 <p>{hike[this.state.selectedContent]}</p>
             </>
@@ -96,7 +97,7 @@ class HikeShow extends React.Component {
                     <div className="hike-main">
                         <article className="hike-main-content">
                             <p className="hike-summary">
-                                {hike.name} is a {hike.distance} mile heavily trafficked {hike.routeType.toLowerCase()} trail located near Berkeley, California that features beautiful {tags[0].name} and is rated as {hike.difficulty}. The trail offers a number of activity options and is accessible year-round. Dogs and horses are also able to use this trail.
+                                {hike.name} is a {hike.distance} mile {hike.usage === "heavy" ? "heavily" : hike.usage + "ly"} trafficked {hike.routeType.toLowerCase()} trail located near Yosemite Valley, California that features {featureDescription} and is rated as {hike.difficulty}. The trail offers a number of activity options.
                             </p>
                             <section className="hike-stats">
                                 <div className="stat">

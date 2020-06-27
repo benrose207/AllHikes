@@ -1,3 +1,83 @@
-// Place all the styles related to the api/Sessions controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.image-block {
+    background-image: image-url("nathan-dumlao-X-dQS194kTs-unsplash.jpg");
+    background-size: cover;
+    position: relative;
+    height: 700px;
+}
+
+.session-form {
+    width: 340px;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    margin-left: -170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    font-family: $headerFont;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
+    background-color: white;
+}
+
+@media only screen and (min-device-width: 500px) {
+    .session-form {
+        width: 480px;
+        margin-left: -240px;
+    }
+}
+
+.session-form h1 {
+    font-size: 24px;
+    font-weight: 600;
+    color: $darkGrey;
+    margin-top: 30px;
+}
+
+.session-form form {
+    width: 85%;
+}
+
+.session-form label {
+    border: 1px solid $lighterGrey;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 25px 0;
+    cursor: text;
+    width: 100%;
+    height: 50px;
+}
+
+.session-form label:hover {
+    border: 1px solid $green;
+}
+
+.session-form label:focus-within {
+    border: 2px solid $green;
+}
+
+.session-form input::placeholder {
+    color: lightgrey;
+    font-size: 14px;
+}
+
+.session-form .primary-cta {
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+    margin-bottom: 25px;
+    border-radius: 8px;
+}
+
+.session-form p {
+    font-size: 13px;
+    color: $grey;
+    margin-bottom: 30px;
+}
+
+.form-errors {
+    font-size: 14px;
+    color: red;
+    font-weight: 500;
+    margin-bottom: 15px;
+}

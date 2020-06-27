@@ -27,15 +27,24 @@ class HikeMap extends React.Component {
             zoom: this.state.zoom
         });
 
+        // add basic map controls
         const nav = new mapboxgl.NavigationControl();
         this.map.addControl(nav, 'bottom-left');
 
+        // Add trailhead marker to map, using diff icon based on route type
         const markerEl = document.createElement('div');
         markerEl.className = 'marker';
+        if (this.props.hike.route_type === "Point-to-Point") {
+            markerEl.className += " trailhead-only"
+        } else {
+            markerEl.className += " combo-trailhead"
+        }
+
         new mapboxgl.Marker(markerEl)
             .setLngLat([this.state.lng, this.state.lat])
             .addTo(this.map)
 
+        // Re-center map when user moves it
         this.map.on('move', () => {
             this.setState({
                 lng: this.map.getCenter().lng.toFixed(5),
@@ -53,6 +62,7 @@ class HikeMap extends React.Component {
             idx < waypoints.length - 1 ? waypointsStr += ";" : "";
         });
 
+        // Define method used to get and add route from MapBox api
         const getRoute = () => {
             const url = `https://api.mapbox.com/directions/v5/mapbox/walking/${waypointsStr}?steps=true&geometries=geojson&access_token=${mapboxgl.accessToken}`;
 
@@ -113,6 +123,18 @@ class HikeMap extends React.Component {
         this.map.on('load', () => {
             this.map.resize();
             getRoute(endPoint);
+
+            // Add trail end marker if doesn't end at trailhead
+            if (this.props.hike.route_type === "Point-to-Point") {
+                const trailEnd = document.createElement('div');
+                trailEnd.className = 'marker';
+                trailEnd.className = 'trail-end';
+
+                new mapboxgl.Marker(trailEnd)
+                    .setLngLat(endPoint)
+                    .addTo(this.map)
+            }
+
         });
     }
 
