@@ -1,3 +1,13 @@
-// Place all the styles related to the api/Reviews controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// Review form
+
+.review-form {
+    padding: 30px;
+    font-size: 14px;
+}
+
+.review-form input {
+    border: 1px solid $lighterGrey;
+    border-radius: 8px;
+    padding: 8px;
+    margin: 10px 0;
+}

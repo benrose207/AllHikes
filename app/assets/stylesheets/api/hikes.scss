@@ -107,7 +107,7 @@
     flex: 1;
     background-color: white;
     color: $darkGrey;
-    font-size: 18px;
+    font-size: 17px;
     font-weight: 300;
     line-height: 1.5;
 }
@@ -156,6 +156,8 @@
     font-weight: 500;
 }
 
+//Hike tabbed content
+
 .hike-tabs {
     display: flex;
     background-color: $lightGrey;
@@ -179,6 +181,26 @@
 
 .hike-content p {
     padding: 10px;
+}
+
+//user tabbed content
+
+.hike-user-content-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.hike-user-content-header > div {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.hike-user-content-header .secondary-cta {
+    padding: 10px 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+    font-size: 14px;
+    font-weight: 500;
 }
 
 //Hike sidebar/map view styling

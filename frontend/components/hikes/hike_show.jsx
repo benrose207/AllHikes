@@ -2,18 +2,22 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt, faMapSigns } from "@fortawesome/free-solid-svg-icons";
 import HikeMap from "../maps/hike_map";
+import CreateReviewContainer from "../reviews/create_review_container";
 
 class HikeShow extends React.Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            selectedContent: "description",
+            activeTrailContent: "description",
+            activeUserContent: "reviews",
+            reviewForm: false,
             mapView: false
         };
 
         this.handleContentTabs = this.handleContentTabs.bind(this);
         this.mapToggle = this.mapToggle.bind(this);
+        this.reviewFormToggle = this.reviewFormToggle.bind(this);
     }
 
     componentDidMount() {
@@ -21,8 +25,11 @@ class HikeShow extends React.Component {
     }
 
     handleContentTabs(e) {
+        const newValue = e.target.dataset.fieldName
+        const stateKey = (e.currentTarget.classList.contains("content") ? "activeTrailContent" : "activeUserContent");
+
         if (e.target.tagName.toLowerCase() === "span") {
-            this.setState({ selectedContent: e.target.dataset.fieldName })
+                this.setState({ [stateKey]: newValue })
         }
     }
 
@@ -30,11 +37,15 @@ class HikeShow extends React.Component {
         this.setState({mapView: !this.state.mapView})
     }
 
+    reviewFormToggle() {
+        this.setState({reviewForm: !this.state.reviewForm})
+    }
+
     render () {
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;
-
+        
         // Creating various html blocks
         const tagCloud = tags.map(tag => (
             <h4 key={tag.id} className="tag">{tag.name}</h4>
@@ -48,21 +59,44 @@ class HikeShow extends React.Component {
 
         const contentTabs = (
             <>
-                <nav onClick={this.handleContentTabs} className="hike-tabs">
+                <nav onClick={this.handleContentTabs} className="hike-tabs content">
                     <span 
                         data-field-name="description" 
-                        className={ this.state.selectedContent === "description" ? "active-tab" : null}
+                        className={ this.state.activeTrailContent === "description" ? "active-tab" : null}
                     >Description</span>
-                    {hike.contact ? ( // only display tab if content exists
+                    {hike.contact ? (
                         <span 
                             data-field-name="contact"
-                            className={this.state.selectedContent === "contact" ? "active-tab" : null}
+                            className={this.state.activeTrailContent === "contact" ? "active-tab" : null}
                         >Contact</span>
                     ) : null }
                 </nav>
-                <p>{hike[this.state.selectedContent]}</p>
+                <p>{hike[this.state.activeTrailContent]}</p>
             </>
         );
+
+        const reviewContent = (
+            <>
+                <nav onClick={this.handleContentTabs} className="hike-tabs reviews">
+                    <span 
+                        data-field-name="reviews"
+                        className={this.state.activeUserContent === "reviews" ? "active-tab" : null}
+                    >Reviews</span>
+                    <span
+                        data-field-name="photos"
+                        className={this.state.activeUserContent === "photos" ? "active-tab" : null}
+                    >Photos</span>
+                </nav>
+                <div className="hike-user-content-header">
+                    <p>Share your experience to help other people learn more about this trail:</p>
+                    <div>
+                        <button className="secondary-cta" onClick={this.reviewFormToggle}>Write Review</button>
+                        <button className="secondary-cta">Upload Photos</button>
+                    </div>
+                </div>
+                {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id}/> : null}
+            </>
+        )
 
         // Setting dynamic classes for html elements
         const hikeDifficulty = `tag hike-difficulty ${hike.difficulty}`;
@@ -130,6 +164,9 @@ class HikeShow extends React.Component {
                             </section>
                             <section className="hike-content">
                                 {contentTabs}
+                            </section>
+                            <section>
+                                {reviewContent}
                             </section>
                         </article>
                         <aside className={`hike-sidebar${hikeMapClass}`}>
