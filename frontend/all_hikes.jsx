@@ -4,8 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 //testing imports
-import { fetchHike } from "./actions/hike_actions";
-import { hikeTags } from "./reducers/selectors";
+import { fetchUserReviews, createReview, updateReview, deleteReview } from "./actions/review_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -26,8 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing start
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.fetchHike = fetchHike;
-    window.hikeTags = hikeTags;
+    window.fetchUserReviews = fetchUserReviews;
+    window.createReview = createReview;
+    window.updateReview = updateReview;
+    window.deleteReview = deleteReview;
     //testing end
 
     ReactDOM.render(<Root store={store} />, root);
