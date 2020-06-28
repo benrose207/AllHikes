@@ -6,7 +6,8 @@ import { hikeTags } from "../../reducers/selectors";
 const mapStateToProps = (state, ownProps) => {
     return {
         hike: state.entities.hikes[ownProps.match.params.hikeId],
-        tags: hikeTags(state, ownProps.match.params.hikeId)
+        tags: hikeTags(state, ownProps.match.params.hikeId),
+        loggedIn: Boolean(state.session.currentUserId)
     }
 }
 

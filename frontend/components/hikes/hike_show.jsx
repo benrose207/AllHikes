@@ -87,14 +87,19 @@ class HikeShow extends React.Component {
                         className={this.state.activeUserContent === "photos" ? "active-tab" : null}
                     >Photos</span>
                 </nav>
-                <div className="hike-user-content-header">
-                    <p>Share your experience to help other people learn more about this trail:</p>
-                    <div>
-                        <button className="secondary-cta" onClick={this.reviewFormToggle}>Write Review</button>
-                        <button className="secondary-cta">Upload Photos</button>
-                    </div>
-                </div>
-                {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id}/> : null}
+
+                {this.props.loggedIn ? (
+                    <>
+                        <div className="hike-user-content-header">
+                            <p>Share your experience to help other people learn more about this trail:</p>
+                            <div>
+                                <button className="secondary-cta" onClick={this.reviewFormToggle}>Write Review</button>
+                                <button className="secondary-cta">Upload Photos</button>
+                            </div>
+                        </div>
+                        {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} formToggle={this.reviewFormToggle}/> : null}
+                    </>
+                ) : null}
             </>
         )
 
