@@ -8,16 +8,6 @@ export const hikeTags = (state, hikeId) => {
     return tags;
 };
 
-export const hikeReviews = (state, hikeId) => {
-    const reviews = Object.values(state.entities.reviews).filter(review => review.hikeId === parseInt(hikeId));
-    const sorted = reviews.sort((review1, review2) => {
-        if (review1.activityDate < review2.activityDate) return 1;
-        if (review1.activityDate > review2.activityDate) return -1;
-        if (review1.activityDate === review2.activityDate) return 0;
-    })
-    return sorted;
-}
-
 export const reviewTags = (state, reviewId) => {
     const taggable = Object.values(state.entities.taggable);
     const reviewTaggable = taggable.filter(tagRef => (
@@ -26,6 +16,24 @@ export const reviewTags = (state, reviewId) => {
 
     const tags = reviewTaggable.map(tagRef => state.entities.tags[tagRef.tagId]);
     return tags;
+}
+
+const reviewDefaultSort = (review1, review2) => {
+    if (review1.activityDate < review2.activityDate) return 1;
+    if (review1.activityDate > review2.activityDate) return -1;
+    if (review1.activityDate === review2.activityDate) return 0;
+};
+
+export const hikeReviews = (state, hikeId) => {
+    const reviews = Object.values(state.entities.reviews).filter(review => review.hikeId === parseInt(hikeId));
+    const sorted = reviews.sort(reviewDefaultSort);
+    return sorted;
+}
+
+export const userReviews = (state, userId) => {
+    const reviews = Object.values(state.entities.reviews).filter(review => review.userId === parseInt(userId));
+    const sorted = reviews.sort(reviewDefaultSort);
+    return sorted;
 }
 
 export const filteredTagsByType = (state, tagType) => {

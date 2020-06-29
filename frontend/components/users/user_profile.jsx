@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { ScrollToTopOnMount } from "../../util/route_util";
 import UserDetail from "./user_detail";
+import ReviewFeedContainer from "../reviews/review_feed_container";
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -23,8 +23,6 @@ class UserProfile extends React.Component {
     }
     
     render () {
-        const { id } = this.props.user;
-
         const EditProfileButton = (<button className="secondary-cta">Edit Profile</button>)
 
         return (
@@ -43,8 +41,10 @@ class UserProfile extends React.Component {
                         <h3>{this.state.currentTab}</h3>
                         {this.state.currentTab === "Profile" ? EditProfileButton : null}
                     </div>
-
-                    {this.state.currentTab === "Profile" ? <UserDetail user={this.props.user} /> : null}
+                    <section className="primary-tab-content">
+                        {this.state.currentTab === "Profile" ? <UserDetail user={this.props.user} /> : null}
+                        {this.state.currentTab === "Reviews" ? <ReviewFeedContainer userId={this.props.user.id} /> : null}
+                    </section>
                 </main>
             </div>
         );

@@ -1,6 +1,6 @@
-export const fetchReviews = (contentType, id) => {
+export const fetchReviews = (id) => {
     return $.ajax({
-        url: `/api/${contentType}/${id}/reviews`,
+        url: `/api/users/${id}/reviews`,
         method: "GET"
     });
 };

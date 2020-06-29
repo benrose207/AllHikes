@@ -20,15 +20,22 @@
 }
 
 .primary-content {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     margin-bottom: 30px;
+}
+
+.primary-tab-content {
+    font-family: $bodyFont;
+    font-weight: 300;
+    line-height: 1.5;
+    color: $darkGrey;
 }
 
 .user-profile {
     border: 1px solid $lightGrey;
     font-family: $headerFont;
-    height: 800px;
+    min-height: 800px;
 }
 
 .content-header {
@@ -68,4 +75,10 @@
 
 .user-details > p {
     font-size: 12px;
+}
+
+@media only screen and (min-device-width: 800px) {
+    .primary-content {
+        width: 60%;
+    }
 }

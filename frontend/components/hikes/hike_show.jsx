@@ -43,7 +43,6 @@ class HikeShow extends React.Component {
     }
 
     render () {
-        debugger
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;
