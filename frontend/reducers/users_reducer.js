@@ -1,5 +1,5 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
-import { RECEIVE_REVIEWS } from "../actions/review_actions";
+import { RECEIVE_HIKE } from "../actions/hike_actions";
 
 const usersReducer = (state = {}, action) => {
     Object.freeze(state);
@@ -8,7 +8,7 @@ const usersReducer = (state = {}, action) => {
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
             return Object.assign(nextState, { [action.user.id]: action.user })
-        case RECEIVE_REVIEWS:
+        case RECEIVE_HIKE:
             return Object.assign(nextState, action.payload.users)            
         default:
             return state;

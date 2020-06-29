@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt, faMapSigns } from "@fortawesome/free-solid-svg-icons";
 import HikeMap from "../maps/hike_map";
 import CreateReviewContainer from "../reviews/create_review_container";
+import ReviewFeed from "../reviews/review_feed";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -100,6 +101,7 @@ class HikeShow extends React.Component {
                         {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} formToggle={this.reviewFormToggle}/> : null}
                     </>
                 ) : null}
+                <ReviewFeed reviews={this.props.reviews}/>
             </>
         )
 

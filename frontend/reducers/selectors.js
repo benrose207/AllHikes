@@ -8,6 +8,11 @@ export const hikeTags = (state, hikeId) => {
     return tags;
 };
 
+export const hikeReviews = (state, hikeId) => {
+    const reviews = Object.values(state.entities.reviews).filter(review => review.hikeId === parseInt(hikeId))
+    return reviews
+}
+
 export const filteredTagsByType = (state, tagType) => {
     return Object.values(state.entities.tags).filter(tag => tag.tagType === tagType)
 }

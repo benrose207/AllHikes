@@ -4,14 +4,6 @@ json.reviews do
     end
 end
 
-json.users do 
-    @reviews.each do |review|
-        json.set! review.reviewer.id do
-            json.extract! review.reviewer, :id, :first_name, :last_name
-        end
-    end
-end
-
 json.taggable do 
     @reviews.each do |review|
         review.taggables.each do |taggable|
