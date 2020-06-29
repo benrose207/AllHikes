@@ -4,7 +4,7 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 //testing imports
-import { fetchUserReviews, createReview, updateReview, deleteReview } from "./actions/review_actions";
+import { fetchReviews, updateReview, deleteReview } from "./actions/review_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -25,8 +25,7 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing start
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.fetchUserReviews = fetchUserReviews;
-    window.createReview = createReview;
+    window.fetchReviews = fetchReviews;
     window.updateReview = updateReview;
     window.deleteReview = deleteReview;
     //testing end

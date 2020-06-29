@@ -1,6 +1,6 @@
-export const fetchUserReviews = userId => {
+export const fetchReviews = (contentType, id) => {
     return $.ajax({
-        url: `/api/users/${userId}/reviews`,
+        url: `/api/${contentType}/${id}/reviews`,
         method: "GET"
     });
 };
