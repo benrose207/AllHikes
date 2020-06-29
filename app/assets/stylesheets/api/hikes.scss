@@ -33,7 +33,6 @@
 }
 
 .hike-difficulty {
-    font-size: 12px;
     padding: 4px 12px;
 }
 
@@ -43,6 +42,21 @@
 
 .easy {
     background-color: $backgroundGreen;
+}
+
+.hike-hero-info {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+}
+
+.hike-hero-info > * {
+    margin-right: 10px;
+}
+
+.hike-hero-info .star::before {
+    font-size: 16px;
+    margin: 0 3px;
 }
 
 // hike action bar

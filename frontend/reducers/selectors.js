@@ -30,6 +30,12 @@ export const hikeReviews = (state, hikeId) => {
     return sorted;
 }
 
+export const avgHikeRating = (reviewsArray) => {
+    if (!reviewsArray.length) return 0;
+    const sum = reviewsArray.reduce((acc, review) => acc + review.rating, 0);
+    return (sum / reviewsArray.length)
+}
+
 export const userReviews = (state, userId) => {
     const reviews = Object.values(state.entities.reviews).filter(review => review.userId === parseInt(userId));
     const sorted = reviews.sort(reviewDefaultSort);

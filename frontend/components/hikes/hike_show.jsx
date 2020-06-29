@@ -45,13 +45,19 @@ class HikeShow extends React.Component {
     render () {
         if (!this.props.hike) return null;
 
-        const { hike, tags } = this.props;
+        const { hike, tags, reviewCount, avgRating } = this.props;
         
         // Creating various html blocks
+        const reviewStars = [];
+
+        for (let i = 1; i < 6; i++) {
+            const starClass = avgRating >= i ? " filled" : "";
+            reviewStars.push(<span key={i} className={`star${starClass}`}></span>)
+        }
+
         const tagCloud = tags.map(tag => (
             <h4 key={tag.id} className="tag">{tag.name}</h4>
         ));
-
         
         const features = tags.filter(tag => tag.tagType === "feature");
         const feature = features[Math.floor(Math.random() * features.length)].name;
@@ -122,7 +128,13 @@ class HikeShow extends React.Component {
                     <div className="hike-hero">
                         <div className="hike-hero-content">
                             <h1>{hike.name}</h1>
-                            <span className={hikeDifficulty}>{hike.difficulty}</span>
+                            <div className="hike-hero-info">
+                                <span className={hikeDifficulty}>{hike.difficulty}</span>
+                                <div>
+                                    {reviewStars}
+                                </div>
+                                <p>({reviewCount})</p>
+                            </div>
                         </div>
                     </div>
                     <div className="hike-actions">

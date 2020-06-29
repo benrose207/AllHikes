@@ -112,7 +112,6 @@ class ReviewForm extends React.Component {
                         </option>
                     ))}
                 </select>
-
                 <label htmlFor="activityDate">Activity Date</label>
                 <input 
                     type="date" 

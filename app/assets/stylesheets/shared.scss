@@ -78,3 +78,15 @@ textarea {
     font-weight: 500;
     margin-bottom: 15px;
 }
+
+//review stars
+
+.star::before {
+    content: "★";
+    color: $lighterGrey;
+    margin: 0 1px;
+}
+
+.filled.star::before {
+    color: gold;
+}

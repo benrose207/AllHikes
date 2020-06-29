@@ -33,16 +33,6 @@
     text-align: right;
 }
 
-.star::before {
-    content: "★";
-    color: $lighterGrey;
-    margin: 0 1px;
-}
-
-.filled.star::before {
-    color: gold;
-}
-
 .review-item > p {
     margin: 10px;
 }
