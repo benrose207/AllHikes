@@ -1,19 +1,25 @@
 import { connect } from "react-redux";
 import React from "react";
 import ReviewForm from "./review_form";
+import { ScrollToTopOnMount } from "../../util/route_util";
 import { updateReview } from "../../actions/review_actions";
 import { filteredTagsByType, reviewTags } from "../../reducers/selectors";
 
 const EditReviewContainer = (props) => {
+    
     return (
-        <div className="edit-review-form">
-            <h1>Edit Review | {props.hikeName}</h1>
-            <ReviewForm 
-                initialState={props.initialState}
-                trailConditions={props.trailConditions}
-                submitAction={props.submitAction}
-                activities={props.activities}/>
-        </div>
+        <>
+            <ScrollToTopOnMount />
+            <div className="edit-review-form">
+                <h1>Edit Review | {props.hikeName}</h1>
+                <ReviewForm 
+                    initialState={props.initialState}
+                    trailConditions={props.trailConditions}
+                    submitAction={props.submitAction}
+                    activities={props.activities}
+                    closeFormAction={() => props.history.push(`/hikes/${props.initialState.hike_id}`)}/>
+            </div>
+        </>
     )
 }
 
@@ -49,11 +55,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        submitAction: review => dispatch(updateReview(review))
+        submitAction: review => dispatch(updateReview(review)), 
     };
 };
 
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(EditReviewContainer)
+)(EditReviewContainer);

@@ -27,7 +27,7 @@ class ReviewItem extends React.Component {
     
         const reviewStars = [];
     
-        for (let i = 0; i < 5; i++) {
+        for (let i = 1; i < 6; i++) {
             const starClass = review.rating >= i ? " filled" : "";
             reviewStars.push(<span key={i} className={`star${starClass}`}></span>)
         }

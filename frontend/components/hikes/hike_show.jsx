@@ -78,7 +78,7 @@ class HikeShow extends React.Component {
 
         const reviewContent = (
             <>
-                <nav onClick={this.handleContentTabs} className="hike-tabs reviews">
+                <nav onClick={this.handleContentTabs} className="hike-tabs reviews" id="reviews">
                     <span 
                         data-field-name="reviews"
                         className={this.state.activeUserContent === "reviews" ? "active-tab" : null}
@@ -98,7 +98,7 @@ class HikeShow extends React.Component {
                                 <button className="secondary-cta">Upload Photos</button>
                             </div>
                         </div>
-                        {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} formToggle={this.reviewFormToggle}/> : null}
+                        {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} closeFormAction={this.reviewFormToggle}/> : null}
                     </>
                 ) : null}
                 <ReviewFeed reviews={this.props.reviews}/>

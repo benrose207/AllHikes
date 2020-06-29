@@ -31,8 +31,8 @@ class ReviewForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const tags = this.state.tag_ids.concat(this.state.selectedActivity);
-
+        const tags = [this.state.selectedActivity].concat(this.state.tag_ids);
+        
         const formData = {};
         Object.keys(this.state).forEach(key => {
             if (key === "tag_ids") {
@@ -41,8 +41,9 @@ class ReviewForm extends React.Component {
                 formData[key] = this.state[key]
             }
         })
-
-        this.props.submitAction(formData).then(this.props.formToggle);
+        
+        this.props.submitAction(formData)
+            .then(this.props.closeFormAction);
     }
 
     render () {
@@ -117,7 +118,7 @@ class ReviewForm extends React.Component {
                     {tagFormCloud}
                 </div>
                 <button className="primary-cta">Save</button>
-                <a className="tag" onClick={this.props.formToggle}>Cancel</a>
+                <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>
             </form>
         )
     }

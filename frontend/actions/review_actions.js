@@ -11,10 +11,10 @@ const receiveReviews = payload => {
     };
 };
 
-const receiveReview = review => {
+const receiveReview = payload => {
     return {
         type: RECEIVE_REVIEW,
-        review
+        payload
     };
 };
 
