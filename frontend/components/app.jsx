@@ -8,7 +8,7 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import UserContainer from "./users/user_container";
 import HikeShowContainer from "./hikes/hike_show_container";
-
+import EditReviewContainer from "./reviews/edit_review_container";
 
 const App = () => {
     return (
@@ -20,6 +20,7 @@ const App = () => {
             <Route exact path="/" component={HomePage} />            
             <Route path="/hikes/:hikeId" render={(props) => (
                 <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
+            <Route path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/members/:userId" component={UserContainer} />

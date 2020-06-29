@@ -34,7 +34,7 @@ class ReviewItem extends React.Component {
         
         const reviewActions = (currentUser === review.userId ? (
             <>
-                <Link className="review-action"><FontAwesomeIcon icon={faPencilAlt} /></Link>
+                <Link to={`/my/reviews/${review.id}/edit`} className="review-action"><FontAwesomeIcon icon={faPencilAlt} /></Link>
                 <button className="review-action" onClick={this.handleDelete}><FontAwesomeIcon icon={faTrashAlt}/></button>
             </>
         ) : null )

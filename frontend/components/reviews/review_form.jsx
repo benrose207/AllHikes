@@ -49,7 +49,11 @@ class ReviewForm extends React.Component {
         const tagFormCloud = (
             <>
                 {this.props.trailConditions.map(trailConditions => (
-                    <a key={trailConditions.id} data-tagid={trailConditions.id}>{trailConditions.name}</a>
+                    <a 
+                        key={trailConditions.id} 
+                        data-tagid={trailConditions.id}
+                        className={this.state.tag_ids.includes(trailConditions.id) ? "tag-selected" : ""}
+                    >{trailConditions.name}</a>
                 ))}
             </>
         )
@@ -58,19 +62,19 @@ class ReviewForm extends React.Component {
             <form className="review-form" onSubmit={this.handleSubmit}>
                 <label htmlFor="rating">Rating</label>
                 <div className="rating-select" onChange={this.handleInput("rating")}>
-                    <input type="radio" id="five" name="rating" value="5" defaultChecked={this.state.rating === "5"}/>
+                    <input type="radio" id="five" name="rating" value="5" defaultChecked={this.state.rating === 5}/>
                     <label htmlFor="five" className="review-star"></label>
 
-                    <input type="radio" id="four" name="rating" value="4" defaultChecked={this.state.rating === "5"}/>
+                    <input type="radio" id="four" name="rating" value="4" defaultChecked={this.state.rating === 4}/>
                     <label htmlFor="four" className="review-star"></label>
 
-                    <input type="radio" id="three" name="rating" value="3" defaultChecked={this.state.rating === "5"}/>
+                    <input type="radio" id="three" name="rating" value="3" defaultChecked={this.state.rating === 3}/>
                     <label htmlFor="three" className="review-star"></label>
 
-                    <input type="radio" id="two" name="rating" value="2" defaultChecked={this.state.rating === "5"}/>
+                    <input type="radio" id="two" name="rating" value="2" defaultChecked={this.state.rating === 2}/>
                     <label htmlFor="two" className="review-star"></label>
 
-                    <input type="radio" id="one" name="rating" value="1" required defaultChecked={this.state.rating === "5"}/>
+                    <input type="radio" id="one" name="rating" value="1" required defaultChecked={this.state.rating === 1}/>
                     <label htmlFor="one" className="review-star"></label>
                 </div>
 
@@ -81,6 +85,7 @@ class ReviewForm extends React.Component {
                     value={this.state.review_text}
                     required
                     onChange={this.handleInput("review_text")}>
+                {this.state.review_text}
                 </textarea>
 
                 <label htmlFor="activity">Activity</label>

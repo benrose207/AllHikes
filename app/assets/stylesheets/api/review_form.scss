@@ -93,3 +93,20 @@ input:checked ~ .review-star::before {
 .rating-select > input + .review-star {
     display: inline-block;
 }
+
+//Edit review form
+.edit-review-form {
+    width: 70%;
+    margin: 0 auto 30px auto;
+    font-family: $bodyFont;
+    color: $darkGrey;
+}
+
+.edit-review-form > h1 {
+    background-color: $backgroundGreen;
+    color: white;
+    font-size: 32px;
+    font-weight: 500;
+    padding: 20px 30px;
+    margin-bottom: 15px;
+}
