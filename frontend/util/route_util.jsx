@@ -1,11 +1,10 @@
 import React, { useEffect } from "react";
 import { Route, Redirect, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { userEffect } from "react";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        loggedIn: Boolean(state.session.currentUserId)
+        loggedIn: Boolean(state.session.currentUserId),
     }
 }
 

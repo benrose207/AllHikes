@@ -4,21 +4,26 @@ import ReviewForm from "./review_form";
 import { ScrollToTopOnMount } from "../../util/route_util";
 import { updateReview } from "../../actions/review_actions";
 import { filteredTagsByType, reviewTags } from "../../reducers/selectors";
+import { Redirect } from "react-router-dom";
 
 const EditReviewContainer = (props) => {
-    
     return (
         <>
-            <ScrollToTopOnMount />
-            <div className="edit-review-form">
-                <h1>Edit Review | {props.hikeName}</h1>
-                <ReviewForm 
-                    initialState={props.initialState}
-                    trailConditions={props.trailConditions}
-                    submitAction={props.submitAction}
-                    activities={props.activities}
-                    closeFormAction={() => props.history.push(`/hikes/${props.initialState.hike_id}`)}/>
-            </div>
+            {props.currentUser ? (
+                <>
+                    <ScrollToTopOnMount />
+                    <div className="edit-review-form">
+                        <h1>Edit Review | {props.hikeName}</h1>
+                        <ReviewForm 
+                            initialState={props.initialState}
+                            trailConditions={props.trailConditions}
+                            submitAction={props.submitAction}
+                            activities={props.activities}
+                            closeFormAction={() => props.history.push(`/hikes/${props.initialState.hike_id}`)}/>
+                    </div>
+                </>
+            ) : <Redirect to="/"/>
+        }
         </>
     )
 }
@@ -49,7 +54,8 @@ const mapStateToProps = (state, ownProps) => {
         },
         trailConditions: filteredTagsByType(state, "obstacle"),
         activities: filteredTagsByType(state, "activity"),
-        hikeName: state.entities.hikes[currentReview.hikeId].name
+        hikeName: state.entities.hikes[currentReview.hikeId].name,
+        currentUser: (state.session.currentUserId === currentReview.userId)
     }
 }
 

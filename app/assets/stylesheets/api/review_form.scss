@@ -96,7 +96,7 @@ input:checked ~ .review-star::before {
 
 //Edit review form
 .edit-review-form {
-    width: 70%;
+    width: 60%;
     margin: 0 auto 30px auto;
     font-family: $bodyFont;
     color: $darkGrey;
@@ -108,5 +108,7 @@ input:checked ~ .review-star::before {
     font-size: 32px;
     font-weight: 500;
     padding: 20px 30px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
 }

@@ -20,7 +20,7 @@ const App = () => {
             <Route exact path="/" component={HomePage} />            
             <Route path="/hikes/:hikeId" render={(props) => (
                 <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
-            <Route path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
+            <ProtectedRoute path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
             <ProtectedRoute path="/members/:userId" component={UserContainer} />
