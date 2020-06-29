@@ -14,7 +14,7 @@
 class Review < ApplicationRecord
 
     validates :rating, :review_text, :activity_date, presence: true
-    validates :user_id, uniqueness: { scope: [:hike_id, :activity_date] }
+    validates :activity_date, uniqueness: { scope: [:hike_id, :user_id], message: ": you can only leave 1 review for this hike on this date" }
 
     belongs_to :reviewer,
         foreign_key: :user_id,

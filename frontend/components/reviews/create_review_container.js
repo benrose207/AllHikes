@@ -15,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
             selectedActivity: defaultActivity(state)
         },
         trailConditions: filteredTagsByType(state, "obstacle"),
-        activities: filteredTagsByType(state, "activity")
+        activities: filteredTagsByType(state, "activity"),
+        errors: state.errors.reviewForm
     }
 }
 

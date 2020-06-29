@@ -19,6 +19,7 @@ const EditReviewContainer = (props) => {
                             trailConditions={props.trailConditions}
                             submitAction={props.submitAction}
                             activities={props.activities}
+                            errors={props.errors}
                             closeFormAction={() => props.history.push(`/hikes/${props.initialState.hike_id}`)}/>
                     </div>
                 </>
@@ -55,7 +56,8 @@ const mapStateToProps = (state, ownProps) => {
         trailConditions: filteredTagsByType(state, "obstacle"),
         activities: filteredTagsByType(state, "activity"),
         hikeName: state.entities.hikes[currentReview.hikeId].name,
-        currentUser: (state.session.currentUserId === currentReview.userId)
+        currentUser: (state.session.currentUserId === currentReview.userId),
+        errors: state.errors.reviewForm
     }
 }
 

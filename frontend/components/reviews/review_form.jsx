@@ -58,6 +58,14 @@ class ReviewForm extends React.Component {
                 ))}
             </>
         )
+
+        const errors = (this.props.errors ? (
+            <ul className="form-errors">
+                {this.props.errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
+        ) : "")
         
         return (
             <form className="review-form" onSubmit={this.handleSubmit}>
@@ -113,10 +121,11 @@ class ReviewForm extends React.Component {
                     required
                     onChange={this.handleInput("activity_date")}/>
 
-                <label htmlFor="trailConditions">Trail Conditions</label>
+                <label htmlFor="trailConditions">Trail Conditions (optional)</label>
                 <div onClick={this.handleTagSelection} className="form-tag-cloud">
                     {tagFormCloud}
                 </div>
+                {errors}
                 <button className="primary-cta">Save</button>
                 <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>
             </form>
