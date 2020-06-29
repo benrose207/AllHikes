@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ScrollToTopOnMount } from "../../util/route_util";
 
 class User extends React.Component {
 
@@ -16,6 +17,7 @@ class User extends React.Component {
 
         return (
             <div className="primary-content">
+                <ScrollToTopOnMount />
                 <ul className="user-tabs">
                     <li>
                         <Link to={`/members/${id}`}>Profile</Link>

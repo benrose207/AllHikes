@@ -13,6 +13,16 @@ export const hikeReviews = (state, hikeId) => {
     return reviews
 }
 
+export const reviewTags = (state, reviewId) => {
+    const taggable = Object.values(state.entities.taggable);
+    const reviewTaggable = taggable.filter(tagRef => (
+        tagRef.taggableId === parseInt(reviewId) && tagRef.taggableType === "Review"
+    ))
+
+    const tags = reviewTaggable.map(tagRef => state.entities.tags[tagRef.tagId])
+    return tags;
+}
+
 export const filteredTagsByType = (state, tagType) => {
     return Object.values(state.entities.tags).filter(tag => tag.tagType === tagType)
 }

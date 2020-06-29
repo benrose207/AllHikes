@@ -1,95 +1,60 @@
-// Review form
-
-.review-form {
-    padding: 0 30px 30px 30px;
-    font-size: 14px;
+.review-item {
+    background-color: $backgroundGrey;
+    border: $contentBorder;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 13px;
 }
 
-.review-form label {
+.review-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+    border-bottom: $contentBorder;
+}
+
+.review-header > div > a {
+    font-weight: 600;
+    color: $ctaBlue;
+}
+
+.review-tags {
+    display: flex;
     font-weight: 500;
 }
 
-.review-form > textarea {
-    padding: 20px;
+.review-tags > .tag {
+    margin: 5px 5px 5px 0;
+    padding: 2px 8px;
 }
 
-.review-form > input, .review-form > textarea, .review-form > select {
-    border: 1px solid $lighterGrey;
-    margin: 10px 0;
-    padding: 8px;
-    border-radius: 8px;
-    width: 100%;
+.review-header div:last-child {
+    text-align: right;
 }
 
-.review-form input:focus, .review-form select:focus, .review-form textarea:focus {
-    border: 2px solid $green;
-}
-
-#activityDate, #activity {
-    height: 40px;
-}
-
-//Form trail conditions selector
-
-.form-tag-cloud {
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.form-tag-cloud > a  {
-    background-color: $lightGrey;
-    color: $tagGrey;
-    border-radius: 4px;
-    margin: 3px 5px;
-    padding: 3px 8px;
-    cursor: pointer;
-}
-
-.form-tag-cloud .tag-selected {
-    color: white;
-    background-color: $lighterGrey;
-}
-
-//Form CTAs
-
-.review-form > button, .review-form > a {
-    padding: 10px 20px;
-    margin-top: 10px;
-    margin-right: 10px;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.review-form > a:hover {
-    background-color: $grey;
-}
-
-// Review form star ratings
-
-.rating-select {
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: flex-end;
-}
-
-.review-star::before {
+.star::before {
     content: "★";
-    color: $lightGrey;
-    font-size: 50px;
+    color: $lighterGrey;
+    margin: 0 1px;
 }
 
-.review-star {
-    cursor: pointer;
-}
-
-input:checked ~ .review-star::before {
+.filled.star::before {
     color: gold;
 }
 
-.rating-select > input {
-    visibility: hidden;
+.review-item > p {
+    margin: 10px;
 }
 
-.rating-select > input + .review-star {
-    display: inline-block;
+.review-action {
+    background-color: $grey;
+    color: white;
+    padding: 5px;
+    margin-left: 3px;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.review-header button {
+    padding: 6px;
 }

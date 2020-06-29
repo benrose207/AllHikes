@@ -1,21 +1,21 @@
 import React from "react";
+import ReviewItemContainer from "./review_item_container";
 
 class ReviewFeed extends React.Component {
     
     render () {
-        // const reviewItems = (
-        //     <>
-        //         {this.props.reviews.map(review => (
-        //             <ReviewItem review={review} deleteReview={deleteReview}/>
-        //         ))}
-        //     </>
-        // )
+        const reviewItems = (
+            <>
+                {this.props.reviews.map(review => (
+                    <ReviewItemContainer review={review} key={review.id}/>
+                ))}
+            </>
+        )
 
         return (
             <div>
                 <ul>
-                    {/* {reviewItems} */}
-                    Hello there
+                    {reviewItems}
                 </ul>
             </div>
         )
