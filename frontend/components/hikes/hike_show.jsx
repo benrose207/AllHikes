@@ -20,7 +20,7 @@ class HikeShow extends React.Component {
         this.mapToggle = this.mapToggle.bind(this);
         this.reviewFormToggle = this.reviewFormToggle.bind(this);
     }
-
+    
     componentDidMount() {
         this.props.fetchHike(this.props.match.params.hikeId);
     }
@@ -43,6 +43,7 @@ class HikeShow extends React.Component {
     }
 
     render () {
+        debugger
         if (!this.props.hike) return null;
 
         const { hike, tags } = this.props;

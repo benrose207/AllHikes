@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import User from "./user";
+import UserProfile from "./user_profile";
 import { fetchUser } from "../../actions/session_actions";
 
 const mapStateToProps = (state, ownProps) => {
@@ -17,4 +17,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
     mapStateToProps,
     mapDispatchToProps
-)(User);
+)(UserProfile);

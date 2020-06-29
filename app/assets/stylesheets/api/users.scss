@@ -9,7 +9,14 @@
 }
 
 .user-tabs > li {
-    padding: 15px;
+    padding: 15px 0;
+    margin: 0 15px;
+    cursor: pointer;
+}
+
+.active-user-tab {
+    color: $ctaGreen;
+    border-bottom: 2px solid $ctaGreen;
 }
 
 .primary-content {
