@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
         reviews: reviews,
         reviewCount: reviews.length,
         avgRating: avgHikeRating(reviews),
-        loggedIn: Boolean(state.session.currentUserId)
+        currentUserId: state.session.currentUserId
     }
 }
 

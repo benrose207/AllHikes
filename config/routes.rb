@@ -8,13 +8,14 @@ Rails.application.routes.draw do
 
     resources :users, only: [:create, :show, :update] do 
       resources :reviews, only: :index
+      resources :photos, only: :index
     end
 
-    resources :hikes, only: [:show] do 
-      resources :reviews, only: :index
-    end
+    resources :hikes, only: :show
     
     resources :reviews, only: [:create, :update, :destroy]
+
+    resources :photos, only: :create
   end
 
 end

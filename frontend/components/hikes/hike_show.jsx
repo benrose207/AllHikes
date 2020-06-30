@@ -108,7 +108,7 @@ class HikeShow extends React.Component {
                     >Photos</span>
                 </nav>
 
-                {this.props.loggedIn ? (
+                {this.props.currentUserId ? (
                     <>
                         <div className="hike-user-content-header">
                             <p>Share your experience to help other people learn more about this trail:</p>
