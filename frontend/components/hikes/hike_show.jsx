@@ -116,7 +116,7 @@ class HikeShow extends React.Component {
 
         let hikeMapClass = "";
         if (this.state.mapView) hikeMapClass = " hike-map-view";
-
+        
         return (
             <div className="hike-with-map">
                 <main className={`hike-container${hikeMapClass}`}>
@@ -136,6 +136,9 @@ class HikeShow extends React.Component {
                                 <p>({reviewCount})</p>
                             </div>
                         </div>
+                        <picture>
+                            <img src={hike.coverPhotoUrl} alt="mt hoffmann hike" />
+                        </picture>
                     </div>
                     <div className="hike-actions">
                         <ul>

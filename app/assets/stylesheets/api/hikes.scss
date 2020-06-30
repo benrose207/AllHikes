@@ -13,11 +13,13 @@
     color: white;
     height: 325px;
     position: relative;
+}
 
-    // Make this dynamic later on depending on the hike -- will need to pull from field/AWS
-    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.3)), image-url("cristina-anne-costello-70ngqW6E0oY-unsplash.jpg");
-    background-size: cover;
-    background-position: center;
+.hike-hero img {
+    object-fit: cover;
+    object-position: center;
+    width: 100%;
+    height: 325px;
 }
 
 .hike-hero-content {
