@@ -118,7 +118,11 @@ class HikeShow extends React.Component {
                             </div>
                         </div>
                         {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} closeFormAction={this.reviewFormToggle}/> : null}
-                        {this.state.photosForm ? <PhotosForm hikeId={hike.id} closeFormAction={this.photosFormToggle}/> : null}
+                        {this.state.photosForm ? <PhotosForm 
+                            hikeId={hike.id}
+                            userId={this.props.currentUserId}
+                            createPhotos={this.props.createPhotos} 
+                            closeFormAction={this.photosFormToggle}/> : null}
                     </>
                 ) : null}
                 <ReviewFeed reviews={this.props.reviews}/>

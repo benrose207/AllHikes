@@ -37,18 +37,22 @@ class PhotosForm extends React.Component {
     }
 
     handleSubmit(e) {
-        const { hikeId, userId } = this.props
-
+        const { hikeId, userId } = this.props;
+        const { photos } = this.state;
+        
         e.preventDefault();
         const formData = new FormData();
+        formData.append('hike_id', hikeId)
+        formData.append('user_id', userId)
 
-        for (let i = 0; i < this.state.photos.length; i++) {
-            formData.append("photo[photos][]", { photo: photos[i], hike_id: hikeId, user_id: userId})
+        for (let i = 0; i < photos.length; i++) {
+            formData.append('photos[]', photos[i]);
         }
+        
+        this.props.createPhotos(formData);
     }
 
     render () {
-        debugger
         return (
             <form onSubmit={this.handleSubmit}>
                 <label htmlFor="photo-upload">Choose Photos</label>
