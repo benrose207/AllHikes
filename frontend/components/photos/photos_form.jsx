@@ -53,19 +53,41 @@ class PhotosForm extends React.Component {
     }
 
     render () {
-        return (
-            <form onSubmit={this.handleSubmit}>
-                <label htmlFor="photo-upload">Choose Photos</label>
-                <input 
-                    type="file" 
-                    id="photo-upload" 
-                    multiple 
-                    required
-                    onChange={this.handlePhotoInput}/>
-                <button>Remove</button> 
 
+        const previewImages = ( this.state.photoUrls.length > 0 ? (
+            <>
+                <button 
+                    className="cancel-button"
+                    onClick={() => this.setState({ photos: [], photoUrls: [] })}>
+                Remove</button> 
+
+                <div>
+                    {this.state.photoUrls.map((url, idx) => (
+                        <picture key={idx} className="preview-image">
+                            <img src={url} alt="preview image"/>
+                        </picture>
+                    ))}
+                </div>
+            </>
+        ) : null )
+
+        const uploaderClass = (this.state.photos.length > 0 ? "photo-uploader selected-div" : "photo-uploader")
+
+        return (
+            <form onSubmit={this.handleSubmit} className="review-photo-form">
+                <div className={uploaderClass}>
+                    <label htmlFor="photo-upload">Choose Photos</label>
+                    <input 
+                        type="file" 
+                        id="photo-upload" 
+                        multiple 
+                        required
+                        onChange={this.handlePhotoInput}/>
+                </div>
+                {previewImages}
+{/* 
                 <label htmlFor="caption">Caption</label>
-                <input type="text" id="caption"/>
+                <input type="text" id="caption"/> */}
 
                 <button className="primary-cta">Upload</button>
                 <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>

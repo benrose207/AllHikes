@@ -1,19 +1,19 @@
 // Review form
 
-.review-form {
+.review-photo-form {
     padding: 0 30px 30px 30px;
     font-size: 14px;
 }
 
-.review-form label {
+.review-photo-form label {
     font-weight: 500;
 }
 
-.review-form > textarea {
+.review-photo-form > textarea {
     padding: 20px;
 }
 
-.review-form > input, .review-form > textarea, .review-form > select {
+.review-photo-form > input, .review-photo-form > textarea, .review-photo-form > select {
     border: 1px solid $lighterGrey;
     margin: 10px 0;
     padding: 8px;
@@ -21,7 +21,7 @@
     width: 100%;
 }
 
-.review-form input:focus, .review-form select:focus, .review-form textarea:focus {
+.review-photo-form input:focus, .review-photo-form select:focus, .review-photo-form textarea:focus {
     border: 2px solid $green;
 }
 
@@ -52,7 +52,7 @@
 
 //Form CTAs
 
-.review-form > button, .review-form > a {
+.review-photo-form > button, .review-photo-form > a {
     padding: 10px 20px;
     margin-top: 10px;
     margin-right: 10px;
@@ -60,7 +60,7 @@
     cursor: pointer;
 }
 
-.review-form > a:hover {
+.review-photo-form > a:hover {
     background-color: $grey;
 }
 

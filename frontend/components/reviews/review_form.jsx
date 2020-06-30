@@ -68,7 +68,7 @@ class ReviewForm extends React.Component {
         ) : "")
         
         return (
-            <form className="review-form" onSubmit={this.handleSubmit}>
+            <form className="review-photo-form" onSubmit={this.handleSubmit}>
                 <label htmlFor="rating">Rating</label>
                 <div className="rating-select" onChange={this.handleInput("rating")}>
                     <input type="radio" id="five" name="rating" value="5" defaultChecked={this.state.rating === 5}/>

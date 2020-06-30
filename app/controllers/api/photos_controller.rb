@@ -1,14 +1,12 @@
 class Api::PhotosController < ApplicationController
 
     def create
-        hike_id = params[:hike_id]
-        user_id = params[:user_id]
         photos = params[:photos]
 
         @new_photos = []
 
         photos.each do |photo|
-            new_photo = Photo.new(hike_id: hike_id, user_id: user_id, photo: photo)
+            new_photo = Photo.new(hike_id: params[:hike_id], user_id: params[:user_id], photo: photo)
             @new_photos << new_photo
 
             unless new_photo.save
