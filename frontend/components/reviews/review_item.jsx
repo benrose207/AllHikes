@@ -20,7 +20,7 @@ class ReviewItem extends React.Component {
     render() {
         const { review, user, tags, currentUser } = this.props;
         const reviewDate = new Date(review.activityDate);
-    
+        
         const tagCloud = tags.map(tag => (
             <h4 key={tag.id} className="tag">{tag.name}</h4>
         ));
@@ -38,6 +38,12 @@ class ReviewItem extends React.Component {
                 <button className="review-action" onClick={this.handleDelete}><FontAwesomeIcon icon={faTrashAlt}/></button>
             </>
         ) : null )
+
+        const profilePicture = (user.profilePicture ? (
+            <picture>
+                <img src={user.profilePicture} alt={`${user.firstName} ${user.lastName}`}/>
+            </picture>
+        ): (<FontAwesomeIcon icon = { faHiking } />))
     
         return (
             <li className="review-item">
@@ -45,7 +51,7 @@ class ReviewItem extends React.Component {
                     <div className="review-header-left">
                         <Link to={`/members/${user.id}`}>
                             <div className="profile-picture">
-                                <FontAwesomeIcon icon={faHiking} />
+                                {profilePicture}
                             </div>
                         </Link>
                         <div>

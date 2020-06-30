@@ -23,7 +23,7 @@ const App = () => {
             <ProtectedRoute path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
             <AuthRoute path="/login" component={LoginFormContainer} />
             <AuthRoute path="/signup" component={SignupFormContainer} />
-            <ProtectedRoute path="/members/:userId" component={UserProfileContainer} />
+            <Route path="/members/:userId" component={UserProfileContainer} />
 
             <Footer />
         </>

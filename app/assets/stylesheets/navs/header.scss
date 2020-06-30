@@ -30,7 +30,6 @@ header {
     align-items: center;
 }
 
-
 .main-nav h2 {
     color: $grey;
     font-weight: 500;
@@ -69,6 +68,10 @@ header {
     height: 40px;
     width: 40px;
     margin-right: 8px;
+}
+
+.user-menu-header picture {
+    height: 40px;
 }
 
 .dropdown-selector > p {

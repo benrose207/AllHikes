@@ -99,3 +99,10 @@ textarea {
     justify-content: center;
     align-items: center;
 }
+
+.profile-picture img {
+    height: inherit;
+    width: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+}

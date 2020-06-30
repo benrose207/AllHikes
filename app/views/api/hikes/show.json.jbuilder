@@ -37,6 +37,10 @@ json.users do
     @hike.reviews.each do |review|
         json.set! review.reviewer.id do
             json.extract! review.reviewer, :id, :first_name, :last_name
+
+            if review.reviewer.profilePicture.attached? 
+                json.profilePicture url_for(review.reviewer.profilePicture)
+            end
         end
     end
 end

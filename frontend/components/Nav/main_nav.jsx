@@ -5,12 +5,19 @@ import { faMountain, faHiking } from "@fortawesome/free-solid-svg-icons";
 
 
 const MainNav = ({ currentUser, logout }) => {
+
+    const profilePicture = (currentUser && currentUser.profilePicture ? (
+        <picture>
+            <img src={currentUser.profilePicture} alt={`${currentUser.firstName} ${currentUser.lastName}`} />
+        </picture>
+    ) : (<FontAwesomeIcon icon={faHiking} />))
+
     const userNav = ( currentUser ? (
         <>
             <div className="dropdown-selector">
                 <div className="user-menu-header">
                     <div className="profile-picture">
-                        <FontAwesomeIcon icon={faHiking} />
+                        {profilePicture}
                     </div>
                     <p>{currentUser.firstName}</p>
                 </div>
