@@ -90,3 +90,12 @@ textarea {
 .filled.star::before {
     color: gold;
 }
+
+//profile picture
+
+.profile-picture {
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

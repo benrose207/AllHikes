@@ -24,7 +24,7 @@ class Hike < ApplicationRecord
     validates :usage, inclusion: { in: ["light", "moderate", "heavy", "extra heavy"] }
     validates :route_type, inclusion: { in: ["Out & Back", "Loop", "Point-to-Point"] }
 
-    has_one_attached :photo
+    has_one_attached :coverPhoto
 
     has_many :taggables, :as => :taggable
 

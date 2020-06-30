@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPencilAlt, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPencilAlt, faTrashAlt, faHiking } from "@fortawesome/free-solid-svg-icons";
 
 class ReviewItem extends React.Component {
     constructor(props) {
@@ -42,11 +42,18 @@ class ReviewItem extends React.Component {
         return (
             <li className="review-item">
                 <div className="review-header">
-                    <div>
-                        <Link to={`/members/${user.id}`}>{user.firstName} {user.lastName}</Link>
-                        <div className="review-tags">{tagCloud}</div>
+                    <div className="review-header-left">
+                        <Link to={`/members/${user.id}`}>
+                            <div className="profile-picture">
+                                <FontAwesomeIcon icon={faHiking} />
+                            </div>
+                        </Link>
+                        <div>
+                            <Link className="user-link" to={`/members/${user.id}`}>{user.firstName} {user.lastName}</Link>
+                            <div className="review-tags">{tagCloud}</div>
+                        </div>
                     </div>
-                    <div>
+                    <div className="review-header-right">
                         <div className="review-rating">
                             {reviewStars}
                         </div>

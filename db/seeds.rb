@@ -27,9 +27,6 @@ h4 = Hike.create(name: "Sentinel Dome and Taft Point", description: "Yosemite Na
 
 h5 = Hike.create(name: "Mono Pass Trail", description: "This is an amazing intermediate trek to Mono pass. Upper Sardine Lake is a pleasant camping spot. Very beautiful views of Mono lake and a wonderful sunrise.", lng: -119.26236, lat: 37.89061, difficulty: "moderate", usage: "moderate", distance: 10.8, elevation_gain: 1653, route_type: "Out & Back", waypoints: "[[-119.26236, 37.89061], [-119.24449, 37.87746], [-119.22923, 37.86122], [-119.21520, 37.85580], [-119.20683, 37.85920], [-119.26236, 37.89061]]")
 
-file1 = open('https://all-hikes-seeds.s3-us-west-1.amazonaws.com/cristina-anne-costello-70ngqW6E0oY-unsplash.jpg')
-h1.photo.attach(io: file, filename: 'cristina-anne-costello-70ngqW6E0oY-unsplash.jpg')
-
 Tag.destroy_all
 o1 = Tag.create(name: "blowdown", tag_type: "obstacle")
 o2 = Tag.create(name: "bridge out", tag_type: "obstacle")

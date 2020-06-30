@@ -13,9 +13,27 @@
     border-bottom: $contentBorder;
 }
 
-.review-header > div > a {
+.review-header .profile-picture {
+    width: 55px;
+    height: 55px;
+    margin-right: 8px;
+    margin-bottom: 5px;
+    border: $contentBorder;
+    background-color: white;
+}
+
+.review-header .profile-picture svg {
+    font-size: 28px;
+    color: $logoGreen;
+}
+
+.user-link {
     font-weight: 600;
     color: $ctaBlue;
+}
+
+.review-header-left {
+    display: flex;
 }
 
 .review-tags {
@@ -29,7 +47,7 @@
     padding: 2px 8px;
 }
 
-.review-header div:last-child {
+.review-header-right {
     text-align: right;
 }
 

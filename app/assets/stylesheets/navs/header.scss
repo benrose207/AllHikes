@@ -51,8 +51,24 @@ header {
 
 .dropdown-selector {
     position: relative;
+    cursor: pointer;
     color: $mediumGrey;
     font-size: 14px;
+}
+
+.user-menu-header {
+    display: flex;
+    align-items: center;
+    height: 60px;
+}
+
+.user-menu-header > .profile-picture {
+    background-color: $backgroundGrey;
+    color: $grey;
+    font-size: 20px;
+    height: 40px;
+    width: 40px;
+    margin-right: 8px;
 }
 
 .dropdown-selector > p {

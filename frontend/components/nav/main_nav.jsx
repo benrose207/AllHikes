@@ -1,14 +1,19 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMountain } from "@fortawesome/free-solid-svg-icons";
+import { faMountain, faHiking } from "@fortawesome/free-solid-svg-icons";
 
 
 const MainNav = ({ currentUser, logout }) => {
     const userNav = ( currentUser ? (
         <>
             <div className="dropdown-selector">
-                <p>{currentUser.firstName}</p>
+                <div className="user-menu-header">
+                    <div className="profile-picture">
+                        <FontAwesomeIcon icon={faHiking} />
+                    </div>
+                    <p>{currentUser.firstName}</p>
+                </div>
                 <ul className="user-dropdown">
                     <li>
                         <Link to={`/members/${currentUser.id}`}>Profile</Link>
