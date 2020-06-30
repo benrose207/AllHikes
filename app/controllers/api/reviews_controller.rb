@@ -1,11 +1,7 @@
 class Api::ReviewsController < ApplicationController
 
     def index
-        if params[:user_id]
-            @reviews = Review.includes(:taggables, :tags, :reviewer).where(user_id: params[:user_id])
-        elsif params[:hike_id]
-            @reviews = Review.includes(:taggables, :tags, :reviewer).where(hike_id: params[:hike_id])
-        end
+        @reviews = Review.includes(:taggables, :tags, :reviewer).where(user_id: params[:user_id])
         @tags = Tag.all
         render :index
     end

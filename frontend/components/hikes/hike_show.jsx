@@ -4,6 +4,7 @@ import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt, faMap
 import HikeMap from "../maps/hike_map";
 import CreateReviewContainer from "../reviews/create_review_container";
 import ReviewFeed from "../reviews/review_feed";
+import PhotosForm from "../photos/photos_form";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -13,12 +14,14 @@ class HikeShow extends React.Component {
             activeTrailContent: "description",
             activeUserContent: "reviews",
             reviewForm: false,
+            photosForm: false,
             mapView: false
         };
 
         this.handleContentTabs = this.handleContentTabs.bind(this);
         this.mapToggle = this.mapToggle.bind(this);
         this.reviewFormToggle = this.reviewFormToggle.bind(this);
+        this.photosFormToggle = this.photosFormToggle.bind(this);
     }
     
     componentDidMount() {
@@ -39,7 +42,17 @@ class HikeShow extends React.Component {
     }
 
     reviewFormToggle() {
-        this.setState({reviewForm: !this.state.reviewForm})
+        this.setState({
+            reviewForm: !this.state.reviewForm,
+            photosForm: false
+        })
+    }
+
+    photosFormToggle() {
+        this.setState({
+            photosForm: !this.state.photosForm,
+            reviewForm: false
+        })
     }
 
     render () {
@@ -101,10 +114,11 @@ class HikeShow extends React.Component {
                             <p>Share your experience to help other people learn more about this trail:</p>
                             <div>
                                 <button className="secondary-cta" onClick={this.reviewFormToggle}>Write Review</button>
-                                <button className="secondary-cta">Upload Photos</button>
+                                <button className="secondary-cta" onClick={this.photosFormToggle}>Upload Photos</button>
                             </div>
                         </div>
                         {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} closeFormAction={this.reviewFormToggle}/> : null}
+                        {this.state.photosForm ? <PhotosForm hikeId={hike.id} closeFormAction={this.photosFormToggle}/> : null}
                     </>
                 ) : null}
                 <ReviewFeed reviews={this.props.reviews}/>
