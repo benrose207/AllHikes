@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHiking } from "@fortawesome/free-solid-svg-icons";
 
 const UserDetail = (props) => {
     const { firstName, lastName, createdAt } = props.user;
@@ -10,8 +12,13 @@ const UserDetail = (props) => {
 
     return (
         <div className="user-details">
-            <h2>{firstName} {lastName}</h2>
-            <p>Member since: {year}</p>
+                <div className="profile-picture">
+                    <FontAwesomeIcon icon={faHiking} />
+                </div>
+                <section>
+                    <h2>{firstName} {lastName}</h2>
+                    <p>Member since: {year}</p>
+                </section>
         </div>
     )
 }
