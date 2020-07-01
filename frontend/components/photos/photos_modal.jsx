@@ -32,11 +32,17 @@ class PhotosModal extends React.Component {
         const { photos } = this.props;
         return (
             <div id="photos-modal">
-                <picture className="modal-image">
-                    <img src={photos[this.state.currentPhotoId].photo} alt="spotlight image"/>
-                </picture>
-                <button onClick={this.toggleBack}>Back</button>
-                <button onClick={this.toggleForward}>Forward</button>
+                <div className="modal-nav">
+                    <button onClick={this.props.closeModal(null)}>X</button>
+                </div>
+                <div className="modal-content">
+                    <button onClick={this.toggleBack}>Back</button>
+                    <picture className="modal-image">
+                        <img src={photos[this.state.currentPhotoId].photo} alt="spotlight image"/>
+                    </picture>
+                    <button onClick={this.toggleForward}>Forward</button>
+                </div>
+                <div className="modal-nav"></div>
             </div>
         )
     }

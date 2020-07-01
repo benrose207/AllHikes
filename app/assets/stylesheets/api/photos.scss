@@ -84,11 +84,37 @@
 
 // photo modal
 
+#photos-modal {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+    height: 100vh;
+}
+
+.modal-nav {
+    height: 50px;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.modal-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px 0;
+    height: calc(100vh - 140px);
+}
+
 .modal-image {
-    width: 500px;
+    width: 80%;
+    height: 100%
 }
 
 .modal-image img {
     width: 100%;
-    height: auto;
+    height: 100%;
+    object-fit: contain;
 }

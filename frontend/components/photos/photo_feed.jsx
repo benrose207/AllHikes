@@ -5,7 +5,9 @@ class PhotoFeed extends React.Component {
     constructor(props) {
         super(props)
 
-        this.state = { clickedPhotoId: null }
+        this.state = { 
+            clickedPhotoId: null,
+        }
 
         this.openPhotosModal = this.openPhotosModal.bind(this)
     }
@@ -26,23 +28,28 @@ class PhotoFeed extends React.Component {
         this.props.fetchPhotos(contentType, this.props.match.params[idType])
     }
 
-    openPhotosModal(e) {
-        this.setState({ clickedPhotoId: e.currentTarget.dataset.photoPos })
+    openPhotosModal(input) {
+        return (e) => {
+            this.setState({ clickedPhotoId: input })
+        }
     }
 
     render () {
         return (
             <>
                 { this.state.clickedPhotoId ? 
-                    <PhotosModal photos={this.props.photos} initialPhotoId={parseInt(this.state.clickedPhotoId)}/>
+                    <PhotosModal 
+                        photos={this.props.photos} 
+                        initialPhotoId={parseInt(this.state.clickedPhotoId)}
+                        closeModal={this.openPhotosModal}
+                    />
                     : null }
                 <section className="photo-feed">
                     {this.props.photos.map((photo, idx) => (
                         <picture 
                             key={photo.id} 
                             className="photo-feed-item" 
-                            data-photo-pos={idx}
-                            onClick={this.openPhotosModal}
+                            onClick={this.openPhotosModal(idx)}
                         >
                             <img src={photo.photo} alt="hike photo"/>
                         </picture>
