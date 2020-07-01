@@ -48,7 +48,7 @@ class UserProfile extends React.Component {
                     <section className="primary-tab-content">
                         {this.state.currentTab === "Profile" ? <UserDetail user={this.props.user} /> : null}
                         {this.state.currentTab === "Reviews" ? <ReviewFeedContainer userId={this.props.user.id} /> : null}
-                        {this.state.currentTab === "Photos" ? <PhotoFeedContainer userId={this.props.user.id} /> : null}
+                        {this.state.currentTab === "Photos" ? <PhotoFeedContainer contentId={this.props.user.id} /> : null}
                     </section>
                 </main>
             </div>

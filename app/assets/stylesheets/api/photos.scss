@@ -43,6 +43,25 @@
     padding: 3px 8px;
 }
 
+#loading {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 10;
+}
+
+#loading > svg {
+    font-size: 60px;
+    color: $logoGreen;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
 //Photo Feed 
 
 .photo-feed {
@@ -61,4 +80,15 @@
     height: 140px;
     object-fit: cover;
     border-radius: 4px;
+}
+
+// photo modal
+
+.modal-image {
+    width: 500px;
+}
+
+.modal-image img {
+    width: 100%;
+    height: auto;
 }

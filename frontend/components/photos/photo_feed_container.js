@@ -3,9 +3,9 @@ import { withRouter } from "react-router-dom";
 import PhotoFeed from "./photo_feed";
 import { fetchPhotos } from "../../actions/photo_actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        photos: Object.values(state.entities.photos)
+        photos: Object.values(state.entities.photos).filter(photo => photo.hikeId === ownProps.contentId)
     }
 }
 

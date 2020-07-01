@@ -1,4 +1,6 @@
-import React from "react"
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 class PhotosForm extends React.Component {
     constructor(props) {
@@ -53,6 +55,14 @@ class PhotosForm extends React.Component {
         for (let i = 0; i < photos.length; i++) {
             formData.append('photos[]', photos[i]);
         }
+
+        $(document).ajaxStart(() => {
+            $("#loading").removeClass("hidden")
+        })
+
+        $(document).ajaxComplete(() => {
+            $("#loading").addClass("hidden")
+        })
         
         this.props.createPhotos(formData)
             .then(this.props.closeFormAction);
@@ -88,25 +98,30 @@ class PhotosForm extends React.Component {
         const uploaderClass = (this.state.photos.length > 0 ? "photo-uploader selected-div" : "photo-uploader")
 
         return (
-            <form onSubmit={this.handleSubmit} className="review-photo-form">
-                <div className={uploaderClass}>
-                    <label htmlFor="photo-upload">Choose Photos</label>
-                    <input 
-                        type="file" 
-                        id="photo-upload" 
-                        multiple 
-                        required
-                        accept="image/*"
-                        onChange={this.handlePhotoInput}/>
+            <>
+                <div id="loading" className="hidden">
+                    <FontAwesomeIcon icon={faSpinner} spin/>
                 </div>
-                {previewImages}
-{/* 
-                <label htmlFor="caption">Caption</label>
-                <input type="text" id="caption"/> */}
-                {errors}
-                <button className="primary-cta">Upload</button>
-                <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>
-            </form>
+                <form onSubmit={this.handleSubmit} className="review-photo-form">
+                    <div className={uploaderClass}>
+                        <label htmlFor="photo-upload">Choose Photos</label>
+                        <input 
+                            type="file" 
+                            id="photo-upload" 
+                            multiple 
+                            required
+                            accept="image/*"
+                            onChange={this.handlePhotoInput}/>
+                    </div>
+                    {previewImages}
+    {/* 
+                    <label htmlFor="caption">Caption</label>
+                    <input type="text" id="caption"/> */}
+                    {errors}
+                    <button className="primary-cta">Upload</button>
+                    <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>
+                </form>
+            </>
         )
     }
 }
