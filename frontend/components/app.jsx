@@ -17,14 +17,15 @@ const App = () => {
                 <MainNavContainer />
             </header>
 
-            <Route exact path="/" component={HomePage} />            
-            <Route path="/hikes/:hikeId" render={(props) => (
-                <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
-            <ProtectedRoute path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
-            <AuthRoute path="/login" component={LoginFormContainer} />
-            <AuthRoute path="/signup" component={SignupFormContainer} />
-            <Route path="/members/:userId" component={UserProfileContainer} />
-
+            <div className="content">
+                <Route exact path="/" component={HomePage} />            
+                <Route path="/hikes/:hikeId" render={(props) => (
+                    <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
+                <ProtectedRoute path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
+                <AuthRoute path="/login" component={LoginFormContainer} />
+                <AuthRoute path="/signup" component={SignupFormContainer} />
+                <Route path="/members/:userId" component={UserProfileContainer} />
+            </div>
             <Footer />
         </>
     )

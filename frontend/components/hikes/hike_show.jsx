@@ -144,7 +144,7 @@ class HikeShow extends React.Component {
             <div className="hike-with-map">
                 <main className={`hike-container${hikeMapClass}`}>
                     <div className={`hike-detail-nav${hikeMapClass}`}>
-                        <div onClick={this.mapToggle}>View Hike Details
+                        <div onClick={this.mapToggle}>Return to Hike Details
                             <FontAwesomeIcon icon={faExpandArrowsAlt} />
                         </div>
                     </div>
