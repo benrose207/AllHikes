@@ -1,4 +1,6 @@
-import React from "react"
+import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes, faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 
 class PhotosModal extends React.Component {
     constructor(props) {
@@ -33,14 +35,20 @@ class PhotosModal extends React.Component {
         return (
             <div id="photos-modal">
                 <div className="modal-nav">
-                    <button onClick={this.props.closeModal(null)}>X</button>
+                    <button onClick={this.props.closeModal(null)}>
+                        <FontAwesomeIcon icon={faTimes} />
+                    </button>
                 </div>
                 <div className="modal-content">
-                    <button onClick={this.toggleBack}>Back</button>
+                    <button onClick={this.toggleBack}>
+                        <FontAwesomeIcon icon={faAngleLeft} />
+                    </button>
                     <picture className="modal-image">
                         <img src={photos[this.state.currentPhotoId].photo} alt="spotlight image"/>
                     </picture>
-                    <button onClick={this.toggleForward}>Forward</button>
+                    <button onClick={this.toggleForward}>
+                        <FontAwesomeIcon icon={faAngleRight} />
+                    </button>
                 </div>
                 <div className="modal-nav"></div>
             </div>

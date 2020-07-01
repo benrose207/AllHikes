@@ -14,18 +14,14 @@ class PhotoFeed extends React.Component {
 
     componentDidMount() {
         let contentType
-        let idType
-
 
         if (this.props.location.pathname.includes("hikes")){
             contentType = "hikes";
-            idType = "hikeId";
         } else {
             contentType = "users";
-            idType = "userId";
         }
         
-        this.props.fetchPhotos(contentType, this.props.match.params[idType])
+        this.props.fetchPhotos(contentType, this.props.match.params[this.props.idType])
     }
 
     openPhotosModal(input) {

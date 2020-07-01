@@ -130,7 +130,7 @@ class HikeShow extends React.Component {
                 ) : null}
                 {activeUserContent === "reviews" ? (
                     <ReviewFeed reviews={this.props.reviews} />
-                ) : <PhotoFeedContainer contentId={hike.id}/>}
+                ) : <PhotoFeedContainer contentId={hike.id} idType="hikeId"/>}
             </>
         )
 

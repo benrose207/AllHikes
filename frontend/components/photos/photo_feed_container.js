@@ -4,8 +4,9 @@ import PhotoFeed from "./photo_feed";
 import { fetchPhotos } from "../../actions/photo_actions";
 
 const mapStateToProps = (state, ownProps) => {
+    debugger
     return {
-        photos: Object.values(state.entities.photos).filter(photo => photo.hikeId === ownProps.contentId)
+        photos: Object.values(state.entities.photos).filter(photo => photo[ownProps.idType] === ownProps.contentId)
     }
 }
 
