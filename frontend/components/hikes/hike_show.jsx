@@ -5,6 +5,7 @@ import HikeMap from "../maps/hike_map";
 import CreateReviewContainer from "../reviews/create_review_container";
 import ReviewFeed from "../reviews/review_feed";
 import PhotosForm from "../photos/photos_form";
+import PhotoFeedContainer from "../photos/photo_feed_container";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -44,14 +45,16 @@ class HikeShow extends React.Component {
     reviewFormToggle() {
         this.setState({
             reviewForm: !this.state.reviewForm,
-            photosForm: false
+            photosForm: false,
+            activeUserContent: "reviews"
         })
     }
 
     photosFormToggle() {
         this.setState({
             photosForm: !this.state.photosForm,
-            reviewForm: false
+            reviewForm: false,
+            activeUserContent: "photos"
         })
     }
 
@@ -59,6 +62,7 @@ class HikeShow extends React.Component {
         if (!this.props.hike) return null;
 
         const { hike, tags, reviewCount, avgRating } = this.props;
+        const { activeUserContent } = this.state;
         
         // Creating various html blocks
         const reviewStars = [];
@@ -125,7 +129,9 @@ class HikeShow extends React.Component {
                             closeFormAction={this.photosFormToggle}/> : null}
                     </>
                 ) : null}
-                <ReviewFeed reviews={this.props.reviews}/>
+                {activeUserContent === "reviews" ? (
+                    <ReviewFeed reviews={this.props.reviews} />
+                ) : <PhotoFeedContainer />}
             </>
         )
 

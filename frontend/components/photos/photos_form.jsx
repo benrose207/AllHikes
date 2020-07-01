@@ -49,7 +49,8 @@ class PhotosForm extends React.Component {
             formData.append('photos[]', photos[i]);
         }
         
-        this.props.createPhotos(formData);
+        this.props.createPhotos(formData)
+            .then(this.props.closeFormAction);
     }
 
     render () {

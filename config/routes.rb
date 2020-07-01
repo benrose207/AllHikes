@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       resources :photos, only: :index
     end
 
-    resources :hikes, only: :show
+    resources :hikes, only: :show do 
+      resources :photos, only: :index
+    end
     
     resources :reviews, only: [:create, :update, :destroy]
 

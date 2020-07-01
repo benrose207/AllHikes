@@ -4,7 +4,6 @@ import configureStore from "./store/store";
 import Root from "./components/root";
 
 //testing imports
-import { fetchReviews, updateReview, deleteReview } from "./actions/review_actions";
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
@@ -25,9 +24,6 @@ document.addEventListener("DOMContentLoaded", () => {
     //testing start
     window.getState = store.getState;
     window.dispatch = store.dispatch;
-    window.fetchReviews = fetchReviews;
-    window.updateReview = updateReview;
-    window.deleteReview = deleteReview;
     //testing end
 
     ReactDOM.render(<Root store={store} />, root);

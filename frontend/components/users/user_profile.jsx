@@ -2,6 +2,7 @@ import React from "react";
 import { ScrollToTopOnMount } from "../../util/route_util";
 import UserDetail from "./user_detail";
 import ReviewFeedContainer from "../reviews/review_feed_container";
+import PhotoFeedContainer from "../photos/photo_feed_container";
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -35,6 +36,9 @@ class UserProfile extends React.Component {
                     <li className={this.state.currentTab === "Reviews" ? "active-user-tab" : null}>
                         <a onClick={this.toggleUserView("Reviews")} >Reviews</a>
                     </li>
+                    <li className={this.state.currentTab === "Photos" ? "active-user-tab" : null}>
+                        <a onClick={this.toggleUserView("Photos")} >Photos</a>
+                    </li>
                 </ul>
                 <main className="user-profile">
                     <div className="content-header">
@@ -44,6 +48,7 @@ class UserProfile extends React.Component {
                     <section className="primary-tab-content">
                         {this.state.currentTab === "Profile" ? <UserDetail user={this.props.user} /> : null}
                         {this.state.currentTab === "Reviews" ? <ReviewFeedContainer userId={this.props.user.id} /> : null}
+                        {this.state.currentTab === "Photos" ? <PhotoFeedContainer userId={this.props.user.id} /> : null}
                     </section>
                 </main>
             </div>

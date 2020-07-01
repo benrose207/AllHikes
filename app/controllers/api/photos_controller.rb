@@ -3,11 +3,11 @@ class Api::PhotosController < ApplicationController
     def create
         photos = params[:photos]
 
-        @new_photos = []
+        @photos = []
 
         photos.each do |photo|
             new_photo = Photo.new(hike_id: params[:hike_id], user_id: params[:user_id], photo: photo)
-            @new_photos << new_photo
+            @photos << new_photo
 
             unless new_photo.save
                 render json: new_photo.errors.full_messages, status: 422
@@ -15,11 +15,15 @@ class Api::PhotosController < ApplicationController
             end
         end
 
-        render :basic
+        render :index
     end
 
     def index
-        @photos = Photo.where(user_id: params[:user_id])
+        if params[:hike_id]
+            @photos = Photo.where(hike_id: params[:hike_id])
+        elsif params[:user_id]
+            @photos = Photo.where(user_id: params[:user_id])
+        end
         render :index
     end
 
