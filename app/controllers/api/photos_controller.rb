@@ -20,7 +20,7 @@ class Api::PhotosController < ApplicationController
 
     def index
         if params[:hike_id]
-            @photos = Photo.where(hike_id: params[:hike_id])
+            @photos = Photo.includes(photo_attachment: :blob).where(hike_id: params[:hike_id])
         elsif params[:user_id]
             @photos = Photo.where(user_id: params[:user_id])
         end

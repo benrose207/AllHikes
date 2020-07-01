@@ -17,6 +17,11 @@ class PhotosForm extends React.Component {
         const files = Object.values(e.currentTarget.files)
         
         const processPhoto = (photo) => {
+            if ((photo.size/1024/1024).toFixed(4) > 3) {
+                alert("Only enter files smaller than 3MB")
+                return
+            }
+
             const reader = new FileReader();
             
             reader.onloadend = () => (
@@ -72,6 +77,14 @@ class PhotosForm extends React.Component {
             </>
         ) : null )
 
+        const errors = (this.props.errors ? (
+            <ul className="form-errors">
+                {this.props.errors.map((error, idx) => (
+                    <li key={idx}>{error}</li>
+                ))}
+            </ul>
+        ) : "")
+
         const uploaderClass = (this.state.photos.length > 0 ? "photo-uploader selected-div" : "photo-uploader")
 
         return (
@@ -83,13 +96,14 @@ class PhotosForm extends React.Component {
                         id="photo-upload" 
                         multiple 
                         required
+                        accept="image/*"
                         onChange={this.handlePhotoInput}/>
                 </div>
                 {previewImages}
 {/* 
                 <label htmlFor="caption">Caption</label>
                 <input type="text" id="caption"/> */}
-
+                {errors}
                 <button className="primary-cta">Upload</button>
                 <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>
             </form>

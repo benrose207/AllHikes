@@ -4,7 +4,7 @@ import { faRoute, faExchangeAlt, faRetweet, faMountain, faExpandArrowsAlt, faMap
 import HikeMap from "../maps/hike_map";
 import CreateReviewContainer from "../reviews/create_review_container";
 import ReviewFeed from "../reviews/review_feed";
-import PhotosForm from "../photos/photos_form";
+import PhotosFormContainer from "../photos/photos_form_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
 
 class HikeShow extends React.Component {
@@ -122,10 +122,9 @@ class HikeShow extends React.Component {
                             </div>
                         </div>
                         {this.state.reviewForm ? <CreateReviewContainer hikeId={hike.id} closeFormAction={this.reviewFormToggle}/> : null}
-                        {this.state.photosForm ? <PhotosForm 
+                        {this.state.photosForm ? <PhotosFormContainer 
                             hikeId={hike.id}
                             userId={this.props.currentUserId}
-                            createPhotos={this.props.createPhotos} 
                             closeFormAction={this.photosFormToggle}/> : null}
                     </>
                 ) : null}
