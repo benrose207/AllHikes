@@ -158,6 +158,8 @@ Taggable.create(tag_id: f7.id, taggable_id: h5.id, taggable_type: "Hike")
 Taggable.create(tag_id: f9.id, taggable_id: h5.id, taggable_type: "Hike")
 Taggable.create(tag_id: f10.id, taggable_id: h5.id, taggable_type: "Hike")
 
+Review.destroy_all
+
 r1 = Review.create(rating: 4, review_text: "This was a really nice hike, good mix of different terrains/scenery.  It was a bit damp when we went - was hoping for wildflowers but I think we were too early in the season.  I detracted one star because it took a lot longer than expected, and it was almost dark by the time we got back to our car.", activity_date: "2020-02-25", tag_ids: [a7.id, o4.id], user_id: u4.id, hike_id: h2.id)
 r2 = Review.create(rating: 5, review_text: "AMAZING HIKE!  I was looking for a romantic hike to take with my new girlfriend, and this totally fit the bill.  We packed our lunches and had a little picnic on the ridge.  She loves nature, and we saw a hawk and THREE RABBITS!  She said it was the most fun she’s ever had on a date :)", activity_date: "2018-06-29", tag_ids: [a7.id], user_id: u3.id, hike_id: h4.id)
 r3 = Review.create(rating: 1, review_text: "Was looking to take a nice meditative solo hike...this was not it.  Trail was really crowded and the family ahead of me kept whining about how hot it was.  I guess it might have been nice in a different season, but I would not recommend it in August.  I was so tired when I got to the top, and then realized I had forgotten my sandwich in the car.  Just my luck.  I somehow trudged all the way back, starving, and when I got back I had locked my keys in my car.  Luckily the annoying family was able to help me out.  But there are so many signs posted about not leaving food in your car (because of bears), I don’t get why there are no signs telling you not to leave your keys in the car.", activity_date: "2019-08-17", tag_ids: [a7.id, o12.id], user_id: u2.id, hike_id: h5.id)
@@ -168,3 +170,96 @@ r7 = Review.create(rating: 4, review_text: "Solid hike for families or beginners
 r8 = Review.create(rating: 5, review_text: "This. Hike. Has. Everything.  Water, wildlife, flowers, trees, views, and even some cool blazes.  I wanted to add my own blaze by carving my initials in a tree but my dad told me not to - lame.  Still, it was awesome to feel like a wilderness explorer with my pack and poles.", activity_date: "2019-06-18", tag_ids: [a7.id, o8.id, o7.id], user_id: u3.id, hike_id: h5.id)
 r9 = Review.create(rating: 1, review_text: "Ok first of all let me start by saying that I am not a nature gal.  I don’t like getting dirty, or sweating, or bugs.  Actually I don’t really like being outdoors.  So when my new boyfriend told me to pack sneakers for a surprise date, I was concerned to say the least.  Things didn’t improve when this huge brown bird with claws almost landed on my head.  My boo seemed excited about it though - and then he really freaked out when we saw some bunny rabbits which are basically rats without tails, ew.  I still don’t get hiking.  The best part of the day was the looooooong shower I took afterwards.", activity_date: "2018-06-29", tag_ids: [a7.id, o3.id, o4.id, o9.id], user_id: u2.id, hike_id: h4.id)
 r10 = Review.create(rating: 5, review_text: "This was just lovely.  The crisp October air and golden autumn light were truly magical.  Apart from several songbirds, I had the trail to myself.  I pondered, I strolled, I meditated on my life, I ambled along, and broke into a run when I reached the end.  I could hear rustling leaves in my head for days afterwards, and the peace this hike provided will not be easily forgotten.", activity_date: "2019-10-10", tag_ids: [a7.id], user_id: u4.id, hike_id: h1.id)
+
+
+Photo.destroy_all
+
+p1 = Photo.new(hike_id: h1.id, user_id: u1.id, caption: "View of Half Dome from above")
+pp1 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0703.JPG")
+p1.photo.attach(io: pp1, filename: "DSC_0703.JPG")
+p1.save
+
+p2 = Photo.new(hike_id: h1.id, user_id: u1.id)
+pp2 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0692.JPG")
+p2.photo.attach(io: pp2, filename: "DSC_0692.JPG")
+p2.save
+
+p3 = Photo.new(hike_id: h1.id, user_id: u1.id, caption: "Mt Hoffmann")
+pp3 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0700.JPG")
+p3.photo.attach(io: pp3, filename: "DSC_0700.JPG")
+p3.save
+
+p4 = Photo.new(hike_id: h1.id, user_id: u1.id, caption: "Still plenty of snow to be found")
+pp4 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0682.JPG")
+p4.photo.attach(io: pp4, filename: "DSC_0682.JPG")
+p4.save
+
+p5 = Photo.new(hike_id: h1.id, user_id: u4.id, caption: "Gorgeous view, and no one in sight")
+pp5 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0696.JPG")
+p5.photo.attach(io: pp5, filename: "DSC_0696.JPG")
+p5.save
+
+p6 = Photo.new(hike_id: h1.id, user_id: u4.id)
+pp6 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0694.JPG")
+p6.photo.attach(io: pp6, filename: "DSC_0694.JPG")
+p6.save
+
+p7 = Photo.new(hike_id: h3.id, user_id: u3.id)
+pp7 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0292.JPG")
+p7.photo.attach(io: pp7, filename: "DSC_0292.JPG")
+p7.save
+
+p8 = Photo.new(hike_id: h3.id, user_id: u3.id, caption: "View from the old mine at the top")
+pp8 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0282.JPG")
+p8.photo.attach(io: pp8, filename: "DSC_0282.JPG")
+p8.save
+
+p9 = Photo.new(hike_id: h3.id, user_id: u3.id)
+pp9 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0277.JPG")
+p9.photo.attach(io: pp9, filename: "DSC_0277.JPG")
+p9.save
+
+p10 = Photo.new(hike_id: h5.id, user_id: u2.id, caption: "Quite the intimidating name")
+pp10 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0174.JPG")
+p10.photo.attach(io: pp10, filename: "DSC_0174.JPG")
+p10.save
+
+p11 = Photo.new(hike_id: h5.id, user_id: u2.id)
+pp11 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0146.JPG")
+p11.photo.attach(io: pp11, filename: "DSC_0146.JPG")
+p11.save
+
+p12 = Photo.new(hike_id: h2.id, user_id: u4.id)
+pp12 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0255.JPG")
+p12.photo.attach(io: pp12, filename: "DSC_0255.JPG")
+p12.save
+
+p13 = Photo.new(hike_id: h2.id, user_id: u4.id, caption: "Spectacular view of Half Dome")
+pp13 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0228.JPG")
+p13.photo.attach(io: pp13, filename: "DSC_0228.JPG")
+p13.save
+
+p14 = Photo.new(hike_id: h2.id, user_id: u4.id)
+pp14 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0249.JPG")
+p14.photo.attach(io: pp14, filename: "DSC_0249.JPG")
+p14.save
+
+p15 = Photo.new(hike_id: h2.id, user_id: u4.id, caption: "Thought I was at the top... not quite")
+pp15 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0244.JPG")
+p15.photo.attach(io: pp15, filename: "DSC_0244.JPG")
+p15.save
+
+p16 = Photo.new(hike_id: h4.id, user_id: u1.id, caption: "A smokey day in the valley")
+pp16 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0204.JPG")
+p16.photo.attach(io: pp16, filename: "DSC_0204.JPG")
+p16.save
+
+p17 = Photo.new(hike_id: h4.id, user_id: u1.id)
+pp17 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0200.JPG")
+p17.photo.attach(io: pp17, filename: "DSC_0200.JPG")
+p17.save
+
+p18 = Photo.new(hike_id: h4.id, user_id: u1.id)
+pp18 = open("https://all-hikes-seeds.s3-us-west-1.amazonaws.com/DSC_0199.JPG")
+p18.photo.attach(io: pp18, filename: "DSC_0199.JPG")
+p18.save

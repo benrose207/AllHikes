@@ -5,8 +5,15 @@ class Api::PhotosController < ApplicationController
 
         @photos = []
 
-        photos.each do |photo|
-            new_photo = Photo.new(hike_id: params[:hike_id], user_id: params[:user_id], photo: photo)
+        photos.each_with_index do |photo, idx|
+            
+
+            new_photo = Photo.new(
+                hike_id: params[:hike_id], 
+                user_id: params[:user_id], 
+                caption: params["#{idx}"],
+                photo: photo)
+                
             @photos << new_photo
 
             unless new_photo.save

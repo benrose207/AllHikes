@@ -12,7 +12,19 @@ class PhotosModal extends React.Component {
         this.toggleForward = this.toggleForward.bind(this);
     }
 
-    toggleBack(e) {
+    componentDidMount() {
+        document.addEventListener('keydown', () => {
+            if (event.key === "ArrowRight") {
+                this.toggleForward();
+            } else if (event.key === "ArrowLeft") {
+                this.toggleBack();
+            } else if (event.key === "Escape") {
+                this.props.closeModal(null)();
+            }
+        })
+    }
+
+    toggleBack() {
         let newIndex = this.state.currentPhotoId - 1;
         if (this.state.currentPhotoId === 0) {
             newIndex = this.props.photos.length - 1
@@ -21,7 +33,7 @@ class PhotosModal extends React.Component {
         this.setState({currentPhotoId: newIndex })
     }
 
-    toggleForward(e) {
+    toggleForward() {
         let newIndex = this.state.currentPhotoId + 1;
         if (this.state.currentPhotoId === this.props.photos.length - 1) {
             newIndex = 0
@@ -50,7 +62,9 @@ class PhotosModal extends React.Component {
                         <FontAwesomeIcon icon={faAngleRight} />
                     </button>
                 </div>
-                <div className="modal-nav"></div>
+                <div className="modal-nav">
+                    <p>{photos[this.state.currentPhotoId].caption}</p>
+                </div>
             </div>
         )
     }

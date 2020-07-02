@@ -99,7 +99,7 @@ class HikeShow extends React.Component {
             </>
         );
 
-        const reviewContent = (
+        const hikeUserContent = (
             <>
                 <nav onClick={this.handleContentTabs} className="hike-tabs reviews" id="reviews">
                     <span 
@@ -211,7 +211,7 @@ class HikeShow extends React.Component {
                                 {contentTabs}
                             </section>
                             <section>
-                                {reviewContent}
+                                {hikeUserContent}
                             </section>
                         </article>
                         <aside className={`hike-sidebar${hikeMapClass}`}>

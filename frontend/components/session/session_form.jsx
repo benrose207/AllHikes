@@ -44,7 +44,7 @@ class SessionForm extends React.Component {
 
         const additionalFields = (submitText === "Sign up" ? (
             <>
-                <label>
+                <label className="text-field">
                     <input 
                         type="text"
                         placeholder="First name"
@@ -53,7 +53,7 @@ class SessionForm extends React.Component {
                         onChange={this.handleInput("first_name")}
                     />
                 </label>
-                <label>
+                <label className="text-field">
                     <input 
                         type="text"
                         placeholder="Last name"
@@ -80,7 +80,7 @@ class SessionForm extends React.Component {
                     <h1>{formTitle}</h1>
                     <form onSubmit={this.handleSubmit}>
                         {additionalFields}
-                        <label>
+                        <label className="text-field">
                             <input 
                                 type="text"
                                 placeholder="Email"
@@ -89,7 +89,7 @@ class SessionForm extends React.Component {
                                 onChange={this.handleInput("email")}
                             />
                         </label>
-                        <label>
+                        <label className="text-field">
                             <input 
                                 type="password"
                                 placeholder="Password"

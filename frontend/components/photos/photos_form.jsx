@@ -13,14 +13,25 @@ class PhotosForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handlePhotoInput = this.handlePhotoInput.bind(this);
+        this.handleCaptions = this.handleCaptions.bind(this);
+    }
+
+    handleCaptions(e) {
+        const newKey = e.target.dataset.id
+        this.setState({ [newKey]: e.target.value })
     }
 
     handlePhotoInput(e) {
         const files = Object.values(e.currentTarget.files)
+
+        if (files.length > 5) {
+            alert("Please upload 5 or fewer files");
+            return
+        }
         
         const processPhoto = (photo) => {
             if ((photo.size/1024/1024).toFixed(4) > 3) {
-                alert("Only enter files smaller than 3MB")
+                alert("Only enter files smaller than 3MB");
                 return
             }
 
@@ -54,6 +65,7 @@ class PhotosForm extends React.Component {
 
         for (let i = 0; i < photos.length; i++) {
             formData.append('photos[]', photos[i]);
+            if (this.state[i] !== undefined) formData.append(`${i}`, this.state[i]);
         }
 
         $(document).ajaxStart(() => {
@@ -69,7 +81,6 @@ class PhotosForm extends React.Component {
     }
 
     render () {
-
         const previewImages = ( this.state.photoUrls.length > 0 ? (
             <>
                 <button 
@@ -79,9 +90,18 @@ class PhotosForm extends React.Component {
 
                 <div>
                     {this.state.photoUrls.map((url, idx) => (
-                        <picture key={idx} className="preview-image">
-                            <img src={url} alt="preview image"/>
-                        </picture>
+                        <div key={idx}>
+                            <picture className="preview-image">
+                                <img src={url} alt="preview image"/>
+                            </picture>
+                            <label htmlFor={`caption-${idx}`} >Caption</label>
+                            <input 
+                                type="text" 
+                                id={`caption-${idx}`} 
+                                data-id={idx} 
+                                className="text-field"
+                                onChange={this.handleCaptions}/>
+                        </div>
                     ))}
                 </div>
             </>
@@ -114,9 +134,6 @@ class PhotosForm extends React.Component {
                             onChange={this.handlePhotoInput}/>
                     </div>
                     {previewImages}
-    {/* 
-                    <label htmlFor="caption">Caption</label>
-                    <input type="text" id="caption"/> */}
                     {errors}
                     <button className="primary-cta">Upload</button>
                     <a className="tag" onClick={this.props.closeFormAction}>Cancel</a>

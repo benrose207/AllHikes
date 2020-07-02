@@ -83,7 +83,7 @@ footer {
 //forms
 
 textarea {
-    border: 1px solid $lighterGrey;
+    border: $inputBorder;
 }
 
 .form-errors {
@@ -91,6 +91,21 @@ textarea {
     color: red;
     font-weight: 500;
     margin-bottom: 15px;
+}
+
+.text-field {
+    border: $inputBorder;
+    border-radius: 8px;
+    cursor: text;
+    width: 100%;
+}
+
+.text-field:hover {
+    border: 1px solid $green;
+}
+
+.text-field:focus-within {
+    border: 2px solid $green;
 }
 
 //review stars

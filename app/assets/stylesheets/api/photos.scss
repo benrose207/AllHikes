@@ -12,7 +12,7 @@
 
 .photo-uploader {
     display: flex;
-    border: 1px solid $lighterGrey;
+    border: $inputBorder;
     margin: 10px 0;
     border-radius: 8px;
     width: 100%;
@@ -33,6 +33,11 @@
     opacity: 0;
     position: absolute;
     z-index: -1;
+}
+
+.review-photo-form .text-field {
+    padding: 10px;
+    margin: 10px 0;
 }
 
 .cancel-button {
@@ -73,6 +78,7 @@
 .photo-feed-item {
     width: 140px;
     margin: 3px 5px;
+    cursor: pointer;
 }
 
 .photo-feed-item img {
@@ -135,4 +141,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.modal-nav p {
+    margin: 20px;
+    color: $lighterGrey;
 }

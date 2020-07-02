@@ -33,7 +33,7 @@ class PhotoFeed extends React.Component {
     render () {
         return (
             <>
-                { this.state.clickedPhotoId ? 
+                { this.state.clickedPhotoId !== null ? 
                     <PhotosModal 
                         photos={this.props.photos} 
                         initialPhotoId={parseInt(this.state.clickedPhotoId)}
