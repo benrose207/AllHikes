@@ -11,7 +11,7 @@ class ReviewForm extends React.Component {
     }
 
     handleTagSelection(e) {
-        const selectedTag = e.target.dataset.tagid;
+        const selectedTag = parseInt(e.target.dataset.tagid);
         let newValue = this.state.tag_ids;
         
         if (this.state.tag_ids.includes(selectedTag)) {
@@ -25,7 +25,10 @@ class ReviewForm extends React.Component {
 
     handleInput(field) {
         return (e) => {
-            this.setState({ [field]: e.target.value });
+            let newValue = e.target.value;
+            if (field === "selectedActivity") newValue = parseInt(newValue);
+
+            this.setState({ [field]: newValue });
         }
     }
 
