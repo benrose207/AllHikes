@@ -28,6 +28,7 @@
 node_modules/
 bundle.js
 bundle.js.map
+demo/
 
 # Ignore application configuration
 /config/application.yml
