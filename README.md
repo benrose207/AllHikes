@@ -72,3 +72,7 @@ Those photos can then be viewed on that hike page, or in the user's profile alon
 
 ![photos feature part 1](/demo/photos_feature_2.gif)
 
+---
+### Future Features
+* Parks - containing data about the park itself, as well as a filterable list of hikes in that park
+* Search - both text and map-based search to find any given hike
