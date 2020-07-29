@@ -6,6 +6,11 @@
     <%= csp_meta_tag %>
     
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property='og:title' content='AllHikes' />
+    <meta property='og:image' content='' />
+    <meta property='og:description' content='Find detailed information about hikes that interest you, as well as add reviews and photos of hikes you have completed.' />
+    <meta property='og:url' content='https://all-hikes.herokuapp.com' />
+
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
@@ -14,6 +19,7 @@
         window.mapboxAPIKey = "<%= Rails.application.credentials.mapbox[:api_key] %>"
     </script>
 
+    <%= favicon_link_tag asset_path('favicon.ico') %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
