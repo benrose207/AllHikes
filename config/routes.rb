@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:create, :update, :destroy]
 
     resources :photos, only: :create
+
+    resources :searches, only: :index
   end
 
 end
