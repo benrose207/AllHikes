@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
 
 class TextSearch extends React.Component {
     constructor(props) {
@@ -24,11 +26,15 @@ class TextSearch extends React.Component {
         ));
 
         return (
-            <div>
-                <form onSubmit={this.search}>
+            <div className="text-search-home">
+                <form onSubmit={this.search} className="text-search">
+                    <label htmlFor="home-search-bar">
+                        <FontAwesomeIcon icon={faSearch} />
+                    </label>
                     <input
+                        id="home-search-bar"
                         type="text"
-                        placeholder="Enter a City, Park, or Trail Name"
+                        placeholder="Enter a city, park, or trail name"
                         onChange={this.handleInput}
                     />
                     <button>Search</button>
