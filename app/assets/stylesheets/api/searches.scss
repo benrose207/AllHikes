@@ -1,3 +1,78 @@
 // Place all the styles related to the api/Searches controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Homepage search bar
+
+.text-search-home {
+    width: 80%;
+    margin: 40px auto;
+    font-size: 24px;
+}
+
+.text-search {
+    display: flex;
+    background-color: white;
+    background-clip: padding-box;
+}
+
+.text-search label {
+    padding: 20px;
+    color: $grey;
+    cursor: text;
+}
+
+.text-search input {
+    width: 100%;
+    text-align: left;
+    color: $darkGrey;
+}
+
+.text-search > button {
+    padding: 20px 30px;
+    background-color: $ctaGreen;
+    border-top-right-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+.text-search-home > .text-search {
+    border-radius: 6px;
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, .45);
+}
+
+// homepage search results
+
+.search-results-home {
+    background-color: white;
+    color: $darkGrey;
+    font-size: 16px;
+    text-align: left;
+    border: $contentBorder;
+    padding: 4px 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+.search-result {
+    display: flex;
+    align-items: center;
+    padding: 4px 8px;
+}
+
+.search-result > svg {
+    background-color: $ctaGreen;
+    color: white;
+    padding: 8px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+
+.search-result:hover {
+    background-color: $ctaGreen;
+    color: white;
+}
+
+.search-result:hover > svg {
+    background-color: white;
+    color: $ctaGreen;
+}

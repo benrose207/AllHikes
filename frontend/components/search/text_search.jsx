@@ -1,7 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import SearchResults from "./search_results";
 
 class TextSearch extends React.Component {
     constructor(props) {
@@ -17,13 +17,11 @@ class TextSearch extends React.Component {
     }
 
     search() {
+        event.preventDefault();
         this.props.fetchSearchResults(this.state.queryStr);
     }
 
     render() {
-        const results = this.props.searchResults.map(searchResult => (
-            <li key={`${searchResult.type}-${searchResult.id}`}><Link to={`/hikes/${searchResult.id}`}>{searchResult.name}</Link></li>
-        ));
 
         return (
             <div className="text-search-home">
@@ -34,14 +32,12 @@ class TextSearch extends React.Component {
                     <input
                         id="home-search-bar"
                         type="text"
-                        placeholder="Enter a city, park, or trail name"
+                        placeholder="Enter a park or trail name"
                         onChange={this.handleInput}
                     />
                     <button>Search</button>
                 </form>
-                <ul>
-                    {results}
-                </ul>
+                <SearchResults searchResults={this.props.searchResults} />
             </div>
         )
     }
