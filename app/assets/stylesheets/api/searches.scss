@@ -2,22 +2,29 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-// Homepage search bar
+.sub-nav {
+    width: 950px;
+    margin: 0 auto;
+    margin-top: 10px;
+    display: flex;
+    justify-content: flex-end;
+    font-family: $headerFont;
+}
 
-.text-search-home {
-    width: 80%;
-    margin: 40px auto;
-    font-size: 24px;
+// Shared Search Bar\
+
+div[class^="text-search-"] {
+    position: relative;
 }
 
 .text-search {
     display: flex;
     background-color: white;
     background-clip: padding-box;
+    border-radius: 6px;
 }
 
 .text-search label {
-    padding: 20px;
     color: $grey;
     cursor: text;
 }
@@ -29,29 +36,54 @@
 }
 
 .text-search > button {
-    padding: 20px 30px;
     background-color: $ctaGreen;
+}
+
+// Homepage search bar
+
+.text-search-home {
+    width: 80%;
+    margin: 40px auto;
+    font-size: 24px;
+}
+
+.text-search-home > .text-search {
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, .45);
+}
+
+.text-search-home label {
+    padding: 20px;
+}
+
+.text-search-home button {
+    padding: 20px 30px;
     border-top-right-radius: 6px;
     border-bottom-right-radius: 6px;
 }
 
-.text-search-home > .text-search {
-    border-radius: 6px;
-    box-shadow: 0 0 0 15px rgba(255, 255, 255, .45);
+// Hike search bar
+
+.text-search-hike {
+    width: 40%;
+    font-size: 14px;
 }
 
-// homepage search results
-
-.search-results-home {
-    background-color: white;
-    color: $darkGrey;
-    font-size: 16px;
-    text-align: left;
+.text-search-hike > .text-search {
     border: $contentBorder;
-    padding: 4px 0;
-    border-bottom-right-radius: 8px;
-    border-bottom-left-radius: 8px;
 }
+
+.text-search-hike button {
+    color: white;
+    padding: 10px 15px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.text-search-hike input {
+    padding-left: 10px;
+}
+
+// Shared search results
 
 .search-result {
     display: flex;
@@ -75,4 +107,26 @@
 .search-result:hover > svg {
     background-color: white;
     color: $ctaGreen;
+}
+
+ul[class^="search-results"] {
+    border: $contentBorder;
+    background-color: white;
+    color: $darkGrey;
+    text-align: left;
+    padding: 4px 0;
+    border-bottom-right-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+// homepage search results
+
+.search-results-home {
+    font-size: 16px;
+}
+
+// hike search results
+
+.search-results-hike {
+    font-size: 12px;
 }

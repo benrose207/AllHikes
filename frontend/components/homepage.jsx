@@ -10,7 +10,7 @@ const HomePage = (props) => {
             <div className="homepage-hero">
                 <div className="hero-content">
                     <h1>Find your next favorite hike</h1>
-                    <TextSearchContainer />
+                    <TextSearchContainer parentName="home"/>
                 </div>
             </div>
             <section className="homepage-subcontent">

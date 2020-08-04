@@ -7,6 +7,7 @@ import CreateReviewContainer from "../reviews/create_review_container";
 import ReviewFeed from "../reviews/review_feed";
 import PhotosFormContainer from "../photos/photos_form_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
+import TextSearchContainer from "../search/text_search_container";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -133,61 +134,66 @@ class HikeShow extends React.Component {
         if (this.state.mapView) hikeMapClass = " hike-map-view";
         
         return (
-            <div className="hike-with-map">
-                <main className={`hike-container${hikeMapClass}`}>
-                    <div className={`hike-detail-nav${hikeMapClass}`}>
-                        <div onClick={this.mapToggle}>Return to Hike Details
-                            <FontAwesomeIcon icon={faExpandArrowsAlt} />
+            <>
+                <div className="sub-nav">
+                    <TextSearchContainer parentName="hike"/>
+                </div>
+                <div className="hike-with-map">
+                    <main className={`hike-container${hikeMapClass}`}>
+                        <div className={`hike-detail-nav${hikeMapClass}`}>
+                            <div onClick={this.mapToggle}>Return to Hike Details
+                                <FontAwesomeIcon icon={faExpandArrowsAlt} />
+                            </div>
                         </div>
-                    </div>
-                    <div className="hike-hero">
-                        <div className="hike-hero-content">
-                            <h1>{hike.name}</h1>
-                            <div className="hike-hero-info">
-                                <span className={hikeDifficulty}>{hike.difficulty}</span>
-                                <div>
-                                    {reviewStars}
+                        <div className="hike-hero">
+                            <div className="hike-hero-content">
+                                <h1>{hike.name}</h1>
+                                <div className="hike-hero-info">
+                                    <span className={hikeDifficulty}>{hike.difficulty}</span>
+                                    <div>
+                                        {reviewStars}
+                                    </div>
+                                    <p>({reviewCount})</p>
                                 </div>
-                                <p>({reviewCount})</p>
                             </div>
+                            <picture>
+                                <img src={hike.coverPhotoUrl} alt="mt hoffmann hike" />
+                            </picture>
                         </div>
-                        <picture>
-                            <img src={hike.coverPhotoUrl} alt="mt hoffmann hike" />
-                        </picture>
-                    </div>
-                    <div className="hike-actions">
-                        <ul>
-                            <li>
-                                <a href={`https://www.google.com/maps/dir/Current+Location/${hike.lat},${hike.lng}`} target="_blank" className="hike-action-link">
-                                    <FontAwesomeIcon icon={faMapSigns} />
-                                    <p>Directions</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div className="hike-main">
-                        <article className="hike-main-content">
-                            <HikePrimaryContent hike={hike} tags={tags}/>
-                            <section className="hike-content">
-                                {contentTabs}
-                            </section>
-                            <section>
-                                {hikeUserContent}
-                            </section>
-                        </article>
-                        <aside className={`hike-sidebar${hikeMapClass}`}>
-                            <div onClick={this.mapToggle} className="map-preview">
-                                <FontAwesomeIcon icon={faExpandArrowsAlt}/>
-                                <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${hike.lng},${hike.lat})/${hike.lng},${hike.lat},13,0/400x400@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview"/>
-                                <span>View Full Map</span>
-                            </div>
-                        </aside>
-                    </div>
-                </main>
-                <section className={`hike-map${hikeMapClass}`}>
-                    {this.state.mapView ? <HikeMap hike={hike} /> : null}
-                </section>
-            </div>
+                        <div className="hike-actions">
+                            <ul>
+                                <li>
+                                    <a href={`https://www.google.com/maps/dir/Current+Location/${hike.lat},${hike.lng}`} target="_blank" className="hike-action-link">
+                                        <FontAwesomeIcon icon={faMapSigns} />
+                                        <p>Directions</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div className="hike-main">
+                            <article className="hike-main-content">
+                                <HikePrimaryContent hike={hike} tags={tags}/>
+                                <section className="hike-content">
+                                    {contentTabs}
+                                </section>
+                                <section>
+                                    {hikeUserContent}
+                                </section>
+                            </article>
+                            <aside className={`hike-sidebar${hikeMapClass}`}>
+                                <div onClick={this.mapToggle} className="map-preview">
+                                    <FontAwesomeIcon icon={faExpandArrowsAlt}/>
+                                    <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${hike.lng},${hike.lat})/${hike.lng},${hike.lat},13,0/400x400@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview"/>
+                                    <span>View Full Map</span>
+                                </div>
+                            </aside>
+                        </div>
+                    </main>
+                    <section className={`hike-map${hikeMapClass}`}>
+                        {this.state.mapView ? <HikeMap hike={hike} /> : null}
+                    </section>
+                </div>
+            </>
         )
     }
 }
