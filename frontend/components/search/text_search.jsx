@@ -64,6 +64,7 @@ class TextSearch extends React.Component {
                             searchResults={this.props.searchResults}
                             fetchSearchResults={this.props.fetchSearchResults}
                             parentName={this.props.parentName}
+                            currentQuery={this.state.queryStr}
                         />
                     ) : null}
                 </div>

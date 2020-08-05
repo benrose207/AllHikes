@@ -14,7 +14,8 @@ class SearchResults extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchSearchResults("");
+        const { searchResults, currentQuery } = this.props;
+        if (!searchResults.length && currentQuery.length === 0) this.props.fetchSearchResults("");
     }
     
     render() {        

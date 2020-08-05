@@ -3,12 +3,18 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sub-nav {
-    width: 950px;
-    margin: 0 auto;
-    margin-top: 10px;
+    width: 70%;
+    max-width: 950px;
+    margin: 10px auto;
     display: flex;
     justify-content: flex-end;
     font-family: $headerFont;
+}
+
+.sub-nav.hike-map-view {
+    width: 98%;
+    max-width: none;
+    margin: 10px 20px;
 }
 
 // Shared Search Bar\
@@ -83,7 +89,22 @@ div[class^="text-search-"] {
     padding-left: 10px;
 }
 
+.text-search-hike:focus-within > .text-search {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.text-search-hike:focus-within button {
+    border-bottom-right-radius: 0;
+}
+
 // Shared search results
+
+.search-results-container {
+    position: absolute;
+    z-index: 5;
+    width: 100%;
+}
 
 .search-result {
     display: flex;
@@ -127,6 +148,8 @@ ul[class^="search-results"] {
 
 // hike search results
 
-.search-results-hike {
+ul.search-results-hike {
     font-size: 12px;
+    border-top: none;
+    // border-top: 1px solid white;
 }

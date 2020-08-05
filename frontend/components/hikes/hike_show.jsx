@@ -135,7 +135,7 @@ class HikeShow extends React.Component {
         
         return (
             <>
-                <div className="sub-nav">
+                <div className={`sub-nav${hikeMapClass}`}>
                     <TextSearchContainer parentName="hike"/>
                 </div>
                 <div className="hike-with-map">

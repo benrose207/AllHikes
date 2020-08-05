@@ -3,6 +3,7 @@ import { ScrollToTopOnMount } from "../../util/route_util";
 import UserDetail from "./user_detail";
 import ReviewFeedContainer from "../reviews/review_feed_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
+import TextSearchContainer from "../search/text_search_container";
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -27,6 +28,10 @@ class UserProfile extends React.Component {
         const EditProfileButton = (<button className="secondary-cta">Edit Profile</button>)
 
         return (
+            <>
+            <div className="sub-nav">
+                <TextSearchContainer parentName="hike" />
+            </div>
             <div className="primary-content">
                 <ScrollToTopOnMount />
                 <ul className="user-tabs">
@@ -54,6 +59,7 @@ class UserProfile extends React.Component {
                     </section>
                 </main>
             </div>
+            </>
         );
     }
 }

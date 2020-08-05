@@ -1,7 +1,7 @@
 
 .hike-container {
     width: 100%;
-    margin: 10px auto 20px auto;
+    margin: 0 auto 20px auto;
     border: $contentBorder;
     background-color: $lightGrey;
 }
@@ -321,7 +321,8 @@ aside.hike-map-view {
     }
 
     .hike-container {
-        width: 950px;
+        width: 70%;
+        max-width: 950px;
         border-radius: 8px;
         overflow:hidden
     }
