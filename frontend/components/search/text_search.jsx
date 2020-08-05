@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
 import SearchResults from "./search_results";
+import debounce from "lodash.debounce";
 
 class TextSearch extends React.Component {
     constructor(props) {
@@ -10,10 +11,15 @@ class TextSearch extends React.Component {
             queryStr: "",
             focused: false
         }
-        this.search = this.search.bind(this);
+
+        this.search = debounce(this.search, 200).bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    componentWillUnmount() {
+        if (this.props.SearchResults.length > 0) this.props.clearSearchResults();
     }
 
     handleInput(e) {
@@ -22,7 +28,6 @@ class TextSearch extends React.Component {
     }
 
     search() {
-        event.preventDefault();
         this.props.fetchSearchResults(this.state.queryStr);
     }
 
