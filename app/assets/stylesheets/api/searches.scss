@@ -42,6 +42,7 @@ div[class^="text-search-"] {
 }
 
 .text-search > button {
+    color: white;
     background-color: $ctaGreen;
 }
 
@@ -79,7 +80,6 @@ div[class^="text-search-"] {
 }
 
 .text-search-hike button {
-    color: white;
     padding: 10px 15px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
@@ -151,5 +151,4 @@ ul[class^="search-results"] {
 ul.search-results-hike {
     font-size: 12px;
     border-top: none;
-    // border-top: 1px solid white;
 }

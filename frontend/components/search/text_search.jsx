@@ -19,7 +19,7 @@ class TextSearch extends React.Component {
     }
 
     componentWillUnmount() {
-        if (this.props.SearchResults.length > 0) this.props.clearSearchResults();
+        if (this.props.searchResults.length > 0) this.props.clearSearchResults();
     }
 
     handleInput(e) {
