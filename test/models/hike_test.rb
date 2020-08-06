@@ -16,6 +16,7 @@
 #  elevation_gain :integer
 #  route_type     :string           not null
 #  waypoints      :text             not null
+#  park_id        :integer          not null
 #
 require 'test_helper'
 

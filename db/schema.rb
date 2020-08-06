@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_30_173438) do
+ActiveRecord::Schema.define(version: 2020_08_06_213801) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,7 +50,33 @@ ActiveRecord::Schema.define(version: 2020_06_30_173438) do
     t.integer "elevation_gain"
     t.string "route_type", null: false
     t.text "waypoints", null: false
+    t.integer "park_id", null: false
     t.index ["name"], name: "index_hikes_on_name", unique: true
+    t.index ["park_id"], name: "index_hikes_on_park_id"
+  end
+
+  create_table "locations", force: :cascade do |t|
+    t.string "city", null: false
+    t.string "state", null: false
+    t.string "country", null: false
+    t.integer "locationable_id", null: false
+    t.string "locationable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["locationable_id", "locationable_type"], name: "index_locations_on_locationable_id_and_locationable_type", unique: true
+  end
+
+  create_table "parks", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "acreage"
+    t.string "contact"
+    t.text "description", null: false
+    t.text "summary", null: false
+    t.string "park_type"
+    t.float "lat", null: false
+    t.float "lng", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "photos", force: :cascade do |t|

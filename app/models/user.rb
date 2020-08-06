@@ -25,6 +25,8 @@ class User < ApplicationRecord
 
     has_one_attached :profilePicture
 
+    has_one :location, :as => :locationable
+
     has_many :reviews,
         foreign_key: :user_id,
         class_name: :Review,

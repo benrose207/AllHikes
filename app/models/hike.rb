@@ -16,6 +16,7 @@
 #  elevation_gain :integer
 #  route_type     :string           not null
 #  waypoints      :text             not null
+#  park_id        :integer          not null
 #
 class Hike < ApplicationRecord
 
@@ -25,6 +26,14 @@ class Hike < ApplicationRecord
     validates :route_type, inclusion: { in: ["Out & Back", "Loop", "Point-to-Point"] }
 
     has_one_attached :coverPhoto
+
+    belongs_to :park,
+        foreign_key: :park_id,
+        class_name: :Park
+
+    has_one :location,
+        through: :park,
+        source: :location
 
     has_many :taggables, :as => :taggable
 
