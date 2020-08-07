@@ -25,6 +25,11 @@ class Hike < ApplicationRecord
     validates :usage, inclusion: { in: ["light", "moderate", "heavy", "extra heavy"] }
     validates :route_type, inclusion: { in: ["Out & Back", "Loop", "Point-to-Point"] }
 
+    scope :filter_by_difficulty, -> (difficulty) { where(difficulty: difficulty.split(",")) if difficulty.present? }
+    scope :filter_by_route_type, -> (route_type) { where(route_type: route_type.split(",")) if route_type.present? }
+    scope :filter_by_rating, -> (rating) { joins(:reviews).having("AVG(reviews.rating) >= ?", rating) if rating.present? }
+    scope :filter_by_usage, -> (usage) { where(usage: usage.split(",")) if usage.present? }
+
     has_one_attached :coverPhoto
 
     belongs_to :park,

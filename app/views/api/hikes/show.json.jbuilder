@@ -1,6 +1,9 @@
 json.hike do 
     json.extract! @hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage, :distance, :elevation_gain, :route_type, :waypoints
     json.coverPhotoUrl url_for(@hike.coverPhoto)
+    json.city @hike.location.city
+    json.state @hike.location.state
+    json.country @hike.location.country
 end
 
 json.taggable do
