@@ -1,5 +1,8 @@
 json.park do 
     json.extract! @park, :id, :name, :acreage, :contact, :description, :summary, :park_type, :lat, :lng
+    json.city @park.location.city
+    json.state @park.location.state
+    json.country @park.location.country
 end
 
 json.hikes do 

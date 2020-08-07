@@ -5,9 +5,11 @@ import tagsReducer from "./tags_reducer";
 import taggableReducer from "./taggable_reducer";
 import reviewsReducer from "./reviews_reducer";
 import photosReducer from "./photos_reducer";
+import parksReducer from "./parks_reducer";
 
 const entitiesReducer = combineReducers({
     hikes: hikesReducer,
+    parks: parksReducer,
     users: usersReducer,
     reviews: reviewsReducer,
     photos: photosReducer,
