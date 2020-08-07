@@ -1,16 +1,8 @@
-import { RECEIVE_SEARCH_RESULTS, CLEAR_SEARCH_RESULTS } from "../actions/search_actions";
+import { combineReducers } from 'redux';
+import textSearchResultsReducer from "./text_search_results_reducer";
 
-const searchResultsReducer = (state = [], action) => {
-    Object.freeze(state);
-    
-    switch (action.type) {
-        case RECEIVE_SEARCH_RESULTS:
-            return action.searchResults;
-        case CLEAR_SEARCH_RESULTS:
-            return [];
-        default:
-            return state;
-    }
-};
+const searchResultsReducer = combineReducers({
+    textSearchResults: textSearchResultsReducer
+});
 
 export default searchResultsReducer;

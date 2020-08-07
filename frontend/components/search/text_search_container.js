@@ -2,9 +2,9 @@ import { connect } from 'react-redux';
 import TextSearch from "./text_search";
 import { fetchSearchResults, clearSearchResults } from "../../actions/search_actions";
 
-const mapStateToProps = state => {
+const mapStateToProps = ({ searchResults }) => {
     return {
-        searchResults: state.searchResults
+        searchResults: searchResults.textSearchResults
     }
 }
 
