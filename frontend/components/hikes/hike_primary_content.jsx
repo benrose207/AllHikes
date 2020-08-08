@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faRoute, faExchangeAlt, faRetweet, faMountain } from "@fortawesome/free-solid-svg-icons";
 
 const HikePrimaryContent = ({hike, tags}) => {
-
     const features = tags.filter(tag => tag.tagType === "feature");
     const feature = features[Math.floor(Math.random() * features.length)].name;
     const featureDescription = (feature[feature.length - 1] === "s" || feature === "wildlife" ?

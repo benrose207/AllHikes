@@ -8,7 +8,7 @@ end
 json.hikes do 
     @hikes.each do |hike|
         json.set! hike.id do 
-            json.extract! hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage, :distance, :elevation_gain, :route_type, :waypoints, :avg_rating, :num_reviews
+            json.extract! hike, :id, :name, :description, :contact, :lat, :lng, :difficulty, :usage, :distance, :elevation_gain, :route_type, :waypoints, :avg_rating, :num_reviews, :sum_ratings, :park_id
             json.coverPhotoUrl url_for(hike.coverPhoto)
         end
     end

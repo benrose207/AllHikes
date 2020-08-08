@@ -9,6 +9,7 @@ import SignupFormContainer from "./session/signup_form_container";
 import UserProfileContainer from "./users/user_profile_container";
 import HikeShowContainer from "./hikes/hike_show_container";
 import EditReviewContainer from "./reviews/edit_review_container";
+import ParkShowContainer from "./parks/park_show_container";
 
 const App = () => {
     return (
@@ -20,7 +21,8 @@ const App = () => {
             <div className="content">
                 <Route exact path="/" component={HomePage} />            
                 <Route path="/hikes/:hikeId" render={(props) => (
-                    <HikeShowContainer key={props.match.params.hikeId} {...props}/> )}/>
+                    <HikeShowContainer key={props.match.params.hikeId} {...props} />)} />
+                <Route path="/parks/:parkId" component={ParkShowContainer}/>
                 <ProtectedRoute path="/my/reviews/:reviewId/edit" component={EditReviewContainer}/>
                 <AuthRoute path="/login" component={LoginFormContainer} />
                 <AuthRoute path="/signup" component={SignupFormContainer} />

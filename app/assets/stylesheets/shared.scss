@@ -12,6 +12,18 @@ footer {
   flex-shrink: 0;
 }
 
+.primary-content {
+    width: 100%;
+    margin: 0 auto 20px auto;
+}
+
+@media only screen and (min-device-width: 800px) {
+    .primary-content {
+        width: 70%;
+        max-width: 950px;
+    }
+}
+
 // button styling
 
 .primary-cta {
@@ -78,6 +90,10 @@ footer {
 
 .hidden {
     display: none;
+}
+
+.header-text {
+    color: $darkGrey
 }
 
 //forms

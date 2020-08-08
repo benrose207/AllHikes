@@ -50,3 +50,11 @@ export const defaultActivity = (state) => {
     const activity = Object.values(state.entities.tags).find(tag => tag.name === "hiking");
     return activity.id;
 }
+
+export const parkHikes = ({ entities }, parkId) => {
+    const hikes = Object.values(entities.hikes).filter(hike => hike.parkId === parseInt(parkId));
+    const totalReviews = hikes.reduce((acc, hike) => acc + hike.numReviews, 0);
+    const totalRatings = hikes.reduce((acc, hike) => acc + hike.sumRatings, 0);
+    // debugger
+    return { hikes: hikes, totalReviews: totalReviews, avgRating: totalRatings / totalReviews } 
+}

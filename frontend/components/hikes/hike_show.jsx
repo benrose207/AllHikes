@@ -61,7 +61,7 @@ class HikeShow extends React.Component {
     }
 
     render () {
-        if (!this.props.hike) return null;
+        if (!this.props.hike || !this.props.tags.length) return null;
 
         const { hike, tags, reviewCount, avgRating } = this.props;
         const { activeUserContent } = this.state;
@@ -139,7 +139,7 @@ class HikeShow extends React.Component {
                     <TextSearchContainer parentName="hike"/>
                 </div>
                 <div className="hike-with-map">
-                    <main className={`hike-container${hikeMapClass}`}>
+                    <main className={`primary-content hike-container${hikeMapClass}`}>
                         <div className={`hike-detail-nav${hikeMapClass}`}>
                             <div onClick={this.mapToggle}>Return to Hike Details
                                 <FontAwesomeIcon icon={faExpandArrowsAlt} />
