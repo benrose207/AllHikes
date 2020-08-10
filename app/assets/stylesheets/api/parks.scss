@@ -54,3 +54,36 @@
         border-radius: 12px;
     }
 }
+
+.park-actions {
+    display: flex;
+    padding: 5px 10%;
+}
+
+.park-action {
+    display: flex;
+    align-items: center;
+    color: $ctaGreen;
+
+    svg {
+        font-size: 1.5rem;
+        padding: 18px;
+        border-radius: 50%;
+        margin-right: 15px;
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.23), 0 0 8px 0 rgba(0,0,0,.08);
+        transform: scale(1);
+        transition: transform 0.4s;
+    }
+}
+
+.park-action:hover {
+    
+    svg {
+        transform: scale(1.12);
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.44), 0 0 8px 0 rgba(0,0,0,.08);
+    }
+
+    p {
+        color: $buttonHoverGreen;
+    }
+}

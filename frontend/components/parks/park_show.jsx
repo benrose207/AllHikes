@@ -1,5 +1,7 @@
 import React from "react";
 import TextSearchContainer from "../search/text_search_container";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMapSigns } from "@fortawesome/free-solid-svg-icons";
 
 class ParkShow extends React.Component {
     constructor(props) {
@@ -48,6 +50,14 @@ class ParkShow extends React.Component {
                     <div className="park-static-map">
                         <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/750x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
                     </div>
+                    <section className="park-actions">
+                        <div>
+                            <a href={`https://www.google.com/maps/dir/Current+Location/${park.lat},${park.lng}`} target="_blank" className="park-action">
+                                <FontAwesomeIcon icon={faMapSigns} />
+                                <p>Directions</p>
+                            </a>
+                        </div>
+                    </section>
                     <section className="park-information">
                         <h3 className="header-text">Park Information</h3>
                         <div className="park-information-details">
