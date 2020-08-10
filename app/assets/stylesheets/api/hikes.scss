@@ -55,17 +55,17 @@
     background-color: $backgroundGreen;
 }
 
-.hike-hero-info {
+.page-summary-info {
     display: flex;
     align-items: center;
     font-size: 12px;
 }
 
-.hike-hero-info > * {
+.page-summary-info > * {
     margin-right: 10px;
 }
 
-.hike-hero-info .star::before {
+.page-summary-info .star::before {
     font-size: 16px;
     margin: 0 3px;
 }

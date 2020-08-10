@@ -53,8 +53,20 @@ export const defaultActivity = (state) => {
 
 export const parkHikes = ({ entities }, parkId) => {
     const hikes = Object.values(entities.hikes).filter(hike => hike.parkId === parseInt(parkId));
-    const totalReviews = hikes.reduce((acc, hike) => acc + hike.numReviews, 0);
-    const totalRatings = hikes.reduce((acc, hike) => acc + hike.sumRatings, 0);
-    // debugger
-    return { hikes: hikes, totalReviews: totalReviews, avgRating: totalRatings / totalReviews } 
+
+    let totalReviews = 0;
+    let totalRatings = 0;
+    let photos = [];
+    hikes.forEach(hike => {
+        totalReviews += hike.numReviews;
+        totalRatings += hike.sumRatings;
+        photos.push(hike.coverPhoto);
+    })
+
+    return {
+        hikes: hikes,
+        totalReviews: totalReviews,
+        avgRating: totalRatings / totalReviews,
+        photos: photos
+    } 
 }

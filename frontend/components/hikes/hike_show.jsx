@@ -148,7 +148,7 @@ class HikeShow extends React.Component {
                         <div className="hike-hero">
                             <div className="hike-hero-content">
                                 <h1>{hike.name}</h1>
-                                <div className="hike-hero-info">
+                                <div className="page-summary-info">
                                     <span className={hikeDifficulty}>{hike.difficulty}</span>
                                     <div>
                                         {reviewStars}
