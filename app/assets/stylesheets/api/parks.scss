@@ -42,3 +42,15 @@
         margin-bottom: 20px;
     }
 }
+
+.park-static-map {
+    height: 240px;
+    max-width: 750px;
+    margin: 20px 0;
+    
+    img {
+        height: 100%;
+        width: 100%;
+        border-radius: 12px;
+    }
+}

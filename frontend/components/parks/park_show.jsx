@@ -12,15 +12,23 @@ class ParkShow extends React.Component {
 
     render() {
         if (!this.props.park) return null
-        const { park, totalReviews, avgRating } = this.props;
+        const { park, totalReviews, avgRating, hikes } = this.props;
 
+        // Park Review Stars
         const reviewStars = [];
-
         for (let i = 1; i < 6; i++) {
             const starClass = Math.round(avgRating) >= i ? " filled" : "";
             reviewStars.push(<span key={i} className={`star${starClass}`}></span>)
         }
 
+        //Park Static Map Pins
+        let staticMapPinStr = "/";
+        hikes.forEach((hike, idx) => {
+            let newPin = `pin-s+4D9709(${hike.lng},${hike.lat})`;
+            staticMapPinStr += newPin;
+            if (idx !== hikes.length - 1) staticMapPinStr += ",";
+        })
+        
         return (
             <>
                 <div className="sub-nav">
@@ -37,6 +45,9 @@ class ParkShow extends React.Component {
                     <p className="park-summary">{park.summary}</p>
                     <h4 className="header-text">Description</h4>
                     <p>{park.description}</p>
+                    <div className="park-static-map">
+                        <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/750x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
+                    </div>
                     <section className="park-information">
                         <h3 className="header-text">Park Information</h3>
                         <div className="park-information-details">
