@@ -60,9 +60,9 @@ export const parkHikes = ({ entities }, parkId) => {
     hikes.forEach(hike => {
         totalReviews += hike.numReviews;
         totalRatings += hike.sumRatings;
-        photos.push(hike.coverPhoto);
+        photos.push(hike.coverPhotoUrl);
     })
-
+    
     return {
         hikes: hikes,
         totalReviews: totalReviews,

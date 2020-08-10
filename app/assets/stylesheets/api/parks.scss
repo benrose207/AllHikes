@@ -87,3 +87,48 @@
         color: $buttonHoverGreen;
     }
 }
+
+.photo-carousel-wrapper {
+    margin-bottom: 25px;
+    position: relative;
+    height: 220px;
+}
+
+.photo-carousel {
+    display: flex;
+    overflow-x: scroll;
+}
+
+.park-carousel-image {
+    margin-right: 20px;
+    position: relative;
+    transition: transform 0.5s ease;
+    
+    img {
+        border-radius: 8px;
+        height: 220px;
+        width: 330px;
+    }
+}
+
+.photo-carousel-nav-btn {
+    position: absolute;
+    top: calc(50% - 1.5rem);
+    background-color: white;
+    font-size: 2.5rem;
+    border-radius: 50%;
+    width: 3rem;
+    height: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.23), 0 0 8px 0 rgba(0,0,0,.08);
+}
+
+.btn-overflow-right {
+    right: -1.5rem;
+}
+
+.btn-overflow-left {
+    left: -1.5rem;
+}

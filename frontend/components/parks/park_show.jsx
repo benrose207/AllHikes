@@ -1,20 +1,54 @@
 import React from "react";
+import PhotosModal from "../photos/photos_modal";
 import TextSearchContainer from "../search/text_search_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMapSigns } from "@fortawesome/free-solid-svg-icons";
+import { faMapSigns, faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
 class ParkShow extends React.Component {
     constructor(props) {
         super(props)
+
+        this.state = {
+            clickedPhotoId: null,
+            currentOffset: 0,
+            firstPosImgIdx: 0
+        }
+
+        this.onCarouselNav = this.onCarouselNav.bind(this);
+        this.openPhotosModal = this.openPhotosModal.bind(this);
     }
 
     componentDidMount() {
         this.props.fetchPark(this.props.match.params.parkId)
     }
 
+    onCarouselNav(e) {
+        e.preventDefault();
+        const direction = parseInt(e.currentTarget.dataset.direction);
+        const newFirstPosImgIdx = this.state.firstPosImgIdx += direction;
+        
+        const newOffset = this.state.currentOffset += (direction * -350);
+        const carouselImgs = document.querySelectorAll(".photo-carousel picture");
+        for (let i = 0; i < carouselImgs.length; i++) {
+            const img = carouselImgs[i];
+            img.style.transform = `translateX(${newOffset}px)`;
+        }
+
+        this.setState({
+            currentOffset: newOffset,
+            firstPosImgIdx: newFirstPosImgIdx
+        })
+    }
+
+    openPhotosModal(input) {
+        return (e) => {
+            this.setState({ clickedPhotoId: input })
+        }
+    }
+
     render() {
         if (!this.props.park) return null
-        const { park, totalReviews, avgRating, hikes } = this.props;
+        const { park, totalReviews, avgRating, hikes, coverPhotos } = this.props;
 
         // Park Review Stars
         const reviewStars = [];
@@ -31,12 +65,54 @@ class ParkShow extends React.Component {
             if (idx !== hikes.length - 1) staticMapPinStr += ",";
         })
         
+        //Photo Carousel Images
+        const carouselPhotos = coverPhotos.map((photo, idx) => (
+            <picture key={idx} className="park-carousel-image" onClick={this.openPhotosModal(idx)}>
+                <img src={photo} alt={`${park.name}`} />
+            </picture>
+        ));
+
+        //Photo Carousel Nav buttons
+        const carouselNavButtons = (
+            <>
+                {this.state.firstPosImgIdx > 0 ? (
+                    <button
+                        className="photo-carousel-nav-btn btn-overflow-left"
+                        data-direction="-1"
+                        onClick={this.onCarouselNav}>
+                        <FontAwesomeIcon icon={faAngleLeft} />
+                    </button>
+                ) : null}
+                {this.state.firstPosImgIdx <= hikes.length - 3 ? (
+                    <button
+                        className="photo-carousel-nav-btn btn-overflow-right"
+                        data-direction="1"
+                        onClick={this.onCarouselNav}>
+                        <FontAwesomeIcon icon={faAngleRight} />
+                    </button>
+                ) : null}
+            </>
+        )
+        
         return (
             <>
+                {this.state.clickedPhotoId !== null ?
+                    <PhotosModal
+                        photos={coverPhotos}
+                        initialPhotoId={parseInt(this.state.clickedPhotoId)}
+                        closeModal={this.openPhotosModal}
+                    />
+                    : null}
                 <div className="sub-nav">
                     <TextSearchContainer parentName="hike"/>
                 </div>
                 <main className="primary-content park-container">
+                    <div className="photo-carousel-wrapper">
+                        <div className="photo-carousel">
+                            {carouselPhotos}
+                        </div>
+                            {carouselNavButtons}
+                    </div>
                     <h1 className="header-text">Best Trails in {park.name}</h1>
                     <div className="page-summary-info">
                         <div>

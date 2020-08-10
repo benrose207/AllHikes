@@ -9,7 +9,7 @@ class PhotoFeed extends React.Component {
             clickedPhotoId: null,
         }
 
-        this.openPhotosModal = this.openPhotosModal.bind(this)
+        this.openPhotosModal = this.openPhotosModal.bind(this);
     }
 
     componentDidMount() {
