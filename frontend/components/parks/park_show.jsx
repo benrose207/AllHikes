@@ -1,6 +1,7 @@
 import React from "react";
 import PhotosModal from "../photos/photos_modal";
 import HikeIndex from "../hikes/hike_index";
+import HikeFilters from "../hikes/hike_filters";
 import TextSearchContainer from "../search/text_search_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapSigns, faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -13,15 +14,24 @@ class ParkShow extends React.Component {
             clickedPhotoId: null,
             currentOffset: 0,
             firstPosImgIdx: 0,
-            queryStr: ""
+            filtered: false
         }
 
         this.onCarouselNav = this.onCarouselNav.bind(this);
         this.openPhotosModal = this.openPhotosModal.bind(this);
+        this.toggleFiltered = this.toggleFiltered.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchPark(this.props.match.params.parkId)
+        this.props.fetchPark(this.props.match.params.parkId);
+    }
+
+    toggleFiltered(queryStr) {
+        if (queryStr) {
+            this.setState({ filtered: true });
+        } else {
+            this.setState({ filtered: false });
+        }
     }
 
     onCarouselNav(e) {
@@ -51,8 +61,8 @@ class ParkShow extends React.Component {
     render() {
         if (!this.props.park) return null
         const { park, totalReviews, avgRating, hikes, coverPhotos, filteredHikes } = this.props;
-        const hikeList = this.state.queryStr ? filteredHikes : hikes;
-
+        const hikeList = this.state.filtered ? filteredHikes : hikes;
+        debugger
         // Park Review Stars
         const reviewStars = [];
         for (let i = 1; i < 6; i++) {
@@ -153,6 +163,11 @@ class ParkShow extends React.Component {
                         </div>
                     </section>
                     <section>
+                        <HikeFilters
+                            parkId={park.id}
+                            fetchParkHikes={this.props.fetchParkHikes}
+                            toggleFiltered={this.toggleFiltered}
+                        />
                         <h3 className="header-text">Top Trails ({hikeList.length})</h3>
                         <HikeIndex hikes={hikeList} park={park}/>
                     </section>

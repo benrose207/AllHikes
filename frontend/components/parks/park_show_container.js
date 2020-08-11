@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
     return {
         fetchPark: parkId => dispatch(fetchPark(parkId)),
-        fetchParkHikes: parkId => dispatch(fetchParkHikes(parkId))
+        fetchParkHikes: (parkId, query) => dispatch(fetchParkHikes(parkId, query))
     };
 };
 
