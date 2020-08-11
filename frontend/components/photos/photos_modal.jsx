@@ -10,18 +10,27 @@ class PhotosModal extends React.Component {
 
         this.toggleBack = this.toggleBack.bind(this);
         this.toggleForward = this.toggleForward.bind(this);
+        this.modalNavHandler = this.modalNavHandler.bind(this);
     }
 
-    componentDidMount() {
-        document.addEventListener('keydown', () => {
+    modalNavHandler(event) {
             if (event.key === "ArrowRight") {
+                event.preventDefault();
                 this.toggleForward();
             } else if (event.key === "ArrowLeft") {
+                event.preventDefault();
                 this.toggleBack();
             } else if (event.key === "Escape") {
                 this.props.closeModal(null)();
             }
-        })
+    }
+
+    componentDidMount() {
+        document.addEventListener('keydown', this.modalNavHandler);
+    }
+
+    componentWillUnmount() {
+        document.removeEventListener('keydown', this.modalNavHandler);
     }
 
     toggleBack() {
@@ -56,7 +65,7 @@ class PhotosModal extends React.Component {
                         <FontAwesomeIcon icon={faAngleLeft} />
                     </button>
                     <picture className="modal-image">
-                        <img src={photos[this.state.currentPhotoId].photo} alt="spotlight image"/>
+                        <img src={photos[this.state.currentPhotoId].photo || photos[this.state.currentPhotoId]} alt="spotlight image"/>
                     </picture>
                     <button onClick={this.toggleForward}>
                         <FontAwesomeIcon icon={faAngleRight} />

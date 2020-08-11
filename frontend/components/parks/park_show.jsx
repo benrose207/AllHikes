@@ -1,5 +1,6 @@
 import React from "react";
 import PhotosModal from "../photos/photos_modal";
+import HikeIndex from "../hikes/hike_index";
 import TextSearchContainer from "../search/text_search_container";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapSigns, faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
@@ -11,7 +12,8 @@ class ParkShow extends React.Component {
         this.state = {
             clickedPhotoId: null,
             currentOffset: 0,
-            firstPosImgIdx: 0
+            firstPosImgIdx: 0,
+            queryStr: ""
         }
 
         this.onCarouselNav = this.onCarouselNav.bind(this);
@@ -48,7 +50,8 @@ class ParkShow extends React.Component {
 
     render() {
         if (!this.props.park) return null
-        const { park, totalReviews, avgRating, hikes, coverPhotos } = this.props;
+        const { park, totalReviews, avgRating, hikes, coverPhotos, filteredHikes } = this.props;
+        const hikeList = this.state.queryStr ? filteredHikes : hikes;
 
         // Park Review Stars
         const reviewStars = [];
@@ -148,6 +151,10 @@ class ParkShow extends React.Component {
                                 </article>
                             </div>
                         </div>
+                    </section>
+                    <section>
+                        <h3 className="header-text">Top Trails ({hikeList.length})</h3>
+                        <HikeIndex hikes={hikeList} park={park}/>
                     </section>
                 </main>
             </>

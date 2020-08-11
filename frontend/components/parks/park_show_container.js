@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
     return {
         park: state.entities.parks[ownProps.match.params.parkId],
         hikes: parkHikeData.hikes,
+        filteredHikes: state.searchResults.filteredSearchResults,
         totalReviews: parkHikeData.totalReviews,
         avgRating: parkHikeData.avgRating,
         coverPhotos: parkHikeData.photos

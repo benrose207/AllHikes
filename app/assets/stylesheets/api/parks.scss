@@ -70,7 +70,7 @@
         padding: 18px;
         border-radius: 50%;
         margin-right: 15px;
-        box-shadow: 0 2px 4px 0 rgba(0,0,0,.23), 0 0 8px 0 rgba(0,0,0,.08);
+        box-shadow: 0 2px 4px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
         transform: scale(1);
         transition: transform 0.4s;
     }
@@ -103,6 +103,7 @@
     margin-right: 20px;
     position: relative;
     transition: transform 0.5s ease;
+    cursor: pointer;
     
     img {
         border-radius: 8px;

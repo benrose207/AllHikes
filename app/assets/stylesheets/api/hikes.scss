@@ -313,6 +313,43 @@ aside.hike-map-view {
     border-radius: 8px;
 }
 
+// Hike Index Components
+
+.hike-card {
+    height: 224px;
+    width: 100%;
+    margin: 20px 0;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
+    border-radius: 8px;
+
+    h5 {
+        font-size: 1rem;
+        text-overflow: ellipsis;
+    }
+
+    .page-summary-info {
+        font-size: 0.7rem;
+    }
+
+    .hike-difficulty {
+        padding: 0;
+        width: 100px;
+        text-align: center;
+    }
+}
+
+.detail-text {
+    font-size: 0.8rem;
+    margin: 5px 0;
+}
+
+.card-long-description {
+    margin-top: 24px;
+    text-overflow: ellipsis;
+}
+
+//Media Queries
+
 @media only screen and (min-device-width: 800px) {
     .hike-sidebar {
         display: block;
