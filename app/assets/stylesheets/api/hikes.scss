@@ -316,7 +316,9 @@ aside.hike-map-view {
 // Hike Index Components
 
 .hike-card {
-    height: 224px;
+    display: flex;
+    flex-wrap: wrap;
+    max-height: 300px;
     width: 100%;
     margin: 20px 0;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
@@ -324,6 +326,8 @@ aside.hike-map-view {
 
     h5 {
         font-size: 1rem;
+        white-space: nowrap;
+        overflow: hidden;
         text-overflow: ellipsis;
     }
 
@@ -338,14 +342,43 @@ aside.hike-map-view {
     }
 }
 
+.hike-card-content {
+    padding: 20px;
+    max-height: 224px;
+    height: 150px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
 .detail-text {
     font-size: 0.8rem;
     margin: 5px 0;
 }
 
 .card-long-description {
-    margin-top: 24px;
-    text-overflow: ellipsis;
+    margin-top: 20px;
+    overflow: hidden;
+    word-break: break-word;
+}
+
+// set height to 150px (half of total card height). Remove padding around .hike-card-photo. Change hike card image width to 100%.
+
+.hike-card-photo {
+    max-height: 224px;
+    height: 150px;
+    padding: 0;
+
+    img {
+        height: 100%;
+        object-fit: cover;
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+    }
 }
 
 //Media Queries
@@ -362,5 +395,26 @@ aside.hike-map-view {
 
     .hike-detail-nav.hike-map-view {
         display: flex;
+    }
+}
+
+@media only screen and (min-device-width: 850px) {
+    .hike-card h5 {
+        white-space: normal;
+    }
+
+    .hike-card-content {
+        height: auto;
+    }
+
+    .hike-card-photo {
+        padding: 15px;
+        padding-right: 0;
+        height: auto;
+
+        img {
+            width: 280px;
+            border-radius: 8px;
+        }
     }
 }

@@ -11,7 +11,12 @@ const HikeIndexItem = ({ hike, park, idx }) => {
 
     return (
         <li className="hike-card">
-            <div>
+            <Link to={`/hikes/${hike.id}`} className="hike-card-photo">
+                <picture>
+                    <img src={hike.coverPhotoUrl} alt={hike.name}/>
+                </picture>
+            </Link>
+            <div className="hike-card-content">
                 <Link to={`/hikes/${hike.id}`}><h5 className="header-text">{`#${idx + 1} - ${hike.name}`}</h5></Link>
                 <Link to={`/parks/${park.id}`} className="detail-text">{park.name}</Link>
                 <div className="page-summary-info">
