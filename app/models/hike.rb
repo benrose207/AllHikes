@@ -29,6 +29,10 @@ class Hike < ApplicationRecord
     scope :filter_by_route_type, -> (route_type) { where(route_type: route_type.split(",")) if route_type.present? }
     scope :filter_by_rating, -> (rating) { joins(:reviews).having("AVG(reviews.rating) >= ?", rating) if rating.present? }
     scope :filter_by_usage, -> (usage) { where(usage: usage.split(",")) if usage.present? }
+    scope :filter_by_min_length, -> (min_length) { where("distance >= ?", min_length) if min_length.present? }
+    scope :filter_by_max_length, -> (max_length) { where("distance <= ?", max_length) if max_length.present? }
+    scope :filter_by_min_elevation, -> (min_elevation) { where("elevation_gain >= ?", min_elevation) if min_elevation.present? }
+    scope :filter_by_max_elevation, -> (max_elevation) { where("elevation_gain <= ?", max_elevation) if max_elevation.present? }
 
     has_one_attached :coverPhoto
 

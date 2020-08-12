@@ -18,6 +18,10 @@ class Api::HikesController < ApplicationController
         @hikes = @hikes.filter_by_route_type(params[:route_type])
         @hikes = @hikes.filter_by_rating(params[:rating])
         @hikes = @hikes.filter_by_usage(params[:usage])
+        @hikes = @hikes.filter_by_min_length(params[:min_length])
+        @hikes = @hikes.filter_by_max_length(params[:max_length])
+        @hikes = @hikes.filter_by_min_elevation(params[:min_elevation])
+        @hikes = @hikes.filter_by_max_elevation(params[:max_elevation])
     end
 
 end

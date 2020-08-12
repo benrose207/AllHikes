@@ -162,17 +162,21 @@ class ParkShow extends React.Component {
                             </div>
                         </div>
                     </section>
-                    <section>
+                </main>
+                <section className="park-container">
+                    <div>
                         <HikeFilters
                             parkId={park.id}
                             fetchParkHikes={this.props.fetchParkHikes}
                             toggleFiltered={this.toggleFiltered}
                             filtered={this.state.filtered}
                         />
+                    </div>
+                    <div className="primary-content park-hikes-container">
                         <h3 className="header-text">Top Trails ({hikeList.length})</h3>
                         <HikeIndex hikes={hikeList} park={park}/>
-                    </section>
-                </main>
+                    </div>
+                </section>
             </>
         )
     }

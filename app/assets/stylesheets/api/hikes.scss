@@ -399,6 +399,7 @@ aside.hike-map-view {
     margin-right: 8px;
     font-size: 0.8rem;
     font-weight: 500;
+    white-space: nowrap;
 
     span {
         margin-right: 6px;
@@ -413,6 +414,7 @@ aside.hike-map-view {
     font-size: 0.8rem;
     font-weight: 500;
     color: $green;
+    white-space: nowrap;
 
     span {
         margin-right: 6px;
@@ -442,6 +444,22 @@ aside.hike-map-view {
 .filter-reset {
     color: $green;
     font-size: 0.85rem;
+}
+
+.slider-filter-container {
+    font-size: 0.85rem;
+
+    label {
+        margin-bottom: 5px;
+    }
+
+    label:last-of-type {
+        margin-top: 20px;
+    }
+
+    input[type='range'] {
+        width: 240px;
+    }
 }
 
 //Media Queries

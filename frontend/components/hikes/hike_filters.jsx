@@ -1,6 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronUp, faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import debounce from "lodash.debounce";
 
 class HikeFilters extends React.Component {
     constructor(props) {
@@ -14,14 +15,21 @@ class HikeFilters extends React.Component {
             outAndBack: false,
             pointToPoint: false,
             rating: "",
+            minLength: "0",
+            maxLength: "25",
+            minElevation: "0",
+            maxElevation: "10000",
             difficultyOpen: false,
             routeOpen: false,
-            ratingOpen: false
+            ratingOpen: false,
+            lengthOpen: false,
+            elevationOpen: false
         }
 
         this.handleMultiSelectFilter = this.handleMultiSelectFilter.bind(this);
-        this.filterResults = this.filterResults.bind(this);
         this.handleRatingFilter = this.handleRatingFilter.bind(this);
+        this.handleSliderFIlters = this.handleSliderFIlters.bind(this);
+        this.filterResults = debounce(this.filterResults, 200).bind(this);
         this.resetFilters = this.resetFilters.bind(this);
     }
 
@@ -33,6 +41,12 @@ class HikeFilters extends React.Component {
     handleRatingFilter(e) {
         let newValue = e.target.value;
         this.setState({ rating: newValue }, this.filterResults);
+    }
+
+    handleSliderFIlters(e) {
+        let field = e.target.name;
+        let newValue = e.target.value;
+        this.setState({ [field]: newValue }, this.filterResults);
     }
 
     filterResults() {
@@ -53,6 +67,10 @@ class HikeFilters extends React.Component {
         if (difficultyParams.length) queryStr += `difficulty=${difficultyParams.join(",")}&`;
         if (routeTypeParams.length) queryStr += `route_type=${routeTypeParams.join(",")}&`;
         if (this.state.rating) queryStr += `rating=${this.state.rating}&`;
+        if (this.state.minLength !== "0") queryStr += `min_length=${this.state.minLength}&`;
+        if (this.state.maxLength !== "25") queryStr += `max_length=${this.state.maxLength}&`;
+        if (this.state.minElevation !== "0") queryStr += `min_elevation=${this.state.minElevation}&`;
+        if (this.state.maxElevation !== "25") queryStr += `max_elevation=${this.state.maxElevation}&`;
 
         this.props.fetchParkHikes(this.props.parkId, queryStr)
             .then(() => this.props.toggleFiltered(queryStr));
@@ -64,6 +82,8 @@ class HikeFilters extends React.Component {
                 difficultyOpen: "difficultyOpen" === field ? !this.state.difficultyOpen : false,
                 routeOpen: "routeOpen" === field ? !this.state.routeOpen : false,
                 ratingOpen: "ratingOpen" === field ? !this.state.ratingOpen : false,
+                lengthOpen: "lengthOpen" === field ? !this.state.lengthOpen : false,
+                elevationOpen: "elevationOpen" === field ? !this.state.elevationOpen : false
             });
         }
     }
@@ -77,19 +97,27 @@ class HikeFilters extends React.Component {
             outAndBack: false,
             pointToPoint: false,
             rating: "",
+            minLength: "0",
+            maxLength: "25",
+            minElevation: "0",
+            maxElevation: "10000",
             difficultyOpen: false,
             routeOpen: false,
-            ratingOpen: false
+            ratingOpen: false,
+            lengthOpen: false,
+            elevationOpen: false
         }, this.props.toggleFiltered(""));
     }
 
     render() {
-        const { easy, moderate, difficult, loop, outAndBack, pointToPoint, difficultyOpen, routeOpen, ratingOpen } = this.state;
+        const { easy, moderate, difficult, loop, outAndBack, pointToPoint, difficultyOpen, routeOpen, ratingOpen, lengthOpen, minLength, maxLength, elevationOpen, minElevation, maxElevation } = this.state;
 
         const difficultyFilterClass = (difficultyOpen || easy || moderate || difficult) ? "hike-filter-selected" : "hike-filter";
         const routeFilterClass = (routeOpen || loop || outAndBack || pointToPoint) ? "hike-filter-selected" : "hike-filter";
         const ratingFilterClass = (ratingOpen || this.state.rating) ? "hike-filter-selected" : "hike-filter";
-    
+        const lengthFilterClass = (lengthOpen || minLength !== "0" || maxLength !== "25") ? "hike-filter-selected" : "hike-filter";
+        const elevationFilterClass = (elevationOpen || minElevation !== "0" || maxElevation !== "10000") ? "hike-filter-selected" : "hike-filter";
+        
         return (
             <div className="hike-filter-bar">
                 <div className="hike-filter-container">
@@ -130,6 +158,34 @@ class HikeFilters extends React.Component {
                         </div>
                     </form>
                 </div>
+                <div className="hike-filter-container">
+                    <button className={lengthFilterClass} onClick={this.toggleFilterDropdown("lengthOpen")}>
+                        <span>Length</span>
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </button>
+                    <form className={`hike-filter-dropdown${this.state.lengthOpen ? "" : " hidden"}`}>
+                        <div className="slider-filter-container">
+                            <label htmlFor="min-length">Min. Length:  {minLength} mi</label>
+                            <input type="range" name="minLength" id="min-length" min="0" max="25" value={minLength} onChange={this.handleSliderFIlters} />
+                            <label htmlFor="max-length">Max. Length:  {maxLength === "25" ? "25+" : maxLength} mi</label>
+                            <input type="range" name="maxLength" id="max-length" min="0" max="25" value={maxLength} onChange={this.handleSliderFIlters} />
+                        </div>
+                    </form>
+                </div>
+                <div className="hike-filter-container">
+                    <button className={elevationFilterClass} onClick={this.toggleFilterDropdown("elevationOpen")}>
+                        <span>Elevation Gain</span>
+                        <FontAwesomeIcon icon={faChevronDown} />
+                    </button>
+                    <form className={`hike-filter-dropdown${this.state.elevationOpen ? "" : " hidden"}`}>
+                        <div className="slider-filter-container">
+                            <label htmlFor="min-elevation">Min. Elevation Gain:  {minElevation} ft</label>
+                            <input type="range" name="minElevation" id="min-elevation" min="0" max="10000" value={minElevation} onChange={this.handleSliderFIlters} />
+                            <label htmlFor="max-elevation">Max. Elevation:  {maxElevation === "10000" ? "10,000+" : maxElevation} ft</label>
+                            <input type="range" name="maxElevation" id="max-elevation" min="0" max="10000" value={maxElevation} onChange={this.handleSliderFIlters} />
+                        </div>
+                    </form>
+                </div>                
                 <div className="hike-filter-container">
                     <button className={routeFilterClass} onClick={this.toggleFilterDropdown("routeOpen")}>
                         <span>Route Type</span>
