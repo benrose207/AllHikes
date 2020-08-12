@@ -62,7 +62,7 @@ class ParkShow extends React.Component {
         if (!this.props.park) return null
         const { park, totalReviews, avgRating, hikes, coverPhotos, filteredHikes } = this.props;
         const hikeList = this.state.filtered ? filteredHikes : hikes;
-        debugger
+        
         // Park Review Stars
         const reviewStars = [];
         for (let i = 1; i < 6; i++) {

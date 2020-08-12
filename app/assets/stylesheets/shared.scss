@@ -125,6 +125,21 @@ textarea {
     border: 2px solid $green;
 }
 
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    margin: 4px 0;
+    font-size: 0.85rem;
+    
+    label, input {
+        cursor: pointer;
+    }
+
+    label {
+        padding-left: 10px;
+    }
+}
+
 //review stars
 
 .star::before {
