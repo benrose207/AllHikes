@@ -12,7 +12,7 @@ class Api::HikesController < ApplicationController
                     .joins(:reviews).group('hikes.id')
                     .select("hikes.*, AVG(reviews.rating) as avg_rating, COUNT(reviews.id) as num_reviews")
                     .where(park_id: params[:park_id])
-                    .order("avg_rating")
+                    .order("avg_rating DESC")
         
         @hikes = @hikes.filter_by_difficulty(params[:difficulty])
         @hikes = @hikes.filter_by_route_type(params[:route_type])

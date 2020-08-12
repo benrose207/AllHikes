@@ -97,6 +97,19 @@ div .hidden {
     font-weight: 600;
 }
 
+.text-expander {
+    color: $green;
+    position: absolute;
+    right: 2px;
+    bottom: -1px;
+    background-color: white;
+    box-shadow: -10px 0px 15px rgba(255, 255, 255, 0.8)
+}
+
+.text-expander:hover {
+    color: $buttonHoverGreen;
+}
+
 //forms
 
 textarea {

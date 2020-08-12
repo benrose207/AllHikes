@@ -361,9 +361,8 @@ aside.hike-map-view {
     margin-top: 20px;
     overflow: hidden;
     word-break: break-word;
+    position: relative;
 }
-
-// set height to 150px (half of total card height). Remove padding around .hike-card-photo. Change hike card image width to 100%.
 
 .hike-card-photo {
     max-height: 224px;

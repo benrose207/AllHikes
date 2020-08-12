@@ -10,15 +10,13 @@ const HikeIndexItem = ({ hike, park, idx }) => {
     }
 
     return (
-        <li className="hike-card">
-            <Link to={`/hikes/${hike.id}`} className="hike-card-photo">
-                <picture>
-                    <img src={hike.coverPhotoUrl} alt={hike.name}/>
-                </picture>
-            </Link>
+        <Link to={`/hikes/${hike.id}`} className="hike-card">
+            <picture className="hike-card-photo">
+                <img src={hike.coverPhotoUrl} alt={hike.name}/>
+            </picture>
             <div className="hike-card-content">
-                <Link to={`/hikes/${hike.id}`}><h5 className="header-text">{`#${idx + 1} - ${hike.name}`}</h5></Link>
-                <Link to={`/parks/${park.id}`} className="detail-text">{park.name}</Link>
+                <div><h5 className="header-text">{`#${idx + 1} - ${hike.name}`}</h5></div>
+                <p className="detail-text">{park.name}</p>
                 <div className="page-summary-info">
                     <span className={`tag hike-difficulty ${hike.difficulty}`}>{hike.difficulty}</span>
                     <div>
@@ -27,9 +25,12 @@ const HikeIndexItem = ({ hike, park, idx }) => {
                     <p>({hike.numReviews})</p>
                 </div>
                 <p className="detail-text">Length: {hike.distance} mi</p>
-                <p className="card-long-description">{hike.description}</p>
+                <div className="card-long-description">
+                    <p>{hike.description}</p>
+                    <span className="text-expander">Show more</span>
+                </div>
             </div>
-        </li>
+        </Link>
     )
 }
 

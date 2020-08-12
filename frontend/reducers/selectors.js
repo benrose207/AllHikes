@@ -53,6 +53,7 @@ export const defaultActivity = (state) => {
 
 export const parkHikes = ({ entities }, parkId) => {
     const hikes = Object.values(entities.hikes).filter(hike => hike.parkId === parseInt(parkId));
+    hikes.sort((a, b) => b.avgRating - a.avgRating);
 
     let totalReviews = 0;
     let totalRatings = 0;
