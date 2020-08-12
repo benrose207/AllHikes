@@ -167,6 +167,7 @@ class ParkShow extends React.Component {
                             parkId={park.id}
                             fetchParkHikes={this.props.fetchParkHikes}
                             toggleFiltered={this.toggleFiltered}
+                            filtered={this.state.filtered}
                         />
                         <h3 className="header-text">Top Trails ({hikeList.length})</h3>
                         <HikeIndex hikes={hikeList} park={park}/>
