@@ -23,7 +23,15 @@ class ParkShow extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchPark(this.props.match.params.parkId);
+        this.props.fetchPark(this.props.match.params.parkId)
+            .then(() => {
+                const stickyElem = document.querySelector(".sticky-scroll-bar");
+                const observer = new IntersectionObserver(
+                    ([e]) => e.target.classList.toggle('is-sticky', e.intersectionRatio < 1),
+                    { threshold: [1] }
+                );
+                observer.observe(stickyElem);
+            });
     }
 
     toggleFiltered(queryStr) {
@@ -59,7 +67,7 @@ class ParkShow extends React.Component {
     }
 
     render() {
-        if (!this.props.park) return null
+        if (!this.props.park) return null;
         const { park, totalReviews, avgRating, hikes, coverPhotos, filteredHikes } = this.props;
         const hikeList = this.state.filtered ? filteredHikes : hikes;
         
@@ -164,13 +172,15 @@ class ParkShow extends React.Component {
                     </section>
                 </main>
                 <section className="park-container">
-                    <div>
-                        <HikeFilters
-                            parkId={park.id}
-                            fetchParkHikes={this.props.fetchParkHikes}
-                            toggleFiltered={this.toggleFiltered}
-                            filtered={this.state.filtered}
-                        />
+                    <div className="sticky-scroll-bar">
+                        <div className="primary-content">
+                            <HikeFilters
+                                parkId={park.id}
+                                fetchParkHikes={this.props.fetchParkHikes}
+                                toggleFiltered={this.toggleFiltered}
+                                filtered={this.state.filtered}
+                            />
+                        </div>
                     </div>
                     <div className="primary-content park-hikes-container">
                         <h3 className="header-text">Top Trails ({hikeList.length})</h3>

@@ -181,7 +181,7 @@ class HikeFilters extends React.Component {
                         <div className="slider-filter-container">
                             <label htmlFor="min-elevation">Min. Elevation Gain:  {minElevation} ft</label>
                             <input type="range" name="minElevation" id="min-elevation" min="0" max="10000" value={minElevation} onChange={this.handleSliderFIlters} />
-                            <label htmlFor="max-elevation">Max. Elevation:  {maxElevation === "10000" ? "10,000+" : maxElevation} ft</label>
+                            <label htmlFor="max-elevation">Max. Elevation Gain:  {maxElevation === "10000" ? "10,000+" : maxElevation} ft</label>
                             <input type="range" name="maxElevation" id="max-elevation" min="0" max="10000" value={maxElevation} onChange={this.handleSliderFIlters} />
                         </div>
                     </form>
