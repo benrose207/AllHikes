@@ -4,10 +4,10 @@ class Api::SearchesController < ApplicationController
         if params[:query]
             pattern = params[:query].split("").join("%")
             @hikes = Hike.where("name ILIKE ?", "%#{pattern}%")
-            # Add parks when feature exists
+            @parks = Park.where("name ILIKE ?", "%#{pattern}%")
         else
             @hikes = Hike.limit(5)
-            # Add parks when feature exists
+            @parks = Park.limit(3)
         end
 
         render :results

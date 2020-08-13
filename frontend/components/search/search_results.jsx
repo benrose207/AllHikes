@@ -21,12 +21,21 @@ class SearchResults extends React.Component {
     render() {        
         const results = this.props.searchResults.map(searchResult => (
             <li key={`${searchResult.type}-${searchResult.id}`} onMouseDown={this.onMouseDown}>
-                <Link to={`/hikes/${searchResult.id}`} className="search-result">
-                    <FontAwesomeIcon icon={faMapSigns} />
-                    <div>
-                        {searchResult.name}
-                    </div>
-                </Link>
+                {searchResult.type === "Hike" ? (
+                    <Link to={`/hikes/${searchResult.id}`} className="search-result">
+                            <FontAwesomeIcon icon={faMapSigns} className="result-hike fa-fw" />
+                        <div>
+                            {searchResult.name}
+                        </div>
+                    </Link>
+                ) : (
+                    <Link to={`/parks/${searchResult.id}`} className="search-result">
+                            <FontAwesomeIcon icon={faTree} className="result-park fa-fw"/>
+                        <div>
+                            {searchResult.name}
+                        </div>
+                    </Link>
+                )}
             </li>
         ));
     
