@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const HikeIndexItem = ({ hike, park, idx }) => {
+const HikeIndexItem = ({ hike, parkName, idx, classToggle }) => {
+    const toggledClass = classToggle ? classToggle : "";
 
     const reviewStars = [];
     for (let i = 1; i < 6; i++) {
@@ -11,12 +12,12 @@ const HikeIndexItem = ({ hike, park, idx }) => {
 
     return (
         <Link to={`/hikes/${hike.id}`} className="hike-card">
-            <picture className="hike-card-photo">
+            <picture className={`hike-card-photo ${toggledClass}`}>
                 <img src={hike.coverPhotoUrl} alt={hike.name}/>
             </picture>
-            <div className="hike-card-content">
-                <div><h5 className="header-text">{`#${idx + 1} - ${hike.name}`}</h5></div>
-                <p className="detail-text">{park.name}</p>
+            <div className={`hike-card-content ${toggledClass}`}>
+                <div><h5 className={`header-text ${toggledClass}`}>{`#${idx + 1} - ${hike.name}`}</h5></div>
+                <p className="detail-text">{parkName}</p>
                 <div className="page-summary-info">
                     <span className={`tag hike-difficulty ${hike.difficulty}`}>{hike.difficulty}</span>
                     <div>

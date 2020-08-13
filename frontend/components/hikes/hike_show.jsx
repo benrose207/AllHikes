@@ -8,6 +8,7 @@ import ReviewFeed from "../reviews/review_feed";
 import PhotosFormContainer from "../photos/photos_form_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
 import SubNav from "../nav/sub_nav";
+import HikeIndex from "./hike_index";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -135,7 +136,7 @@ class HikeShow extends React.Component {
         
         return (
             <>
-                <SubNav parentType="hikes" parentObject={hike}/>
+                <SubNav parentType="hikes" parentObject={hike} classToggle={hikeMapClass}/>
                 <div className="hike-with-map">
                     <main className={`primary-content hike-container${hikeMapClass}`}>
                         <div className={`hike-detail-nav${hikeMapClass}`}>
@@ -183,6 +184,10 @@ class HikeShow extends React.Component {
                                     <FontAwesomeIcon icon={faExpandArrowsAlt}/>
                                     <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static/pin-s+4D9709(${hike.lng},${hike.lat})/${hike.lng},${hike.lat},13,0/400x400@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview"/>
                                     <span>View Full Map</span>
+                                </div>
+                                <div className="nearby-hikes-container">
+                                    <h3 className="header-text">Nearby Hikes</h3>
+                                    <HikeIndex hikes={this.props.nearbyHikes} classToggle="sidebar" parkName={hike.parkName}/>
                                 </div>
                             </aside>
                         </div>

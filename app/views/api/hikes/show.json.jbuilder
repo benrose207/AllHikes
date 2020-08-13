@@ -49,3 +49,10 @@ json.users do
         end
     end
 end
+
+json.nearbyHikes do
+    json.array! @nearby_hikes do |hike|
+            json.extract! hike, :id, :name, :description, :lat, :lng, :difficulty, :usage, :distance, :elevation_gain, :route_type, :avg_rating, :num_reviews
+            json.coverPhotoUrl url_for(hike.coverPhoto)
+    end
+end

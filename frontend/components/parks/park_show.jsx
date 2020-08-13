@@ -186,7 +186,7 @@ class ParkShow extends React.Component {
                     <div className="primary-content park-hikes-container">
                         <section className="park-content-wrapper">
                             <h3 className="header-text">Top Trails ({hikeList.length})</h3>
-                            <HikeIndex hikes={hikeList} park={park}/>
+                            <HikeIndex hikes={hikeList} parkName={park.name}/>
                         </section>
                     </div>
                 </section>

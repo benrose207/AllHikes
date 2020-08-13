@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
         reviews: reviews,
         reviewCount: reviews.length,
         avgRating: avgHikeRating(reviews),
-        currentUserId: state.session.currentUserId
+        currentUserId: state.session.currentUserId,
+        nearbyHikes: state.searchResults.filteredSearchResults
     }
 }
 

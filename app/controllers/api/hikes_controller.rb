@@ -2,6 +2,13 @@ class Api::HikesController < ApplicationController
 
     def show
         @hike = Hike.includes(:taggables, :park, :location, coverPhoto_attachment: :blob, reviews: [:taggables, reviewer: [profilePicture_attachment: :blob]]).find_by(id: params[:id]);
+        @nearby_hikes = Hike
+                            .includes(coverPhoto_attachment: :blob)
+                            .joins(:reviews).group('hikes.id')
+                            .select("hikes.*, AVG(reviews.rating) as avg_rating, COUNT(reviews.id) as num_reviews")
+                            .where(park_id: @hike.park_id)
+                            .where.not(id: @hike.id)
+                            .order("avg_rating DESC")
         @tags = Tag.all
         render :show
     end

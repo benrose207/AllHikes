@@ -237,6 +237,18 @@
     display: none;
 }
 
+.nearby-hikes-container {
+    margin: 30px 10px 0 10px;
+    font-family: $headerFont;
+    color: $grey;
+    font-size: 0.9rem;
+    line-height: 1.5rem;
+
+    h3 {
+        font-size: 1rem;
+    }
+}
+
 .hike-detail-nav {
     display: none;
 }
@@ -325,6 +337,7 @@ aside.hike-map-view {
     margin: 20px 0;
     box-shadow: 0 2px 4px 0 rgba(0,0,0,.24), 0 0 8px 0 rgba(0,0,0,.08);
     border-radius: 8px;
+    background-color: white;
 
     h5 {
         font-size: 1rem;
@@ -389,10 +402,6 @@ aside.hike-map-view {
     margin: 10px;
     overflow-x: scroll;
     overflow-y: visible;
-}
-
-.hike-filter-container {
-    // position: relative;
 }
 
 .hike-filter {
@@ -505,5 +514,26 @@ aside.hike-map-view {
 
     .hike-filter-dropdown {
         left: auto;
+    }
+}
+
+.hike-card h5.sidebar {
+    white-space: nowrap;
+}
+
+.hike-card-content.sidebar {
+    height: 150px;
+}
+
+.hike-card-photo.sidebar {
+    padding: 0;
+    height: 150px;
+
+    img {
+        width: 100%;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
     }
 }

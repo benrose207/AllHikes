@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
 import TextSearchContainer from "../search/text_search_container";
 
-const SubNav = ({ parentType, parentObject }) => {
+const SubNav = ({ parentType, parentObject, classToggle }) => {
 
     const parkId = parentObject.parkName ? parentObject.parkId : parentObject.id;
     const parkName = parentObject.parkName ? parentObject.parkName : parentObject.name;
@@ -26,7 +26,7 @@ const SubNav = ({ parentType, parentObject }) => {
     )
 
     return (
-        <div className="sub-nav">
+        <div className={`sub-nav ${classToggle}`}>
             <div className="breadcrumbs">
                 {breadcrumbsContent}
             </div>
