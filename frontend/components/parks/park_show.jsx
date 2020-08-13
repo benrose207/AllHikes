@@ -70,6 +70,7 @@ class ParkShow extends React.Component {
         if (!this.props.park) return null;
         const { park, totalReviews, avgRating, hikes, coverPhotos, filteredHikes } = this.props;
         const hikeList = this.state.filtered ? filteredHikes : hikes;
+        const staticMapWidth = window.innerWidth < 400 ? 355 : 750;
         
         // Park Review Stars
         const reviewStars = [];
@@ -126,6 +127,7 @@ class ParkShow extends React.Component {
                     : null}
                 <SubNav parentType="parks" parentObject={park}/>
                 <main className="primary-content park-container">
+                    <section className="park-content-wrapper">
                     <div className="photo-carousel-wrapper">
                         <div className="photo-carousel">
                             {carouselPhotos}
@@ -143,7 +145,7 @@ class ParkShow extends React.Component {
                     <h4 className="header-text">Description</h4>
                     <p>{park.description}</p>
                     <div className="park-static-map">
-                        <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/750x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
+                        <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/${staticMapWidth}x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
                     </div>
                     <section className="park-actions">
                         <div>
@@ -168,6 +170,7 @@ class ParkShow extends React.Component {
                             </div>
                         </div>
                     </section>
+                    </section>
                 </main>
                 <section className="park-container">
                     <div className="sticky-scroll-bar">
@@ -181,8 +184,10 @@ class ParkShow extends React.Component {
                         </div>
                     </div>
                     <div className="primary-content park-hikes-container">
-                        <h3 className="header-text">Top Trails ({hikeList.length})</h3>
-                        <HikeIndex hikes={hikeList} park={park}/>
+                        <section className="park-content-wrapper">
+                            <h3 className="header-text">Top Trails ({hikeList.length})</h3>
+                            <HikeIndex hikes={hikeList} park={park}/>
+                        </section>
                     </div>
                 </section>
             </>

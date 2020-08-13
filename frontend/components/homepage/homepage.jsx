@@ -4,13 +4,15 @@ import { ScrollToTopOnMount } from "../../util/route_util";
 import TextSearchContainer from "../search/text_search_container";
 
 const HomePage = ({ currentUser }) => {
+    const searchClassName = window.innerWidth < 400 ? "subnav" : "home";
+
     return (
         <main className="homepage">
             <ScrollToTopOnMount />
             <div className="homepage-hero">
                 <div className="hero-content">
                     <h1>Find your next favorite hike</h1>
-                    <TextSearchContainer parentName="home"/>
+                    <TextSearchContainer parentName={searchClassName}/>
                 </div>
             </div>
             <section className="homepage-subcontent">

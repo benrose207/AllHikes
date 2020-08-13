@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .sub-nav {
-    width: 70%;
+    width: 95%;
     max-width: 950px;
     margin: 10px auto;
     display: flex;
@@ -188,6 +188,10 @@ ul.search-results-subnav {
 //media queries
 
 @media only screen and (min-device-width: 850px) {
+
+    .sub-nav {
+        width: 70%;
+    }
 
     .breadcrumbs {
         display: flex;

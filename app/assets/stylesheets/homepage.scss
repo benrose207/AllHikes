@@ -15,10 +15,14 @@
 
 .hero-content {
     position: absolute;
-    width: 70%;
+    width: 90%;
     top: 30%;
     left: 50%;
-    margin-left: -35%;
+    margin-left: -45%;
+}
+
+.hero-content .text-search-subnav {
+    margin-top: 10px;
 }
 
 .homepage-subcontent {
@@ -64,6 +68,11 @@
 @media only screen and (min-device-width: 860px) {
     .homepage-hero {
         font-size: 70px;
+    }
+
+    .hero-content {
+        width: 70%;
+        margin-left: -35%;
     }
 
     .homepage-subcontent h2 {

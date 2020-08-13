@@ -130,6 +130,7 @@
 
 .hike-main-content {
     flex: 1;
+    width: 100%;
     background-color: white;
     color: $darkGrey;
     font-size: 17px;
@@ -205,6 +206,7 @@
 
 .hike-content p {
     padding: 10px;
+    word-break: break-word;
 }
 
 //user tabbed content
@@ -384,11 +386,13 @@ aside.hike-map-view {
 
 .hike-filter-bar {
     display: flex;
-    margin: 10px 0;
+    margin: 10px;
+    overflow-x: scroll;
+    overflow-y: visible;
 }
 
 .hike-filter-container {
-    position: relative;
+    // position: relative;
 }
 
 .hike-filter {
@@ -426,7 +430,8 @@ aside.hike-map-view {
 }
 
 .hike-filter-dropdown {
-    top: 36px;
+    top: 50px;
+    left: 8px;
     border-radius: 8px;
     position: absolute;
     background-color: white;
@@ -496,5 +501,9 @@ aside.hike-map-view {
             width: 280px;
             border-radius: 8px;
         }
+    }
+
+    .hike-filter-dropdown {
+        left: auto;
     }
 }
