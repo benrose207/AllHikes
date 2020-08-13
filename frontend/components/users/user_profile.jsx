@@ -3,7 +3,7 @@ import { ScrollToTopOnMount } from "../../util/route_util";
 import UserDetail from "./user_detail";
 import ReviewFeedContainer from "../reviews/review_feed_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
-import TextSearchContainer from "../search/text_search_container";
+import SubNav from "../nav/sub_nav";
 
 class UserProfile extends React.Component {
     constructor(props) {
@@ -29,9 +29,7 @@ class UserProfile extends React.Component {
 
         return (
             <>
-            <div className="sub-nav">
-                <TextSearchContainer parentName="hike" />
-            </div>
+            <SubNav parentType="members" parentObject={this.props.user}/>
             <div className="primary-content">
                 <ScrollToTopOnMount />
                 <ul className="user-tabs">

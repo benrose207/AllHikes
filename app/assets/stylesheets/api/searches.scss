@@ -7,7 +7,8 @@
     max-width: 950px;
     margin: 10px auto;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    align-items: center;
     font-family: $headerFont;
 }
 
@@ -15,6 +16,25 @@
     width: 98%;
     max-width: none;
     margin: 10px 20px;
+}
+
+.breadcrumbs {
+    display: none;
+    align-items: center;
+    font-size: 0.5rem;
+    color: $grey;
+
+    p,a {
+        font-size: 0.7rem;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    svg {
+        margin: 0 10px;
+    }
 }
 
 // Shared Search Bar\
@@ -70,31 +90,31 @@ div[class^="text-search-"] {
 
 // Hike search bar
 
-.text-search-hike {
-    width: 40%;
+.text-search-subnav {
+    width: 100%;
     font-size: 14px;
 }
 
-.text-search-hike > .text-search {
+.text-search-subnav > .text-search {
     border: $contentBorder;
 }
 
-.text-search-hike button {
+.text-search-subnav button {
     padding: 10px 15px;
     border-top-right-radius: 5px;
     border-bottom-right-radius: 5px;
 }
 
-.text-search-hike input {
+.text-search-subnav input {
     padding-left: 10px;
 }
 
-.text-search-hike:focus-within > .text-search {
+.text-search-subnav:focus-within > .text-search {
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
 }
 
-.text-search-hike:focus-within button {
+.text-search-subnav:focus-within button {
     border-bottom-right-radius: 0;
 }
 
@@ -148,7 +168,20 @@ ul[class^="search-results"] {
 
 // hike search results
 
-ul.search-results-hike {
+ul.search-results-subnav {
     font-size: 12px;
     border-top: none;
+}
+
+//media queries
+
+@media only screen and (min-device-width: 850px) {
+
+    .breadcrumbs {
+        display: flex;
+    }
+
+    .text-search-subnav {
+        width: 40%;
+    }
 }

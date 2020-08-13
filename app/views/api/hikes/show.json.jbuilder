@@ -4,6 +4,8 @@ json.hike do
     json.city @hike.location.city
     json.state @hike.location.state
     json.country @hike.location.country
+    json.parkId @hike.park.id
+    json.parkName @hike.park.name
 end
 
 json.taggable do

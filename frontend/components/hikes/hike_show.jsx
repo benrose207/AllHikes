@@ -7,7 +7,7 @@ import CreateReviewContainer from "../reviews/create_review_container";
 import ReviewFeed from "../reviews/review_feed";
 import PhotosFormContainer from "../photos/photos_form_container";
 import PhotoFeedContainer from "../photos/photo_feed_container";
-import TextSearchContainer from "../search/text_search_container";
+import SubNav from "../nav/sub_nav";
 
 class HikeShow extends React.Component {
     constructor(props) {
@@ -135,9 +135,7 @@ class HikeShow extends React.Component {
         
         return (
             <>
-                <div className={`sub-nav${hikeMapClass}`}>
-                    <TextSearchContainer parentName="hike"/>
-                </div>
+                <SubNav parentType="hikes" parentObject={hike}/>
                 <div className="hike-with-map">
                     <main className={`primary-content hike-container${hikeMapClass}`}>
                         <div className={`hike-detail-nav${hikeMapClass}`}>

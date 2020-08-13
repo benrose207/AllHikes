@@ -1,7 +1,7 @@
 class Api::HikesController < ApplicationController
 
     def show
-        @hike = Hike.includes(:taggables, :location, coverPhoto_attachment: :blob, reviews: [:taggables, reviewer: [profilePicture_attachment: :blob]]).find_by(id: params[:id]);
+        @hike = Hike.includes(:taggables, :park, :location, coverPhoto_attachment: :blob, reviews: [:taggables, reviewer: [profilePicture_attachment: :blob]]).find_by(id: params[:id]);
         @tags = Tag.all
         render :show
     end

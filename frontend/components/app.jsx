@@ -1,7 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import { AuthRoute, ProtectedRoute } from "../util/route_util";
-import HomePage from "./homepage";
+import HomePageContainer from "./homepage/homepage_container";
 import Footer from "./nav/footer";
 import MainNavContainer from "./nav/main_nav_container";
 import LoginFormContainer from "./session/login_form_container";
@@ -19,7 +19,7 @@ const App = () => {
             </header>
 
             <div className="content">
-                <Route exact path="/" component={HomePage} />            
+                <Route exact path="/" component={HomePageContainer} />            
                 <Route path="/hikes/:hikeId" render={(props) => (
                     <HikeShowContainer key={props.match.params.hikeId} {...props} />)} />
                 <Route path="/parks/:parkId" component={ParkShowContainer}/>

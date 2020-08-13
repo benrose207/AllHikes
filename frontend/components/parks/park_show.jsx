@@ -2,7 +2,7 @@ import React from "react";
 import PhotosModal from "../photos/photos_modal";
 import HikeIndex from "../hikes/hike_index";
 import HikeFilters from "../hikes/hike_filters";
-import TextSearchContainer from "../search/text_search_container";
+import SubNav from "../nav/sub_nav";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMapSigns, faAngleRight, faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
@@ -124,9 +124,7 @@ class ParkShow extends React.Component {
                         closeModal={this.openPhotosModal}
                     />
                     : null}
-                <div className="sub-nav">
-                    <TextSearchContainer parentName="hike"/>
-                </div>
+                <SubNav parentType="parks" parentObject={park}/>
                 <main className="primary-content park-container">
                     <div className="photo-carousel-wrapper">
                         <div className="photo-carousel">
