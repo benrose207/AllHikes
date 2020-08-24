@@ -74,5 +74,5 @@ Those photos can then be viewed on that hike page, or in the user's profile alon
 
 ---
 ### Future Features
-* Parks - containing data about the park itself, as well as a filterable list of hikes in that park
-* Search - both text and map-based search to find any given hike
+* Map-based Search - currently users can use a basic text search on the site, but adding a map search would allow users to explore hikes in a given area without knowing in advance which hike they wanted.
+* Additional hike filters on Park pages - specifically, filters for different hike "tags", such as hike usage or activities.
