@@ -101,6 +101,7 @@ class ParkShow extends React.Component {
                     <button
                         className="photo-carousel-nav-btn btn-overflow-left"
                         data-direction="-1"
+                        aria-label="Navigate left through photos"
                         onClick={this.onCarouselNav}>
                         <FontAwesomeIcon icon={faAngleLeft} />
                     </button>
@@ -109,6 +110,7 @@ class ParkShow extends React.Component {
                     <button
                         className="photo-carousel-nav-btn btn-overflow-right"
                         data-direction="1"
+                        aria-label="Navigate right through photos"
                         onClick={this.onCarouselNav}>
                         <FontAwesomeIcon icon={faAngleRight} />
                     </button>

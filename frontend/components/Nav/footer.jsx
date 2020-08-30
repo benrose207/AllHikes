@@ -16,6 +16,8 @@ const Footer = (props) => {
                     <a
                         href="https://www.linkedin.com/in/benjamin-rose-483549124/"
                         target="_blank"
+                        aria-label="LinkedIn logo"
+                        rel="noopener"
                         onClick={() => ReactGA.event({category: 'click', action: "linkedin", label: 'footer'})}
                     >
                         <FontAwesomeIcon icon={faLinkedin} />
@@ -23,6 +25,8 @@ const Footer = (props) => {
                     <a
                         href="https://github.com/benrose207"
                         target="_blank"
+                        aria-label="GitHub logo"
+                        rel="noopener"
                         onClick={() => ReactGA.event({ category: 'click', action: "github", label: 'footer' })}
                     >
                         <FontAwesomeIcon icon={faGithub} />
@@ -30,6 +34,8 @@ const Footer = (props) => {
                     <a
                         href="https://angel.co/benjamin-rose-2"
                         target="_blank"
+                        aria-label="Angellist logo"
+                        rel="noopener"
                         onClick={() => ReactGA.event({ category: 'click', action: "angellist", label: 'footer' })}
                     >
                         <FontAwesomeIcon icon={faAngellist} />

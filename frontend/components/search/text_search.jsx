@@ -41,7 +41,7 @@ class TextSearch extends React.Component {
 
     render() {
         const inputLabel = this.props.parentName === "home" ? (
-            <label htmlFor="home-search-bar">
+            <label htmlFor="home-search-bar" aria-label="magnifying glass icon">
                 <FontAwesomeIcon icon={faSearch} />
             </label>
         ) : null;
@@ -61,7 +61,7 @@ class TextSearch extends React.Component {
                         autoComplete="off"
                         onChange={this.handleInput}
                     />
-                    <button>{searchButtonContent}</button>
+                    <button aria-label="Search">{searchButtonContent}</button>
                 </form>
                 <div className="search-results-container">
                     {this.state.focused ? (
