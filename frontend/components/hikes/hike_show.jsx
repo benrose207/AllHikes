@@ -162,7 +162,10 @@ class HikeShow extends React.Component {
                         <div className="hike-actions">
                             <ul>
                                 <li>
-                                    <a href={`https://www.google.com/maps/dir/Current+Location/${hike.lat},${hike.lng}`} target="_blank" className="hike-action-link">
+                                    <a
+                                        href={`https://www.google.com/maps/dir/Current+Location/${hike.lat},${hike.lng}`} target="_blank"
+                                        rel="noopener"
+                                        className="hike-action-link">
                                         <FontAwesomeIcon icon={faMapSigns} />
                                         <p>Directions</p>
                                     </a>

@@ -151,7 +151,11 @@ class ParkShow extends React.Component {
                     </div>
                     <section className="park-actions">
                         <div>
-                            <a href={`https://www.google.com/maps/dir/Current+Location/${park.lat},${park.lng}`} target="_blank" className="park-action">
+                            <a 
+                                href={`https://www.google.com/maps/dir/Current+Location/${park.lat},${park.lng}`} 
+                                target="_blank" 
+                                rel="noopener"
+                                className="park-action">
                                 <FontAwesomeIcon icon={faMapSigns} />
                                 <p>Directions</p>
                             </a>

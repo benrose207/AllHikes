@@ -49,7 +49,7 @@ class ReviewItem extends React.Component {
             <li className="review-item">
                 <div className="review-header">
                     <div className="review-header-left">
-                        <Link to={`/members/${user.id}`}>
+                        <Link to={`/members/${user.id}`} aria-label="user profile">
                             <div className="profile-picture">
                                 {profilePicture}
                             </div>
