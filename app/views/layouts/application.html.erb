@@ -12,10 +12,32 @@
     <meta property='og:description' content='Find detailed information about hikes that interest you, as well as add reviews and photos of hikes you have completed.' />
     <meta property='og:url' content='https://all-hikes.herokuapp.com' />
 
-    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-    <link href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' rel='stylesheet' />
+    <link 
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&family=Montserrat:wght@400;500;600;700&family=Varela+Round&display=swap"
+      onload="this.onload=null;this.rel='stylesheet'"> 
+    <noscript>
+      <link
+          href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400;700&family=Montserrat:wght@400;500;600;700&family=Varela+Round&display=swap"
+          rel="stylesheet"
+          type="text/css"
+      />
+    </noscript>
+    <link 
+      rel='preload'
+      as="style"
+      href='https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css' 
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+          href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css"
+          rel="stylesheet"
+          type="text/css"
+      />
+    </noscript>
+
     <script type="text/javascript">
         window.mapboxAPIKey = "<%= Rails.application.credentials.mapbox[:api_key] %>"
     </script>

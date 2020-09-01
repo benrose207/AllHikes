@@ -189,7 +189,7 @@ class HikeShow extends React.Component {
                                     <span>View Full Map</span>
                                 </div>
                                 <div className="nearby-hikes-container">
-                                    <h3 className="header-text">Nearby Hikes</h3>
+                                    <h2 className="header-text">Nearby Hikes</h2>
                                     <HikeIndex hikes={this.props.nearbyHikes} classToggle="sidebar" parkName={hike.parkName}/>
                                 </div>
                             </aside>

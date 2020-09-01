@@ -59,6 +59,7 @@ class TextSearch extends React.Component {
                         type="text"
                         placeholder="Enter a park or trail name"
                         autoComplete="off"
+                        aria-label="text search input"
                         onChange={this.handleInput}
                     />
                     <button aria-label="Search">{searchButtonContent}</button>

@@ -130,52 +130,52 @@ class ParkShow extends React.Component {
                 <SubNav parentType="parks" parentObject={park}/>
                 <main className="primary-content park-container">
                     <section className="park-content-wrapper">
-                    <div className="photo-carousel-wrapper">
-                        <div className="photo-carousel">
-                            {carouselPhotos}
-                        </div>
-                            {carouselNavButtons}
-                    </div>
-                    <h1 className="header-text">Best Trails in {park.name}</h1>
-                    <div className="page-summary-info">
-                        <div>
-                            {reviewStars}
-                        </div>
-                        {totalReviews} Reviews
-                    </div>
-                    <p className="park-summary">{park.summary}</p>
-                    <h4 className="header-text">Description</h4>
-                    <p>{park.description}</p>
-                    <div className="park-static-map">
-                        <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/${staticMapWidth}x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
-                    </div>
-                    <section className="park-actions">
-                        <div>
-                            <a 
-                                href={`https://www.google.com/maps/dir/Current+Location/${park.lat},${park.lng}`} 
-                                target="_blank" 
-                                rel="noopener"
-                                className="park-action">
-                                <FontAwesomeIcon icon={faMapSigns} />
-                                <p>Directions</p>
-                            </a>
-                        </div>
-                    </section>
-                    <section className="park-information">
-                        <h3 className="header-text">Park Information</h3>
-                        <div className="park-information-details">
-                            <div>
-                                <article>
-                                    <h5 className="header-text">Acreage</h5>
-                                    <p>{park.acreage} acres</p>
-                                </article>
-                                <article>
-                                    <h5 className="header-text">Contact</h5>
-                                    <p>{park.contact}</p>
-                                </article>
+                        <div className="photo-carousel-wrapper">
+                            <div className="photo-carousel">
+                                {carouselPhotos}
                             </div>
+                                {carouselNavButtons}
                         </div>
-                    </section>
+                        <h1 className="header-text">Best Trails in {park.name}</h1>
+                        <div className="page-summary-info">
+                            <div>
+                                {reviewStars}
+                            </div>
+                            {totalReviews} Reviews
+                        </div>
+                        <p className="park-summary">{park.summary}</p>
+                        <h2 className="header-text sm-header-size">Description</h2>
+                        <p>{park.description}</p>
+                        <div className="park-static-map">
+                            <img src={`https://api.mapbox.com/styles/v1/mapbox/outdoors-v11/static${staticMapPinStr}/${park.lng},${park.lat},8,0/${staticMapWidth}x240@2x?access_token=${window.mapboxAPIKey}`} alt="map-preview" />
+                        </div>
+                        <section className="park-actions">
+                            <div>
+                                <a 
+                                    href={`https://www.google.com/maps/dir/Current+Location/${park.lat},${park.lng}`} 
+                                    target="_blank" 
+                                    rel="noopener"
+                                    className="park-action">
+                                    <FontAwesomeIcon icon={faMapSigns} />
+                                    <p>Directions</p>
+                                </a>
+                            </div>
+                        </section>
+                        <section className="park-information">
+                            <h2 className="header-text">Park Information</h2>
+                            <div className="park-information-details">
+                                <div>
+                                    <article>
+                                        <h3 className="header-text">Acreage</h3>
+                                        <p>{park.acreage} acres</p>
+                                    </article>
+                                    <article>
+                                        <h3 className="header-text">Contact</h3>
+                                        <p>{park.contact}</p>
+                                    </article>
+                                </div>
+                            </div>
+                        </section>
                     </section>
                 </main>
                 <section className="park-container">
@@ -191,7 +191,7 @@ class ParkShow extends React.Component {
                     </div>
                     <div className="primary-content park-hikes-container">
                         <section className="park-content-wrapper">
-                            <h3 className="header-text">Top Trails ({hikeList.length})</h3>
+                            <h2 className="header-text">Top Trails ({hikeList.length})</h2>
                             <HikeIndex hikes={hikeList} parkName={park.name}/>
                         </section>
                     </div>

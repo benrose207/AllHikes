@@ -17,7 +17,7 @@ const HikeIndexItem = ({ hike, parkName, idx, classToggle }) => {
                     <img src={hike.coverPhotoUrl} alt={hike.name}/>
                 </picture>
                 <div className={`hike-card-content ${toggledClass}`}>
-                    <div><h5 className={`header-text ${toggledClass}`}>{`#${idx + 1} - ${hike.name}`}</h5></div>
+                    <div><h3 className={`header-text ${toggledClass}`}>{`#${idx + 1} - ${hike.name}`}</h3></div>
                     <p className="detail-text">{parkName}</p>
                     <div className="page-summary-info">
                         <span className={`tag hike-difficulty ${hike.difficulty}`}>{hike.difficulty}</span>

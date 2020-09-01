@@ -22,7 +22,7 @@ class ReviewItem extends React.Component {
         const reviewDate = new Date(review.activityDate);
         
         const tagCloud = tags.map(tag => (
-            <h4 key={tag.id} className="tag">{tag.name}</h4>
+            <span key={tag.id} className="tag">{tag.name}</span>
         ));
     
         const reviewStars = [];

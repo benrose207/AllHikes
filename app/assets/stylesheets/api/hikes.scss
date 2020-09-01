@@ -244,7 +244,7 @@
     font-size: 0.9rem;
     line-height: 1.5rem;
 
-    h3 {
+    h2 {
         font-size: 1rem;
     }
 }
@@ -339,7 +339,7 @@ aside.hike-map-view {
     border-radius: 8px;
     background-color: white;
 
-    h5 {
+    h3 {
         font-size: 1rem;
         white-space: nowrap;
         overflow: hidden;
@@ -493,7 +493,7 @@ aside.hike-map-view {
 }
 
 @media only screen and (min-device-width: 850px) {
-    .hike-card h5 {
+    .hike-card h3 {
         white-space: normal;
     }
 
@@ -517,7 +517,7 @@ aside.hike-map-view {
     }
 }
 
-.hike-card h5.sidebar {
+.hike-card h3.sidebar {
     white-space: nowrap;
 }
 

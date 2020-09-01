@@ -9,7 +9,7 @@ const HikePrimaryContent = ({hike, tags}) => {
         feature : `a ${feature}`);
 
     const tagCloud = tags.map(tag => (
-        <h4 key={tag.id} className="tag">{tag.name}</h4>
+        <span key={tag.id} className="tag">{tag.name}</span>
     ));
 
     return (
