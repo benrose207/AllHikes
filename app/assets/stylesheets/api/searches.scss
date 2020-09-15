@@ -36,7 +36,11 @@
     }
 }
 
-// Shared Search Bar\
+// Shared Search Bar
+
+#home-search-bar {
+    font-size: 1rem;
+}
 
 div[class^="text-search-"] {
     position: relative;
@@ -213,5 +217,13 @@ ul.search-results-subnav {
 
     .text-search-subnav {
         width: 40%;
+    }
+
+    .text-search-subnav #home-search-bar {
+        font-size: 0.88rem;
+    }
+
+    .text-search-home #home-search-bar {
+        font-size: 1.5rem;
     }
 }
