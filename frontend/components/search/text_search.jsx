@@ -17,42 +17,38 @@ class TextSearch extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+        this.resultsKeyHandlers = this.resultsKeyHandlers.bind(this);
     }
 
-    addKeyHandlers() {
-        document.addEventListener('keydown', (event) => {
-            const lastIndex = this.props.searchResults.length - 1;
-            if (event.key === "ArrowUp") {
-                if (this.state.currIdx === null) {
-                    this.setState({ currIdx: lastIndex });
-                } else if (this.state.currIdx > 0) {
-                    this.setState({ currIdx: this.state.currIdx - 1 });
-                }
-            } else if (event.key === "ArrowDown") {
-                if (this.state.currIdx === null) {
-                    this.setState({ currIdx: 0 });
-                } else if (this.state.currIdx < lastIndex) {
-                    this.setState({ currIdx: this.state.currIdx + 1 });
-                }
-            } else if (this.state.currIdx !== null && event.key !== "Enter") {
-                this.setState({ currIdx: null });
+    resultsKeyHandlers(event) {
+        const lastIndex = this.props.searchResults.length - 1;
+        if (event.key === "ArrowUp") {
+            if (this.state.currIdx === null) {
+                this.setState({ currIdx: lastIndex });
+            } else if (this.state.currIdx > 0) {
+                this.setState({ currIdx: this.state.currIdx - 1 });
             }
-        });
-
-        document.addEventListener("keyup", (event) => {
-            if (event.key === "Enter" && this.state.currIdx !== null) {
-                const currResult = document.getElementById(`search-result-${this.state.currIdx}`);
-                currResult.click();
+        } else if (event.key === "ArrowDown") {
+            if (this.state.currIdx === null) {
+                this.setState({ currIdx: 0 });
+            } else if (this.state.currIdx < lastIndex) {
+                this.setState({ currIdx: this.state.currIdx + 1 });
             }
-        })
+        } else if (event.key === "Enter" && this.state.currIdx !== null) { 
+            const currResult = document.getElementById(`search-result-${this.state.currIdx}`);
+            currResult.click();
+        } else if (this.state.currIdx !== null) {
+            this.setState({ currIdx: null });
+        }
     }
 
     componentDidMount() {
-        this.addKeyHandlers();
+        document.addEventListener("keydown", this.resultsKeyHandlers);
     }
 
     componentWillUnmount() {
         if (this.props.searchResults.length > 0) this.props.clearSearchResults();
+        document.removeEventListener("keydown", this.resultsKeyHandlers);
     }
 
     handleInput(e) {
