@@ -34,8 +34,15 @@ class TextSearch extends React.Component {
                 } else if (this.state.currIdx < lastIndex) {
                     this.setState({ currIdx: this.state.currIdx + 1 });
                 }
-            } else if (event.key === "Enter" && this.state.currIdx !== null) {
-                
+            } else if (this.state.currIdx !== null && event.key !== "Enter") {
+                this.setState({ currIdx: null });
+            }
+        });
+
+        document.addEventListener("keyup", (event) => {
+            if (event.key === "Enter" && this.state.currIdx !== null) {
+                const currResult = document.getElementById(`search-result-${this.state.currIdx}`);
+                currResult.click();
             }
         })
     }

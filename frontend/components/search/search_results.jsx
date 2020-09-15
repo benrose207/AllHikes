@@ -24,15 +24,23 @@ class SearchResults extends React.Component {
         const results = this.props.searchResults.map((searchResult, idx) => (
             <li key={`${searchResult.type}-${searchResult.id}`} onMouseDown={this.onMouseDown}>
                 {searchResult.type === "Hike" ? (
-                    <Link to={`/hikes/${searchResult.id}`} className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}>
-                            <FontAwesomeIcon icon={faMapSigns} className="result-hike fa-fw" />
+                    <Link
+                        to={`/hikes/${searchResult.id}`}
+                        id={`search-result-${idx}`}
+                        className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}
+                    >
+                        <FontAwesomeIcon icon={faMapSigns} className="result-hike fa-fw" />
                         <div>
                             {searchResult.name}
                         </div>
                     </Link>
                 ) : (
-                    <Link to={`/parks/${searchResult.id}`} className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}>
-                            <FontAwesomeIcon icon={faTree} className="result-park fa-fw"/>
+                    <Link 
+                        to={`/parks/${searchResult.id}`}
+                        id={`search-result-${idx}`}
+                        className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}
+                    >
+                        <FontAwesomeIcon icon={faTree} className="result-park fa-fw"/>
                         <div>
                             {searchResult.name}
                         </div>
