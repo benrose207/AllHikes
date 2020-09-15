@@ -14,7 +14,7 @@ footer {
 }
 
 footer h3 {
-    font-size: 36px;
+    font-size: 1.7rem;
     font-family: $headerFont;
     color: $grey;
 }
@@ -25,6 +25,18 @@ footer h3 {
 
 .footer-links a {
     margin: 12px;
-    font-size: 36px;
+    font-size: 1.9rem;
     color: $darkGrey;
+}
+
+@media only screen and (min-device-width: 850px) {
+
+    footer h3 {
+        font-size: 2.25rem;
+    }
+
+    .footer-links a {
+        font-size: 2.25rem;
+    }
+
 }
