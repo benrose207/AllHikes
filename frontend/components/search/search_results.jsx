@@ -18,18 +18,20 @@ class SearchResults extends React.Component {
         if (!searchResults.length && currentQuery.length === 0) this.props.fetchSearchResults("");
     }
     
-    render() {        
-        const results = this.props.searchResults.map(searchResult => (
+    render() {
+        const currIdx = this.props.currIdx;
+
+        const results = this.props.searchResults.map((searchResult, idx) => (
             <li key={`${searchResult.type}-${searchResult.id}`} onMouseDown={this.onMouseDown}>
                 {searchResult.type === "Hike" ? (
-                    <Link to={`/hikes/${searchResult.id}`} className="search-result">
+                    <Link to={`/hikes/${searchResult.id}`} className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}>
                             <FontAwesomeIcon icon={faMapSigns} className="result-hike fa-fw" />
                         <div>
                             {searchResult.name}
                         </div>
                     </Link>
                 ) : (
-                    <Link to={`/parks/${searchResult.id}`} className="search-result">
+                    <Link to={`/parks/${searchResult.id}`} className={`search-result${currIdx === idx ? " sr-highlighted" : ""}`}>
                             <FontAwesomeIcon icon={faTree} className="result-park fa-fw"/>
                         <div>
                             {searchResult.name}

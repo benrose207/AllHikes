@@ -171,6 +171,21 @@ ul[class^="search-results"] {
     border-bottom-left-radius: 8px;
 }
 
+.sr-highlighted {
+    background-color: $ctaGreen;
+    color: white;
+}
+
+.sr-highlighted > .result-hike {
+    background-color: white;
+    color: $ctaGreen;  
+}
+
+.sr-highlighted > .result-park {
+    background-color: white;
+    color: $orange;    
+}
+
 // homepage search results
 
 .search-results-home {

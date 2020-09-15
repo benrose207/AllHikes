@@ -9,13 +9,39 @@ class TextSearch extends React.Component {
         super(props);
         this.state = {
             queryStr: "",
-            focused: false
+            focused: false,
+            currIdx: null
         }
 
         this.search = debounce(this.search, 200).bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.handleFocus = this.handleFocus.bind(this);
         this.handleBlur = this.handleBlur.bind(this);
+    }
+
+    addKeyHandlers() {
+        document.addEventListener('keydown', (event) => {
+            const lastIndex = this.props.searchResults.length - 1;
+            if (event.key === "ArrowUp") {
+                if (this.state.currIdx === null) {
+                    this.setState({ currIdx: lastIndex });
+                } else if (this.state.currIdx > 0) {
+                    this.setState({ currIdx: this.state.currIdx - 1 });
+                }
+            } else if (event.key === "ArrowDown") {
+                if (this.state.currIdx === null) {
+                    this.setState({ currIdx: 0 });
+                } else if (this.state.currIdx < lastIndex) {
+                    this.setState({ currIdx: this.state.currIdx + 1 });
+                }
+            } else if (event.key === "Enter" && this.state.currIdx !== null) {
+                
+            }
+        })
+    }
+
+    componentDidMount() {
+        this.addKeyHandlers();
     }
 
     componentWillUnmount() {
@@ -71,6 +97,7 @@ class TextSearch extends React.Component {
                             fetchSearchResults={this.props.fetchSearchResults}
                             parentName={this.props.parentName}
                             currentQuery={this.state.queryStr}
+                            currIdx={this.state.currIdx}
                         />
                     ) : null}
                 </div>
