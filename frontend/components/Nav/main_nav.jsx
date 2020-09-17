@@ -33,8 +33,23 @@ const MainNav = ({ currentUser, logout }) => {
         </>
     ) : (
         <>
-            <Link to="/signup" className="secondary-cta">Sign Up</Link>
-            <Link to="/login" className="tertiary-cta">Log In</Link>
+            <div id="ml-user-menu">
+                <Link to="/signup" className="secondary-cta">Sign Up</Link>
+                <Link to="/login" className="tertiary-cta">Log In</Link>
+            </div>
+            <div id="s-user-menu" className="dropdown-selector">
+                <div className="user-menu-header">
+                    Menu
+                </div>
+                <ul className="user-dropdown">
+                    <li>
+                        <Link to="/signup">Sign Up</Link>
+                    </li>
+                    <li>
+                        <Link to="/login">Log In</Link>
+                    </li>
+                </ul>
+            </div>
         </>
     ))
 

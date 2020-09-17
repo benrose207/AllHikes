@@ -112,3 +112,17 @@ header {
 .user-dropdown > li:last-child {
     margin-bottom: 16px;
 }
+
+#ml-user-menu {
+    display: none;
+}
+
+@media only screen and (min-device-width: 750px) {
+    #ml-user-menu {
+        display: block;
+    }
+    
+    #s-user-menu {
+        display: none;
+    }
+}
