@@ -117,6 +117,15 @@ header {
     display: none;
 }
 
+#s-user-menu {
+    font-size: 1.4rem;
+    margin-right: 8px;
+
+    .user-dropdown {
+        font-size: 1rem;
+    }
+}
+
 @media only screen and (min-device-width: 750px) {
     #ml-user-menu {
         display: block;

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMountain, faHiking } from "@fortawesome/free-solid-svg-icons";
+import { faMountain, faHiking, faBars } from "@fortawesome/free-solid-svg-icons";
 
 
 const MainNav = ({ currentUser, logout }) => {
@@ -39,7 +39,7 @@ const MainNav = ({ currentUser, logout }) => {
             </div>
             <div id="s-user-menu" className="dropdown-selector">
                 <div className="user-menu-header">
-                    Menu
+                    <FontAwesomeIcon icon={faBars} />
                 </div>
                 <ul className="user-dropdown">
                     <li>
