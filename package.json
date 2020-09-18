@@ -46,6 +46,7 @@
   },
   "homepage": "https://github.com/benrose207/AllHikes#readme",
   "devDependencies": {
+    "react-axe": "^3.5.3",
     "redux-logger": "^3.0.6"
   },
   "engines": {
