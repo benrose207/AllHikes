@@ -146,6 +146,7 @@
 .hike-stats {
     height: 50px;
     display: flex;
+    padding-top: 10px;
 }
 
 .hike-stats span {
@@ -528,6 +529,7 @@ aside.hike-map-view {
 .hike-card-photo.sidebar {
     padding: 0;
     height: 150px;
+    width: 100%;
 
     img {
         width: 100%;
